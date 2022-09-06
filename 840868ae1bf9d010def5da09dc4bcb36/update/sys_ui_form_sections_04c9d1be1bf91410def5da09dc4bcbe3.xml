@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="04c9d1be1bf91410def5da09dc4bcbe3" sys_domain="global" table="x_btal_bt_learning_lp_user_course_status" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 02:34:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>44c9d1be1bf91410def5da09dc4bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_btal_bt_learning_lp_user_course_status" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">04c9d1be1bf91410def5da09dc4bcbe3</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 02:34:55</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 02:34:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>00c9d1be1bf91410def5da09dc4bcbe6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_btal_bt_learning_lp_user_course_status" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">04c9d1be1bf91410def5da09dc4bcbe3</sys_ui_form>
+            <sys_ui_section caption="Notes and History" display_value="Notes and History" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">84c9d1be1bf91410def5da09dc4bcbe2</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 02:34:55</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>Osbert.Chor</sys_created_by>
+            <sys_created_on>2021-12-21 02:05:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a857ffa1db24c150a562f132f3961947</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_btal_bt_learning_lp_user_course_status" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">04c9d1be1bf91410def5da09dc4bcbe3</sys_ui_form>
+            <sys_ui_section caption="Course Status" display_value="Course Status" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">aea9d1be1bf91410def5da09dc4bcb01</sys_ui_section>
+            <sys_updated_by>Osbert.Chor</sys_updated_by>
+            <sys_updated_on>2021-12-21 02:05:54</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_btal_bt_learning_lp_user_course_status</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 02:34:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>04c9d1be1bf91410def5da09dc4bcbe3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_btal_bt_learning_lp_user_course_status</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_form_sections_04c9d1be1bf91410def5da09dc4bcbe3</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 02:34:54</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

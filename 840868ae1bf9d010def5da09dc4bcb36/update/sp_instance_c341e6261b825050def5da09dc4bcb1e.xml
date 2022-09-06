@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>primary</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">10bd2079db8e9c10bbad468b3a96194f</sp_column>
+        <sp_widget display_value="LP Categories">2ac60e9edb4e1050bbad468b3a96199b</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-19 23:24:43</sys_created_on>
+        <sys_id>c341e6261b825050def5da09dc4bcb1e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_instance_c341e6261b825050def5da09dc4bcb1e</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-20 01:03:11</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"hide_xs": {
+		"value": "",
+		"displayValue": ""
+	},
+	"omit_badges": {
+		"value": "",
+		"displayValue": ""
+	},
+	"check_can_view": {
+		"value": "true",
+		"displayValue": "true"
+	},
+	"category_layout": {
+		"value": "Nested",
+		"displayValue": "Nested"
+	},
+	"page": {
+		"value": "",
+		"displayValue": ""
+	},
+	"number_of_categories_to_load": {
+		"value": 15,
+		"displayValue": "15"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=c341e6261b825050def5da09dc4bcb1e"/>
+</record_update>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="042043a91b7d3850def5da09dc4bcb20" sys_domain="global" table="incident" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:12:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>482043a91b7d3850def5da09dc4bcb21</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="incident" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">042043a91b7d3850def5da09dc4bcb20</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:12:05</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:12:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>882043a91b7d3850def5da09dc4bcb23</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="incident" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">042043a91b7d3850def5da09dc4bcb20</sys_ui_form>
+            <sys_ui_section caption="Variables" display_value="Variables" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">442043a91b7d3850def5da09dc4bcb22</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:12:05</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:19:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>36e1c7e91b7d3850def5da09dc4bcb60</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="incident" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">042043a91b7d3850def5da09dc4bcb20</sys_ui_form>
+            <sys_ui_section caption="Notes" display_value="Notes" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">62e187e91b7d3850def5da09dc4bcbd3</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:19:55</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:19:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>72e1c7e91b7d3850def5da09dc4bcb65</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="incident" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">042043a91b7d3850def5da09dc4bcb20</sys_ui_form>
+            <sys_ui_section caption="Related Records" display_value="Related Records" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">6ee187e91b7d3850def5da09dc4bcbd3</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:19:55</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:19:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>36e1c7e91b7d3850def5da09dc4bcb69</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="incident" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">042043a91b7d3850def5da09dc4bcb20</sys_ui_form>
+            <sys_ui_section caption="Resolution Information" display_value="Resolution Information" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">6ae187e91b7d3850def5da09dc4bcbd4</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:19:55</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>incident</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:12:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>042043a91b7d3850def5da09dc4bcb20</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>incident</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_form_sections_042043a91b7d3850def5da09dc4bcb20</sys_update_name>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:12:05</sys_updated_on>
+            <sys_user/>
+            <view display_value="WHS Form" name="whs_form">7efebe291b7d3850def5da09dc4bcb7f</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

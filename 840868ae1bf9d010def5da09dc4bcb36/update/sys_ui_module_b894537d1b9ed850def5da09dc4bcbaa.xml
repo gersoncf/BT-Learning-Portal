@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Learning Portal">d3b9cdbe1bb91410def5da09dc4bcb78</application>
+        <filter/>
+        <name>Course Unit Orders</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_btal_bt_learning.learning portal user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-30 05:29:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b894537d1b9ed850def5da09dc4bcbaa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Course Unit Orders</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_ui_module_b894537d1b9ed850def5da09dc4bcbaa</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-30 05:29:00</sys_updated_on>
+        <table>x_btal_bt_learning_course_unit_order</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name>top_space</container_class_name>
+        <name>Update Status/Record - Container 2</name>
+        <order>2</order>
+        <sp_page display_value="lp_course_status">7262218bdb06d050bbad468b3a961917</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-21 08:06:58</sys_created_on>
+        <sys_id>0362618bdb06d050bbad468b3a96196e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Update Status/Record - Container 2</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_container_0362618bdb06d050bbad468b3a96196e</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-22 00:51:59</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

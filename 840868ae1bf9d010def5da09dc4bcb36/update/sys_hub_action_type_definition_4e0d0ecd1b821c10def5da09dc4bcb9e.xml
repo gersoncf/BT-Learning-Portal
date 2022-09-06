@@ -1,0 +1,2315 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build>glide-rome-06-23-2021__patch7-02-09-2022_02-23-2022_0935.zip</compiler_build>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Add a user to a quiz and return the Instance ID</description>
+        <ih_action>false</ih_action>
+        <internal_name>create_and_return_quiz_instance</internal_name>
+        <label_cache>[{"name":"{{action.user_sys_id}}","label":"action➛User Sys ID","type":"action","ref":""},{"name":"{{action.quiz_id}}","label":"action➛Quiz ID","type":"action","ref":""},{"name":"{{action.metric_category}}","label":"action➛Metric Category","type":"action","ref":""},{"name":"{{action.metric_category_id}}","label":"action➛Metric Category ID","type":"action","ref":""},{"name":"{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}","label":"step➛Script step➛Quiz Instance","type":"step","ref":""},{"name":"{{step[0f285c73-40e3-4646-b07e-d8ada6f1f7f7].count}}","label":"step➛Look Up Records step➛Count","type":"step","ref":""}]</label_cache>
+        <master_snapshot>689b164d1bc21c10def5da09dc4bcb8f</master_snapshot>
+        <name>Create and Return Quiz Instance</name>
+        <natlang/>
+        <outputs/>
+        <outputs/>
+        <state>published</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:05:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4e0d0ecd1b821c10def5da09dc4bcb9e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create and Return Quiz Instance</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_4e0d0ecd1b821c10def5da09dc4bcb9e</sys_update_name>
+        <sys_updated_by>Osbert.Chor@btautomation.com.au</sys_updated_by>
+        <sys_updated_on>2022-04-23 03:27:45</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_variable_value action="delete_multiple" query="document_key=4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_element_mapping action="delete_multiple" query="id=4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>quiz_inst</field>
+        <id>4e0d0ecd1b821c10def5da09dc4bcb9e</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:46:56</sys_created_on>
+        <sys_id>189616091bc21c10def5da09dc4bcbc6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:46:56</sys_updated_on>
+        <table>var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e</table>
+        <value>{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}</value>
+    </sys_element_mapping>
+    <sys_hub_step_instance action="delete_multiple" query="action=4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT IN1562a6451b061c10def5da09dc4bcbfc,674e02411bc21c10def5da09dc4bcb80,c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</action>
+        <cid>0f285c73-40e3-4646-b07e-d8ada6f1f7f7</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <inputs/>
+        <label>Look Up Records step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Look Up Records">48526b2dc32a32002841b63b12d3ae72</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:38:37</sys_created_on>
+        <sys_id>1562a6451b061c10def5da09dc4bcbfc</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:38:38</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1562a6451b061c10def5da09dc4bcbfc</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:38:38</sys_created_on>
+        <sys_id>5d62e6451b061c10def5da09dc4bcb02</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:38:38</sys_updated_on>
+        <value>asmt_m2m_category_user</value>
+        <variable display_value="Table">4d19bb21c36a32002841b63b12d3aeef</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>1562a6451b061c10def5da09dc4bcbfc</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:38:38</sys_created_on>
+        <sys_id>1962e6451b061c10def5da09dc4bcb02</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:38:38</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_48526b2dc32a32002841b63b12d3ae72</table>
+        <value>user={{action.user_sys_id}}^metric_category={{action.metric_category_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>1562a6451b061c10def5da09dc4bcbfc</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:38:38</sys_created_on>
+        <sys_id>d962e6451b061c10def5da09dc4bcb02</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:38:38</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_48526b2dc32a32002841b63b12d3ae72</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_1562a6451b061c10def5da09dc4bcbfc"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</action>
+        <cid>f8e58439-23d0-4c39-9f0b-96d5f0b26d5e</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>2</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>674e02411bc21c10def5da09dc4bcb80</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:47:32</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=674e02411bc21c10def5da09dc4bcb80"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>674e02411bc21c10def5da09dc4bcb80</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>6f4e02411bc21c10def5da09dc4bcb98</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:47:32</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+// For quizzes, we have to add the user to the available group table.  Otherwise, they can't be assigned the quiz.
+//If the user has already been added to the assessment category user table, don't add them again.
+  if(inputs.Count &lt;1) {
+    var grACU = new GlideRecord('asmt_m2m_category_user')
+    grACU.user = inputs.User;
+    grACU.metric_category = inputs.MetCatID;
+    grACU.insert();
+  }
+  
+   var instanceId = new global.AssessmentUtils().createAssessments(inputs.Quiz, "", inputs.User);
+	outputs.quiz_instance = instanceId.toString().substring(0,32);
+  //var gr = new GlideRecord("asmt_assessment_instance");
+  //var success = gr.get(instanceId.substring(0,32));
+  //if(success) {
+    
+  //} else {
+  //  outputs.quiz_instance = '0';
+  //}
+  
+})(inputs, outputs);
+</value>
+        <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>674e02411bc21c10def5da09dc4bcb80</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>ab4e02411bc21c10def5da09dc4bcb98</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="MID Application">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=674e02411bc21c10def5da09dc4bcb80"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>Count</field>
+        <id>674e02411bc21c10def5da09dc4bcb80</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:43:49</sys_created_on>
+        <sys_id>5993e6851b061c10def5da09dc4bcb53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:43:49</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</table>
+        <value>{{step[0f285c73-40e3-4646-b07e-d8ada6f1f7f7].count}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>MetCatID</field>
+        <id>674e02411bc21c10def5da09dc4bcb80</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:43:49</sys_created_on>
+        <sys_id>1d93e6851b061c10def5da09dc4bcb53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:43:49</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</table>
+        <value>{{action.metric_category_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>Quiz</field>
+        <id>674e02411bc21c10def5da09dc4bcb80</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>6b4e02411bc21c10def5da09dc4bcb99</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</table>
+        <value>{{action.quiz_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>User</field>
+        <id>674e02411bc21c10def5da09dc4bcb80</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>2f4e02411bc21c10def5da09dc4bcb99</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</table>
+        <value>{{action.user_sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_output_674e02411bc21c10def5da09dc4bcb80^id=674e02411bc21c10def5da09dc4bcb80"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7^id=674e02411bc21c10def5da09dc4bcb80"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=674e02411bc21c10def5da09dc4bcb80^sys_idNOT IN1593e6851b061c10def5da09dc4bcb44,274e02411bc21c10def5da09dc4bcb8a,9593e6851b061c10def5da09dc4bcb49,a34e02411bc21c10def5da09dc4bcb85"/>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>Count</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label/>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">674e02411bc21c10def5da09dc4bcb80</model>
+        <model_id>674e02411bc21c10def5da09dc4bcb80</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</name>
+        <next_element/>
+        <order>200</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:43:48</sys_created_on>
+        <sys_id>1593e6851b061c10def5da09dc4bcb44</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:43:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>Quiz</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label/>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">674e02411bc21c10def5da09dc4bcb80</model>
+        <model_id>674e02411bc21c10def5da09dc4bcb80</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>274e02411bc21c10def5da09dc4bcb8a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>MetCatID</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label/>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">674e02411bc21c10def5da09dc4bcb80</model>
+        <model_id>674e02411bc21c10def5da09dc4bcb80</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</name>
+        <next_element/>
+        <order>300</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:43:48</sys_created_on>
+        <sys_id>9593e6851b061c10def5da09dc4bcb49</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:43:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>User</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label/>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">674e02411bc21c10def5da09dc4bcb80</model>
+        <model_id>674e02411bc21c10def5da09dc4bcb80</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_674e02411bc21c10def5da09dc4bcb80</name>
+        <next_element/>
+        <order>0</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>a34e02411bc21c10def5da09dc4bcb85</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=674e02411bc21c10def5da09dc4bcb80^sys_idNOT IN634e02411bc21c10def5da09dc4bcb8f"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_instance</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz Instance</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">674e02411bc21c10def5da09dc4bcb80</model>
+        <model_id>674e02411bc21c10def5da09dc4bcb80</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_674e02411bc21c10def5da09dc4bcb80</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>634e02411bc21c10def5da09dc4bcb8f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=674e02411bc21c10def5da09dc4bcb80"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_674e02411bc21c10def5da09dc4bcb80^sys_idNOT INa74e02411bc21c10def5da09dc4bcb94"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_instance</element>
+        <help/>
+        <hint/>
+        <label>Quiz Instance</label>
+        <language>en</language>
+        <name>var__m_sys_hub_step_ext_output_674e02411bc21c10def5da09dc4bcb80</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:51</sys_created_on>
+        <sys_id>a74e02411bc21c10def5da09dc4bcb94</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz Instance</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_step_ext_output_674e02411bc21c10def5da09dc4bcb80_quiz_instance_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:51</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</action>
+        <cid>a09e3c73-581c-42eb-9df3-886e18527b44</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <inputs/>
+        <label>Log step</label>
+        <order>3</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Log">a03fea9bc712220061f553c6f09763b1</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:46:56</sys_created_on>
+        <sys_id>c49616091bc21c10def5da09dc4bcbac</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:43:49</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_element_mapping action="delete_multiple" query="id=c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>log_message</field>
+        <id>c49616091bc21c10def5da09dc4bcbac</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:46:56</sys_created_on>
+        <sys_id>589616091bc21c10def5da09dc4bcbbd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:46:56</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_a03fea9bc712220061f553c6f09763b1</table>
+        <value>ED &gt;&gt;&gt;&gt;&gt;{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}</value>
+    </sys_element_mapping>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_c49616091bc21c10def5da09dc4bcbac"/>
+    <sys_hub_action_input action="delete_multiple" query="model=4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT IN333b9e0d1bc21c10def5da09dc4bcb04,974e02011bc21c10def5da09dc4bcb5e,9f4e02411bc21c10def5da09dc4bcb79"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>metric_category_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Metric Category ID</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</model>
+        <model_id>4e0d0ecd1b821c10def5da09dc4bcb9e</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:07:23</sys_created_on>
+        <sys_id>333b9e0d1bc21c10def5da09dc4bcb04</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:07:23</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=333b9e0d1bc21c10def5da09dc4bcb04"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>user_sys_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>User Sys ID</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</model>
+        <model_id>4e0d0ecd1b821c10def5da09dc4bcb9e</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:50</sys_created_on>
+        <sys_id>974e02011bc21c10def5da09dc4bcb5e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:50</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=974e02011bc21c10def5da09dc4bcb5e"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz ID</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</model>
+        <model_id>4e0d0ecd1b821c10def5da09dc4bcb9e</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:50</sys_created_on>
+        <sys_id>9f4e02411bc21c10def5da09dc4bcb79</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:50</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=9f4e02411bc21c10def5da09dc4bcb79"/>
+    <sys_hub_action_output action="delete_multiple" query="model=4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT IN5c9616091bc21c10def5da09dc4bcbbe"/>
+    <sys_hub_action_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,pwd2droppable=true,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_inst</element>
+        <element_prototype/>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz Instance</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</model>
+        <model_id>4e0d0ecd1b821c10def5da09dc4bcb9e</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_output</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:46:56</sys_created_on>
+        <sys_id>5c9616091bc21c10def5da09dc4bcbbe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:46:56</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=5c9616091bc21c10def5da09dc4bcbbe"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=5c9616091bc21c10def5da09dc4bcbbe"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT IN674e02411bc21c10def5da09dc4bcb7e,7b3b9e0d1bc21c10def5da09dc4bcb08,9f4e02411bc21c10def5da09dc4bcb78"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_id</element>
+        <help/>
+        <hint/>
+        <label>Quiz ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:50</sys_created_on>
+        <sys_id>674e02411bc21c10def5da09dc4bcb7e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e_quiz_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:50</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>metric_category_id</element>
+        <help/>
+        <hint/>
+        <label>Metric Category ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:07:23</sys_created_on>
+        <sys_id>7b3b9e0d1bc21c10def5da09dc4bcb08</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Metric Category ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e_metric_category_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:07:23</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>user_sys_id</element>
+        <help/>
+        <hint/>
+        <label>User Sys ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:10:50</sys_created_on>
+        <sys_id>9f4e02411bc21c10def5da09dc4bcb78</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>User Sys ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e_user_sys_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:10:50</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT INd09616091bc21c10def5da09dc4bcbc4"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_inst</element>
+        <help/>
+        <hint/>
+        <label>Quiz Instance</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 06:46:56</sys_created_on>
+        <sys_id>d09616091bc21c10def5da09dc4bcbc4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz Instance</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e_quiz_inst_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 06:46:56</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_4e0d0ecd1b821c10def5da09dc4bcb9e"/>
+    <sys_hub_action_plan action="delete_multiple" query="action_id=4e0d0ecd1b821c10def5da09dc4bcb9e^sys_idNOT IN059b564d1bc21c10def5da09dc4bcb28"/>
+    <sys_hub_action_plan action="INSERT_OR_UPDATE">
+        <action_id display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</action_id>
+        <plan>{"persistor":{"@class":".ChunkingPlanPersistor","table":"sys_hub_action_plan","id":"059b564d1bc21c10def5da09dc4bcb28","name":"plan"}}</plan>
+        <snapshot>0485e6091b061c10def5da09dc4bcb81</snapshot>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>059b564d1bc21c10def5da09dc4bcb28</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:15</sys_updated_on>
+    </sys_hub_action_plan>
+    <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Add a user to a quiz and return the Instance ID</description>
+        <internal_name>create_and_return_quiz_instance</internal_name>
+        <label_cache>[{"name":"{{action.user_sys_id}}","label":"action➛User Sys ID","type":"action","ref":""},{"name":"{{action.quiz_id}}","label":"action➛Quiz ID","type":"action","ref":""},{"name":"{{action.metric_category}}","label":"action➛Metric Category","type":"action","ref":""},{"name":"{{action.metric_category_id}}","label":"action➛Metric Category ID","type":"action","ref":""},{"name":"{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}","label":"step➛Script step➛Quiz Instance","type":"step","ref":""},{"name":"{{step[0f285c73-40e3-4646-b07e-d8ada6f1f7f7].count}}","label":"step➛Look Up Records step➛Count","type":"step","ref":""}]</label_cache>
+        <master>true</master>
+        <name>Create and Return Quiz Instance</name>
+        <natlang/>
+        <outputs/>
+        <outputs/>
+        <parent_action display_value="Create and Return Quiz Instance">4e0d0ecd1b821c10def5da09dc4bcb9e</parent_action>
+        <sys_class_name>sys_hub_action_type_snapshot</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>689b164d1bc21c10def5da09dc4bcb8f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_variable_value action="delete_multiple" query="document_key=689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_element_mapping action="delete_multiple" query="id=689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>quiz_inst</field>
+        <id>689b164d1bc21c10def5da09dc4bcb8f</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>749b164d1bc21c10def5da09dc4bcbd9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table>var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f</table>
+        <value>{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}</value>
+    </sys_element_mapping>
+    <sys_hub_step_instance action="delete_multiple" query="action=689b164d1bc21c10def5da09dc4bcb8f^sys_idNOT IN249b164d1bc21c10def5da09dc4bcbcd,289b164d1bc21c10def5da09dc4bcbb3,d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</action>
+        <cid>a09e3c73-581c-42eb-9df3-886e18527b44</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <inputs/>
+        <label>Log step</label>
+        <order>3</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Log">a03fea9bc712220061f553c6f09763b1</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>249b164d1bc21c10def5da09dc4bcbcd</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_element_mapping action="delete_multiple" query="id=249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>log_message</field>
+        <id>249b164d1bc21c10def5da09dc4bcbcd</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>ec9b164d1bc21c10def5da09dc4bcbd0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_a03fea9bc712220061f553c6f09763b1</table>
+        <value>ED &gt;&gt;&gt;&gt;&gt;{{step[f8e58439-23d0-4c39-9f0b-96d5f0b26d5e].quiz_instance}}</value>
+    </sys_element_mapping>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_249b164d1bc21c10def5da09dc4bcbcd"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</action>
+        <cid>f8e58439-23d0-4c39-9f0b-96d5f0b26d5e</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>2</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>289b164d1bc21c10def5da09dc4bcbb3</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=289b164d1bc21c10def5da09dc4bcbb3"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>289b164d1bc21c10def5da09dc4bcbb3</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>a49b164d1bc21c10def5da09dc4bcbca</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+// For quizzes, we have to add the user to the available group table.  Otherwise, they can't be assigned the quiz.
+//If the user has already been added to the assessment category user table, don't add them again.
+  if(inputs.Count &lt;1) {
+    var grACU = new GlideRecord('asmt_m2m_category_user')
+    grACU.user = inputs.User;
+    grACU.metric_category = inputs.MetCatID;
+    grACU.insert();
+  }
+  
+   var instanceId = new global.AssessmentUtils().createAssessments(inputs.Quiz, "", inputs.User);
+	outputs.quiz_instance = instanceId.toString().substring(0,32);
+  //var gr = new GlideRecord("asmt_assessment_instance");
+  //var success = gr.get(instanceId.substring(0,32));
+  //if(success) {
+    
+  //} else {
+  //  outputs.quiz_instance = '0';
+  //}
+  
+})(inputs, outputs);
+</value>
+        <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>289b164d1bc21c10def5da09dc4bcbb3</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>e09b164d1bc21c10def5da09dc4bcbca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="MID Application">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=289b164d1bc21c10def5da09dc4bcbb3"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>Count</field>
+        <id>289b164d1bc21c10def5da09dc4bcbb3</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>2c852a091b061c10def5da09dc4bcb1e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</table>
+        <value>{{step[0f285c73-40e3-4646-b07e-d8ada6f1f7f7].count}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>MetCatID</field>
+        <id>289b164d1bc21c10def5da09dc4bcbb3</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>ec852a091b061c10def5da09dc4bcb1e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</table>
+        <value>{{action.metric_category_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>Quiz</field>
+        <id>289b164d1bc21c10def5da09dc4bcbb3</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>209b164d1bc21c10def5da09dc4bcbcb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</table>
+        <value>{{action.quiz_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>User</field>
+        <id>289b164d1bc21c10def5da09dc4bcbb3</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>e09b164d1bc21c10def5da09dc4bcbcb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</table>
+        <value>{{action.user_sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_output_289b164d1bc21c10def5da09dc4bcbb3^id=289b164d1bc21c10def5da09dc4bcbb3"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7^id=289b164d1bc21c10def5da09dc4bcbb3"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=289b164d1bc21c10def5da09dc4bcbb3^sys_idNOT IN209b164d1bc21c10def5da09dc4bcbbc,249b164d1bc21c10def5da09dc4bcbb6,64852a091b061c10def5da09dc4bcb14,dc852a091b061c10def5da09dc4bcb0e"/>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>Quiz</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">289b164d1bc21c10def5da09dc4bcbb3</model>
+        <model_id>289b164d1bc21c10def5da09dc4bcbb3</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>209b164d1bc21c10def5da09dc4bcbbc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>User</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>User</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">289b164d1bc21c10def5da09dc4bcbb3</model>
+        <model_id>289b164d1bc21c10def5da09dc4bcbb3</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <next_element/>
+        <order>0</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>249b164d1bc21c10def5da09dc4bcbb6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>MetCatID</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>MetCatID</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">289b164d1bc21c10def5da09dc4bcbb3</model>
+        <model_id>289b164d1bc21c10def5da09dc4bcbb3</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <next_element/>
+        <order>300</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>64852a091b061c10def5da09dc4bcb14</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>Count</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Count</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">289b164d1bc21c10def5da09dc4bcbb3</model>
+        <model_id>289b164d1bc21c10def5da09dc4bcbb3</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_input_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <next_element/>
+        <order>200</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>dc852a091b061c10def5da09dc4bcb0e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_input>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=289b164d1bc21c10def5da09dc4bcbb3^sys_idNOT IN6c9b164d1bc21c10def5da09dc4bcbc1"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_instance</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz Instance</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">289b164d1bc21c10def5da09dc4bcbb3</model>
+        <model_id>289b164d1bc21c10def5da09dc4bcbb3</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>6c9b164d1bc21c10def5da09dc4bcbc1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=289b164d1bc21c10def5da09dc4bcbb3"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_289b164d1bc21c10def5da09dc4bcbb3^sys_idNOT INa89b164d1bc21c10def5da09dc4bcbc6"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_instance</element>
+        <help/>
+        <hint/>
+        <label>Quiz Instance</label>
+        <language>en</language>
+        <name>var__m_sys_hub_step_ext_output_289b164d1bc21c10def5da09dc4bcbb3</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>a89b164d1bc21c10def5da09dc4bcbc6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz Instance</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_step_ext_output_289b164d1bc21c10def5da09dc4bcbb3_quiz_instance_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</action>
+        <cid>0f285c73-40e3-4646-b07e-d8ada6f1f7f7</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <inputs/>
+        <label>Look Up Records step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Look Up Records">48526b2dc32a32002841b63b12d3ae72</step_type>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>d885e6091b061c10def5da09dc4bcbea</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>d885e6091b061c10def5da09dc4bcbea</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>d4852a091b061c10def5da09dc4bcb08</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <value>asmt_m2m_category_user</value>
+        <variable display_value="Table">4d19bb21c36a32002841b63b12d3aeef</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>d885e6091b061c10def5da09dc4bcbea</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>90852a091b061c10def5da09dc4bcb08</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_48526b2dc32a32002841b63b12d3ae72</table>
+        <value>user={{action.user_sys_id}}^metric_category={{action.metric_category_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>d885e6091b061c10def5da09dc4bcbea</id>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:52:13</sys_created_on>
+        <sys_id>54852a091b061c10def5da09dc4bcb08</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:52:13</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_48526b2dc32a32002841b63b12d3ae72</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_step_ext_output_d885e6091b061c10def5da09dc4bcbea"/>
+    <sys_hub_action_input action="delete_multiple" query="model=689b164d1bc21c10def5da09dc4bcb8f^sys_idNOT IN289b164d1bc21c10def5da09dc4bcb90,a49b164d1bc21c10def5da09dc4bcb96,e09b164d1bc21c10def5da09dc4bcba8"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>user_sys_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>User Sys ID</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</model>
+        <model_id>689b164d1bc21c10def5da09dc4bcb8f</model_id>
+        <model_table>sys_hub_action_type_snapshot</model_table>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>289b164d1bc21c10def5da09dc4bcb90</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=289b164d1bc21c10def5da09dc4bcb90"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz ID</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</model>
+        <model_id>689b164d1bc21c10def5da09dc4bcb8f</model_id>
+        <model_table>sys_hub_action_type_snapshot</model_table>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>a49b164d1bc21c10def5da09dc4bcb96</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=a49b164d1bc21c10def5da09dc4bcb96"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>metric_category_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Metric Category ID</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</model>
+        <model_id>689b164d1bc21c10def5da09dc4bcb8f</model_id>
+        <model_table>sys_hub_action_type_snapshot</model_table>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>e09b164d1bc21c10def5da09dc4bcba8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=e09b164d1bc21c10def5da09dc4bcba8"/>
+    <sys_hub_action_output action="delete_multiple" query="model=689b164d1bc21c10def5da09dc4bcb8f^sys_idNOT IN609b164d1bc21c10def5da09dc4bcbd2"/>
+    <sys_hub_action_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,pwd2droppable=true,uiType=string,uiTypeLabel=String</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quiz_inst</element>
+        <element_prototype/>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Quiz Instance</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Create and Return Quiz Instance">689b164d1bc21c10def5da09dc4bcb8f</model>
+        <model_id>689b164d1bc21c10def5da09dc4bcb8f</model_id>
+        <model_table>sys_hub_action_type_snapshot</model_table>
+        <name>var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_output</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>609b164d1bc21c10def5da09dc4bcbd2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=609b164d1bc21c10def5da09dc4bcbd2"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=609b164d1bc21c10def5da09dc4bcbd2"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f^sys_idNOT IN249b164d1bc21c10def5da09dc4bcba7,a89b164d1bc21c10def5da09dc4bcbac,e49b164d1bc21c10def5da09dc4bcb95"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_id</element>
+        <help/>
+        <hint/>
+        <label>Quiz ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>249b164d1bc21c10def5da09dc4bcba7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f_quiz_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>metric_category_id</element>
+        <help/>
+        <hint/>
+        <label>Metric Category ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>a89b164d1bc21c10def5da09dc4bcbac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Metric Category ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f_metric_category_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>user_sys_id</element>
+        <help/>
+        <hint/>
+        <label>User Sys ID</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:48</sys_created_on>
+        <sys_id>e49b164d1bc21c10def5da09dc4bcb95</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>User Sys ID</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f_user_sys_id_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:48</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f^sys_idNOT INfc9b164d1bc21c10def5da09dc4bcbd6"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>quiz_inst</element>
+        <help/>
+        <hint/>
+        <label>Quiz Instance</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 07:08:49</sys_created_on>
+        <sys_id>fc9b164d1bc21c10def5da09dc4bcbd6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Quiz Instance</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f_quiz_inst_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 07:08:49</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_689b164d1bc21c10def5da09dc4bcb8f"/>
+    <sys_hub_action_type_definition action="update">
+        <sys_id>4e0d0ecd1b821c10def5da09dc4bcb9e</sys_id>
+        <latest_snapshot>689b164d1bc21c10def5da09dc4bcb8f</latest_snapshot>
+    </sys_hub_action_type_definition>
+</record_update>

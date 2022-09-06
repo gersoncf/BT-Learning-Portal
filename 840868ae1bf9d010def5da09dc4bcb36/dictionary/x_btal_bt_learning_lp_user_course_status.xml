@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="live_feed=true" audit="true" label="User Enrollment" max_length="40" name="x_btal_bt_learning_lp_user_course_status" sizeclass="146" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Approval" max_length="40" name="approved" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Requested" sequence="100" value="Requested"/>
+                <element inactive_on_update="false" label="Approved" sequence="200" value="Approved"/>
+                <element inactive_on_update="false" label="Rejected" sequence="300" value="Rejected"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" default="1" label="Attempts" max_length="40" name="attempts" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Course" max_length="32" name="course" reference="x_btal_bt_learning_lp_course" type="reference"/>
+        <element label="Course Notes" max_length="4000" name="course_notes" type="journal"/>
+        <element label="Private Course Notes" max_length="4000" name="course_notes_private" type="journal"/>
+        <element label="Date Completed" max_length="40" name="date_completed" type="glide_date"/>
+        <element label="Date Due" max_length="40" name="date_due" type="glide_date"/>
+        <element label="Date Enrolled" max_length="40" name="date_enrolled" type="glide_date"/>
+        <element label="Date Started" max_length="40" name="date_started" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Enrolled Quiz Instance" max_length="32" name="enrolled_quiz_id" reference="asmt_assessment_instance" type="reference"/>
+        <element label="Expiry Date" max_length="40" name="expiry_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="knowledge Article" max_length="32" name="knowledge_article" reference="kb_knowledge" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Passing score" max_length="40" name="minimum_score_for_competency" type="integer"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Parent" max_length="32" name="parent" reference="x_btal_bt_learning_lp_user_course_status" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Require Summary" max_length="40" name="require_summary" type="boolean"/>
+        <element label="Result" max_length="40" name="result" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Enrolled" sequence="100" value="enrolled"/>
+                <element inactive_on_update="false" label="In Progress" sequence="200" value="in_progress"/>
+                <element inactive_on_update="false" label="Complete - Competent" sequence="300" value="complete_competent"/>
+                <element inactive_on_update="false" label="Complete - Not Yet Competent" sequence="400" value="complete_nyc"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="500" value="cancelled"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Tutor" max_length="32" name="tutor" reference="x_btal_bt_learning_lp_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Course" sequence="100" value="course"/>
+                <element inactive_on_update="false" label="Unit" sequence="200" value="unit"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Unit Order" max_length="40" name="unit_order" type="integer"/>
+        <element label="URL" max_length="1024" name="url" type="url"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="User" max_length="32" name="user" reference="x_btal_bt_learning_lp_user" type="reference"/>
+        <index name="index">
+            <element name="parent"/>
+        </index>
+        <index name="index2">
+            <element name="knowledge_article"/>
+        </index>
+        <index name="index3">
+            <element name="course"/>
+        </index>
+        <index name="index4">
+            <element name="enrolled_quiz_id"/>
+        </index>
+        <index name="index5">
+            <element name="user"/>
+        </index>
+        <index name="index6">
+            <element name="tutor"/>
+        </index>
+    </element>
+</database>

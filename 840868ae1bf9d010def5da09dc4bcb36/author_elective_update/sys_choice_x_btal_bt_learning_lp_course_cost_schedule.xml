@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="cost_schedule" table="x_btal_bt_learning_lp_course" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>cost_schedule</element>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:53:17</sys_created_on>
+            <sys_id>11cedb2a1b465050def5da09dc4bcbfe</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>cost_schedule</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_choice_x_btal_bt_learning_lp_course_cost_schedule</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:53:17</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>cost_schedule</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Single Payment</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>100</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:53:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>97ae9b2a1b465050def5da09dc4bcbd7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:53:17</sys_updated_on>
+            <value>single_payment</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>cost_schedule</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>weekly</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>200</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:53:52</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>adee1f2a1b465050def5da09dc4bcb02</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:53:52</sys_updated_on>
+            <value>weekly</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>cost_schedule</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Monthly</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>300</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:54:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>74fe9b2a1b465050def5da09dc4bcb79</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:54:05</sys_updated_on>
+            <value>monthly</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>cost_schedule</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Quarterly</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>400</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:54:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f00f9f2a1b465050def5da09dc4bcb6c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:54:21</sys_updated_on>
+            <value>Quarterly</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>cost_schedule</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Annually</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>500</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-20 03:54:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8a1f1f2a1b465050def5da09dc4bcb11</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-20 03:54:42</sys_updated_on>
+            <value>Annually</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

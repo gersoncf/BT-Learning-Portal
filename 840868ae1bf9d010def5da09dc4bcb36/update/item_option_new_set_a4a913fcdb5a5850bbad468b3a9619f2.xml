@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="item_option_new_set">
+    <item_option_new_set action="INSERT_OR_UPDATE">
+        <create_roles/>
+        <description>Use this multi-line variable set to identify those units or activities that make up the whole course.</description>
+        <display_title>false</display_title>
+        <internal_name>lp_course_units</internal_name>
+        <layout>normal</layout>
+        <name/>
+        <order>100</order>
+        <read_roles/>
+        <set_attributes/>
+        <sys_class_name>item_option_new_set</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 03:18:39</sys_created_on>
+        <sys_id>a4a913fcdb5a5850bbad468b3a9619f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Course Units</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>item_option_new_set_a4a913fcdb5a5850bbad468b3a9619f2</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 03:18:39</sys_updated_on>
+        <title>Course Units</title>
+        <type>one_to_many</type>
+        <write_roles/>
+    </item_option_new_set>
+</record_update>

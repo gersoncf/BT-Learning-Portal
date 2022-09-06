@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-07 04:36:44</sys_created_on>
+        <sys_id>870c2c261b3dd010def5da09dc4bcbf3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_btal_bt_learning_lp_user.x_btal_bt_learning.learning portal admin</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_security_acl display_value="x_btal_bt_learning_lp_user">0b0c2c261b3dd010def5da09dc4bcbf0</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_870c2c261b3dd010def5da09dc4bcbf3</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-07 04:50:58</sys_updated_on>
+        <sys_user_role display_value="x_btal_bt_learning.learning portal admin" name="x_btal_bt_learning.learning portal admin">74586cee1bf9d010def5da09dc4bcb02</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

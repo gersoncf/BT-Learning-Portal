@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="Skill Library" max_length="40" name="x_btal_bt_learning_lp_skill_library" sizeclass="24" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Description" max_length="4000" name="description" type="string_full_utf8"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Skill Level" max_length="40" name="skill_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Beginning" sequence="100" value="beginning"/>
+                <element inactive_on_update="false" label="Intermediate" sequence="200" value="intermediate"/>
+                <element inactive_on_update="false" label="Advanced" sequence="300" value="advanced"/>
+            </choice>
+        </element>
+        <element display="true" label="Skill Name" max_length="400" name="skill_name" type="string"/>
+    </element>
+</database>

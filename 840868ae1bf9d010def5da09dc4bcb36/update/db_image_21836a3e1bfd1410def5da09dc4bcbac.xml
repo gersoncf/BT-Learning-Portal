@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <format>png</format>
+        <height>20</height>
+        <image>1a93ee3e1bfd1410def5da09dc4bcb08</image>
+        <name>LP_home_icon.png</name>
+        <size_bytes>494</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 07:57:28</sys_created_on>
+        <sys_id>21836a3e1bfd1410def5da09dc4bcbac</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>LP_home_icon.png</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>db_image_21836a3e1bfd1410def5da09dc4bcbac</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-08 07:57:33</sys_updated_on>
+        <thumbnail/>
+        <width>25</width>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#0</average_image_color>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <encryption_context/>
+        <file_name>image</file_name>
+        <hash>02b381a80506d132ba5b8cd3a439274be479c25bfb66e1b395f48601e56844b2</hash>
+        <image_height>20</image_height>
+        <image_width>25</image_width>
+        <size_bytes>494</size_bytes>
+        <size_compressed>517</size_compressed>
+        <state>available</state>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 07:57:33</sys_created_on>
+        <sys_id>1a93ee3e1bfd1410def5da09dc4bcb08</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-08 07:57:33</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>21836a3e1bfd1410def5da09dc4bcbac</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="1a93ee3e1bfd1410def5da09dc4bcb08">1a93ee3e1bfd1410def5da09dc4bcb08</sys_attachment>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 07:57:33</sys_created_on>
+        <sys_id>5a93ee3e1bfd1410def5da09dc4bcb08</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>Ae4BEf6JUE5HDQoaCgAAAA1JSERSAAAAGQAAABQIBgAAAHh3lr0AAAG1SURBVDiNvdVNiI1RHMfxz525zGAxw2goWWg28rYRU7NRxt2RjWyU5G01CSsLG8uZhZJsZNhMCZlZyG5qYuOloRRZkIUoUtwyaEaDxTm3Ho9z7zxXw29znv/5v3w7zznnf0qVSkUT2odjGMRo0aSWJgAXMYKtuImz8wlpw30cwTTu4QdOYHw+IJvwHr3R3o8+HI12P96hJ5NzFT+xvQjkIJ6gAx9ioevRN4yN+IwVeImd0bc6jp1zQc7HQnAXK/EqF/M0Ah5H+5ZwKD7mi+UhSzCJgWgPYpuwByl9w2ZciPY57GoEWY/XMQn24FSd4nkN4HBuriMPOSAsfxm+Yp1wTJvRMLZgNtqXsbcGOY0rmeA7eN4koKZJ4bjXdA1nWuLHM7z9y8L19AaPMFbGC2zAIVxKBJewA4vxPTPfhiomEvFwEjegnHHOSqsTt7Eg4auiOwf/o1454UypNY4P8AldwiYX6n1FIbViu4U20yPc8tTq6ib/U/0XSOp3rREu51KhbSxvkN+O4/iChZjCqiKQtX6/nI1UwtBcQVnIQ4wJ7Tt/nNuFdjMV7arwSpYwk6i5SHgmwC9uPFMoWw+dhAAAAABJRU5ErkJgglgM/RPuAQAA</data>
+        <length>676</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="1a93ee3e1bfd1410def5da09dc4bcb08">1a93ee3e1bfd1410def5da09dc4bcb08</sys_attachment>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 07:57:33</sys_created_on>
+        <sys_id>da93ee3e1bfd1410def5da09dc4bcb08</sys_id>
+    </sys_attachment_doc>
+</record_update>

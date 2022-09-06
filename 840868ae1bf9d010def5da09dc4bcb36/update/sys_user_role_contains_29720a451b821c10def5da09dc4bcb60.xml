@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="survey_creator" name="survey_creator">ec1816c3871323004caf66d107cb0b1e</contains>
+        <role display_value="x_btal_bt_learning.learning portal course designer" name="x_btal_bt_learning.learning portal course designer">bc5868261bf9d010def5da09dc4bcb92</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 05:19:06</sys_created_on>
+        <sys_id>29720a451b821c10def5da09dc4bcb60</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>survey_creator.x_btal_bt_learning.learning portal course designer</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_user_role_contains_29720a451b821c10def5da09dc4bcb60</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-15 05:19:06</sys_updated_on>
+    </sys_user_role_contains>
+</record_update>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_btal_bt_learning.LP_Utils</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>true</client_callable>
+        <description>Learning Portal Utils - Client Callable</description>
+        <name>LP_Utils</name>
+        <script><![CDATA[var LP_Utils = Class.create();
+LP_Utils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+
+	UserExists: function(){
+		//Check to see if the incoming User record exists in an existing LP User record.
+		var user = this.getParameter('sysparm_user');
+		var grLPU = new GlideRecord('x_btal_bt_learning_lp_user');
+		grLPU.addActiveQuery();
+		grLPU.addQuery('user', user);
+		grLPU.query();
+		
+		if (grLPU.hasNext()) {
+			return true;
+		}
+		return false;	
+	},
+	getUserfromSysUser: function(){
+		//gs.info('ED >>>>>> Script Include Started');
+		//Return the LP user record using the User table record. 
+		var user = this.getParameter('sysparm_user');
+		//gs.info('ED >>>>>> Script Include User: ' + user);
+		var grLPU = new GlideRecord('x_btal_bt_learning_lp_user');
+		grLPU.addActiveQuery();
+		grLPU.addQuery('user', user);
+		grLPU.query();
+		
+		if (grLPU.next()) {
+			//gs.info('ED >>>>>> Script Include User Found: ' + grLPU.getDisplayValue('user'));
+			return grLPU.sys_id;
+		}
+		return 'false';	
+	},
+	
+	UserCourseExists: function(){
+		//Check to see if the incoming User/Course combination exists.
+		var user = this.getParameter('sysparm_user');
+		var course = this.getParameter('sysparm_course');
+		var grUC = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grUC.addActiveQuery();  //Only review records that are still active.
+		grUC.addQuery('user', user);
+		grUC.addQuery('course',course);
+		grUC.query();
+		
+		if (grUC.hasNext()) {
+			//The user is already enrolled in this course and the record is active.
+			return true;
+		}
+		//The user isn't enrolled in this course.
+		return false;	
+	},
+		
+	getCourseDets: function() {
+		
+		//Return course details.  Use the sysparm_preComp value to check whether the user has completed the pre-requisites or not.
+		
+		var user = this.getParameter('sysparm_user');
+		var course = this.getParameter('sysparm_course');
+		var chkComp = this.getParameter('sysparm_preComp');
+		var pre = 'false';
+		var appr = 'false';
+		var pres = "";
+		var presNames = "";
+		var desc = "";
+		var cost;
+		var costSched;
+		var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+
+		grC.addActiveQuery();  //Only review records that are still active.
+		grC.addQuery('sys_id',course);
+		grC.query();
+
+		if (grC.next()) {
+			//gs.addInfoMessage(grC.prerequisite);
+			if (grC.prerequisite !='') {
+				pres = grC.prerequisite.toString();
+				presNames = grC.getDisplayValue('prerequisite');
+				pre = 'true';
+			} else {
+				pre = 'false';
+				pres = '';
+				presNames = '';
+			}
+			desc = grC.description.toString();
+			cost = grC.cost.toString();
+			costSched = grC.cost_schedule.toString();
+			appr = grC.approval_required;
+		}
+		var stat = 'true';
+		var checked ='';
+		if (chkComp == 'true' && pre=='true'){
+			checked+='Started the Review of | ' +'course.sys_idIN'+pres+'^user='+user + '|, ';
+			//Check that the current user has completed the pre-requisites.  All pre-requisites must be completed
+			var grUC = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grUC.addEncodedQuery('course.sys_idIN'+pres+'^user='+user);
+			//grUC.addQuery('user', user);
+			//if(pres.indexOf(',') > -1) {
+			//	grUC.addQuery('course.sys_id', 'IN',pres.toString());	
+			//} else {
+			//	grUC.addQuery('course', pres.toString());
+			//}
+			
+			grUC.query();
+
+			while(grUC.next()){
+				checked+='Results were found, ' + grUC.status.toString();
+				if (grUC.status != 'complete_competent') {
+					stat = 'false';
+					checked+=grUC.sys_id +",";
+				}
+			}
+		}
+
+		if(costSched != 'one-off' && costSched != 'N/A' && costSched !='' ) {
+			cost = cost + " per " + costSched;
+		}		
+		var resp = {
+			"desc": desc,
+			"cost": cost,
+			"Pre_Reqs": presNames,
+			"prereq_ids": pres,
+			"Appr_Req": appr,
+			"Pre_Req_Comp": stat,
+			"pre_req_checked": checked,
+			"pre_reqs_req": pre
+		};
+		
+		var answer = new global.JSON().encode(resp);
+		return answer;
+	},
+	
+	Add_LP_Role: function(){
+		var user = this.getParameter('sysparm_user');  //must be the sys_user sys_id not the lp user sys_id
+		var roles = this.getParameter('sysparm_roles'); //Comma separated list of roles to add.
+		var role_array = roles.split(',');
+		
+		for (var i = 0; i<role_array.length; i++) {
+			var grUHR = new GlideRecord('sys_user_has_role');
+			grUHR.addQuery('user', user);
+			grUHR.addQuery('role',role_array[i]);
+			grUHR.query();
+			
+			if(grUHR.next()) {
+				grUHR.active = 'true';
+				grUHR.update();
+			} else {
+				grUHR.initialize();
+				grUHR.user = user;
+				grUHR.role = role_array[i];
+				grUHR.active = 'true';
+				grUHR.insert();
+			}
+		}	
+	},
+	
+	Remove_LP_Role: function(){
+		var user = this.getParameter('sysparm_user');
+		var roles = this.getParameter('sysparm_roles');
+		
+		var grUHR = new GlideRecord('sys_user_has_role');
+			grUHR.addQuery('user', user);
+			grUHR.addQuery('role','IN', roles);
+			grUHR.query();
+		
+		while( grUHR.next()){
+			grUHR.active = 'false';
+			grUHR.update();
+		}
+	},
+	
+	checkLP_roles: function() {
+		
+		var role = this.getParameter('sysparm_role');
+		
+		return gs.hasRole(role);
+	},
+	
+	Get_Courses_from_MRVS: function() {
+		
+		var sysID = this.getParameter('sysparm_sys_id');
+		var CourseIDs = '';
+		
+		CourseIDs = new x_btal_bt_learning.LP_Utils_server().Get_Courses_from_MRVS(sysID);
+		return CourseIDs;
+	},
+	
+	
+	type: 'LP_Utils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 04:56:16</sys_created_on>
+        <sys_id>40d8397a1b7d1410def5da09dc4bcb7a</sys_id>
+        <sys_mod_count>51</sys_mod_count>
+        <sys_name>LP_Utils</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_script_include_40d8397a1b7d1410def5da09dc4bcb7a</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-11 04:15:08</sys_updated_on>
+    </sys_script_include>
+</record_update>

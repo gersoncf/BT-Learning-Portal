@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page_title_variable">
+    <sp_page_title_variable action="INSERT_OR_UPDATE">
+        <column_name>name</column_name>
+        <id_parameter>table</id_parameter>
+        <source_field>label</source_field>
+        <source_table>sys_db_object</source_table>
+        <sp_page display_value="lp_course_status">7262218bdb06d050bbad468b3a961917</sp_page>
+        <sys_class_name>sp_page_title_variable</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-22 00:53:22</sys_created_on>
+        <sys_id>7d88495fdb021450bbad468b3a9619b3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>TableName</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_page_title_variable_7d88495fdb021450bbad468b3a9619b3</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-22 00:54:09</sys_updated_on>
+        <variable>TableName</variable>
+    </sp_page_title_variable>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="all_tables.query_hints=true,email_client=true,hasWorkflow=true,live_feed=true,query_hints=true" audit="true" extends="task" label="Incident" max_length="40" name="incident" sizeclass="7" text_index="true" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Action Date" max_length="40" name="x_btal_bt_learning_u_action_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" label="Action taken" max_length="40" name="x_btal_bt_learning_u_action_taken" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="yes" label="Advice of action provided to person(s) raising issue" max_length="40" name="x_btal_bt_learning_u_advice_option" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="no"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Date for review (if required)" max_length="40" name="x_btal_bt_learning_u_date_review" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="yes" label="Further action required" max_length="40" name="x_btal_bt_learning_u_further_action" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="no"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="New Date" max_length="40" name="x_btal_bt_learning_u_glide_date_1" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Name of person taking remedial action" max_length="32" name="x_btal_bt_learning_u_person_remedial" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Is review required" max_length="40" name="x_btal_bt_learning_u_review_required" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="New String" max_length="40" name="x_btal_bt_learning_u_string_1" type="string"/>
+    </element>
+</database>

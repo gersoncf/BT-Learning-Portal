@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="quiz_result_options" table="x_btal_bt_learning_lp_course" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>quiz_result_options</element>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-03 01:37:19</sys_created_on>
+            <sys_id>483fa6451b071014def5da09dc4bcbad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>quiz_result_options</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_choice_x_btal_bt_learning_lp_course_quiz_result_options</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-03 01:37:19</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>quiz_result_options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Blind - Only  'Pass' or 'Fail' will be returned.</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>100</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-03 01:37:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>010fa6451b071014def5da09dc4bcba9</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-03 01:39:48</sys_updated_on>
+            <value>blind</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>quiz_result_options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Score - Pass/Fail outcome and the final score will be returned</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>200</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-03 01:38:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>687fea451b071014def5da09dc4bcb39</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-03 01:40:48</sys_updated_on>
+            <value>score_only</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>quiz_result_options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Detailed - A detailed outcome including score and questions/answers will be written back.</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>300</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-03 01:39:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>40bfea451b071014def5da09dc4bcb3e</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-03 01:40:06</sys_updated_on>
+            <value>detailed</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

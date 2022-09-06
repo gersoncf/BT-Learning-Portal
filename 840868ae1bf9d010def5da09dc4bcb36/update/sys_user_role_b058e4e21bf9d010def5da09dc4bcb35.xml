@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <encryption_context/>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <limit_concurrent_sessions>false</limit_concurrent_sessions>
+        <name>x_btal_bt_learning.learning portal tutor</name>
+        <requires_subscription>-1</requires_subscription>
+        <scoped_admin>false</scoped_admin>
+        <suffix>x_btal_bt_learning.learning portal tutor</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-07 04:20:29</sys_created_on>
+        <sys_id>b058e4e21bf9d010def5da09dc4bcb35</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_btal_bt_learning.learning portal tutor</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_user_role_b058e4e21bf9d010def5da09dc4bcb35</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-07 04:20:29</sys_updated_on>
+    </sys_user_role>
+</record_update>

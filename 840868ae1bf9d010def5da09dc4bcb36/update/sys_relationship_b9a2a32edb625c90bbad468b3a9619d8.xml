@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_btal_bt_learning_lp_user_course_status</basic_apply_to>
+        <basic_query_from>x_btal_bt_learning_course_unit_order</basic_query_from>
+        <insert_callback/>
+        <name>Units</name>
+        <query_from/>
+        <query_with><![CDATA[current.addQuery('course', parent.course.sys_id);]]></query_with>
+        <reference_field>course</reference_field>
+        <related_list/>
+        <simple_reference>false</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-14 00:42:03</sys_created_on>
+        <sys_id>b9a2a32edb625c90bbad468b3a9619d8</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Units</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_relationship_b9a2a32edb625c90bbad468b3a9619d8</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-14 00:44:04</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=b9a2a32edb625c90bbad468b3a9619d8"/>
+</record_update>

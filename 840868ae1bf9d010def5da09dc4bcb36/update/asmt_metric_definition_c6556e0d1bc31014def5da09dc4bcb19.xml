@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="asmt_metric_definition">
+    <asmt_metric_definition action="INSERT_OR_UPDATE">
+        <display>Angry</display>
+        <metric display_value="Client Satisfaction">86556e0d1bc31014def5da09dc4bcb15</metric>
+        <normalization_input>0</normalization_input>
+        <order>0</order>
+        <selected_image/>
+        <sys_class_name>asmt_metric_definition</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-09-03 00:54:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c6556e0d1bc31014def5da09dc4bcb19</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Angry</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>asmt_metric_definition_c6556e0d1bc31014def5da09dc4bcb19</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-03 00:54:18</sys_updated_on>
+        <unselected_image/>
+        <value>1</value>
+    </asmt_metric_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=c6556e0d1bc31014def5da09dc4bcb19"/>
+</record_update>

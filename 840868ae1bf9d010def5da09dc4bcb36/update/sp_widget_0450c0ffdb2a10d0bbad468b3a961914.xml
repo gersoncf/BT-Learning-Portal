@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$rootScope,$window,$document, $uibModal,$timeout, spUtil,$location) {
+  /* widget controller */
+  var c = this;
+	//var originalUrl, initUrl;
+	
+	
+	//spUtil.recordWatch($scope, "x_btal_bt_learning_lp_user_course_status", "active=true^tutorISNOTEMPTY^sys_updated_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()", function(name, data) {
+	//	c.server.update();									
+	//})
+	if(c.toggleOV) {
+		c.toggleOV = true;  
+		//Reverse of the matrix widget so that only one shows at a time.
+	}
+	
+	$rootScope.$on("lp.toggleOV", function(event, data) {
+		//spUtil.addInfoMessage('Individual View widget Saw toggle: '+ data);
+		c.toggleOV= data;
+	});
+	
+	
+	c.showFilt = false;
+	c.crs_orderby = 'date_enrolled';
+	c.showSKFilt = false;
+	c.skl_orderby = 'added';
+	
+	$scope.showFilt = function() {
+		c.showFilt = !c.showFilt;
+	}
+	$scope.crs_orderBy = function() {
+		if(c.crs_orderby.indexOf('-') > -1) {
+			c.crs_orderby = 'date_enrolled';
+		} else {
+			c.crs_orderby = '-date_enrolled';
+		}
+		
+	}
+	$scope.showSKFilt = function() {
+		c.showSKFilt = !c.showSKFilt;
+	}
+	$scope.skl_orderBy = function() {
+		if(c.skl_orderby.indexOf('-') > -1) {
+			c.skl_orderby = 'added';
+		} else {
+			c.skl_orderby = '-added';
+		}
+		
+	}
+	$scope.printPage = function(){
+		$window.print();
+	}
+	
+
+	$scope.selectUser = function(userID) {
+		c.filter=userID;
+		c.data.filter=userID;
+		//initUrl = $location.absUrl();
+		//$location.search('id=lp_overview&spa=-1&userID='+userID);
+		c.server.update();
+	}	
+
+	$scope.toggleDesc = function(){
+		c.data.showDesc = !c.data.showDesc;
+	}
+
+	
+
+	$scope.addTutor	= function(unit) {
+		c.data.NewTutor = true;
+		c.data.UpdateTutorRec = unit.Status_sys_id;
+		c.server.update();
+	}
+	$scope.openModal = function(type, unit) {
+		c.type = type;
+		c.sysID = unit.Status_sys_id;
+		c.Uname = unit.name;
+		//spUtil.addInfoMessage('Unit Name: ' + c.Uname)
+
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'modalTemplate',
+			size: 'lg',
+			scope: $scope	
+		});
+	}	
+
+	c.closeModal = function() {
+		//Update the relevant record with new values.
+		c.data.UpdateRec = c.sysID;
+		if (c.Comments) {
+			c.data.NewComment = c.Comments;
+		}
+		if(c.PrivComments) {
+			c.data.NewPrivComment = c.PrivComments;
+		}
+		if(c.Results) {
+			c.data.NewResult = c.Results;
+		}
+		if(c.Status) {
+			c.data.NewStatus = c.Status;
+		}
+
+		c.modalInstance.close();
+		c.sysID = '';
+		c.server.update();
+
+		
+	
+	}
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+
+.panel-group .panel  {
+  position: relative;
+  font-size: 100%;
+}
+.panel-group .panel  a.addChevron::after {
+	content: "\f107";
+	color: #000;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "FontAwesome";
+  font-size: 150%;
+  font-weight: 600;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  
+}
+.panel-group .panel a.addChevron[aria-expanded="true"]::after {
+	content: "\f106";
+}
+
+.fadeInOut.ng-hide-add {
+    transition: all ease-in-out 250ms;   
+}
+.fadeInOut.ng-hide-remove {
+  transition: all ease-in-out 750ms;   
+}
+.fadeInOut.ng-hide {
+    opacity: 0;
+}
+.fade {
+    opacity: 1; 
+}
+
+
+.label {
+ display: inline-block; 
+}
+.border-right {
+	border-right:1px solid #ddd;
+}
+.EdPrimary {
+  background: $brand-primary;
+  color: #FFF;
+}
+.edRight {
+	margin-right: 30px;
+  margin-top: 20px;
+  
+}
+.nav-pills &gt; li.active &gt; a {
+  //background: $brand-primary;
+  color: #000;
+  background: #ccc !important;
+  border: 1px solid $brand-primary;
+}
+
+.text-success {
+  color: $brand-success;
+}
+.text-danger {
+  color: $brand-danger;
+}
+.edTable {
+	font-size: 90%;
+}
+.edNarrow {
+  width: 15%;
+}
+.btn-group-right {
+  padding-right: 30px;
+  padding-top: 10px;
+}
+
+.table td {
+  border-top: 1px solid #e8e7e7;
+}
+
+.edPanel {
+ border: 1px solid $brand-primary; 
+
+}
+.edPanelGray {
+ border: 1px solid #ddd; 
+ border-radius: 2px;
+ padding:2px;
+}
+.btn-ed {
+  position: relative;
+  top: 5px;
+  color: #FFF !important;
+}
+.btn-spacer {
+  margin-bottom: 3px; 
+}
+.frm-spacer {
+  margin-right: 4px;
+}
+.frm-bkg {
+	background: #ececec;
+  border: solid 1px #ddd;
+  padding:2px;
+  &amp; i {
+    vertical-align: middle;
+  }
+}
+.hideDesc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 45px;
+}
+
+.descToggle {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_person_view</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Person View</name>
+        <option_schema>[{"name":"course_show","section":"Presentation","default_value":"5","label":"Default number of courses to show in course history","type":"integer"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	//Does the current user have the Course Designer role or better.
+	data.viewerID = gs.getUserID();
+	data.tutor = gs.hasRole('x_btal_bt_learning.learning portal tutor');
+	data.owner = gs.hasRole('x_btal_bt_learning.learning portal owner');
+	data.showDesc = false;
+	
+	//If the current user is a tutor, get their sysid here for convenience
+			if(data.tutor) {	
+				var grT = new GlideRecord('x_btal_bt_learning_lp_user')
+				grT.addQuery('user.sys_id',gs.getUserID());
+				grT.query();
+				
+				if(grT.next()){
+					data.curUserLP = grT.getValue('sys_id');
+				} 
+			}
+	
+	
+	//data.filter = '';
+
+	if (input && input.filter){
+		data.filter =input.filter;
+	} else {
+		data.filter = $sp.getParameter('userID');
+		//Get the current users
+		data.UserDetails = [];
+		var grLU = new GlideRecord('x_btal_bt_learning_lp_user')
+		grLU.addActiveQuery();
+		grLU.query();
+
+		while (grLU.next()) {
+			//var gdStart = new GlideDate(grLU.getValue('sys_created_on'));
+			var rec = {
+				'UserName': grLU.getDisplayValue('user'),
+				'UserID': grLU.getValue('sys_id'),
+				'started': grLU.getDisplayValue('sys_created_on'),  //gdStart.getByFormat('dd mmm yyyy'), 
+				'manager': grLU.getDisplayValue('manager')
+			}	
+
+		
+
+			//******** Get the user's Skills. ****************************
+			rec.Skills = [];
+			var grSks = new GlideRecord('x_btal_bt_learning_lp_user_skills')
+			grSks.addQuery('user', rec.UserID);
+			grSks.query();
+
+			while (grSks.next()) {
+				var skill = {
+					'active': grSks.getValue('active'),
+					'course': grSks.getDisplayValue('course'),
+					'expiry': grSks.getDisplayValue('expiry_date'),
+					'skill': grSks.getDisplayValue('skill'),
+					'sys_id': grSks.getValue('sys_id'),
+					'level': grSks.getDisplayValue('skill_level'),
+					'added': grSks.getDisplayValue('sys_created_on')
+				}
+				rec.Skills.push(skill);
+			}
+
+			//*************************************************************
+
+			//******** Get the User's Course History **********************
+			rec.Courses = [];
+			rec.Crs_complete = 0;
+			var grCS = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grCS.addQuery('user', rec.UserID);		
+			grCS.addNullQuery('parent');
+			grCS.query();
+
+			while (grCS.next()){
+				var enr_sys_id = grCS.sys_id;
+				if(grCS.getValue('status') == "complete_competent") {
+					rec.Crs_complete++;
+				}
+				var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+				grC.addQuery('sys_id', grCS.getValue('course'));
+				grC.query();
+				var xcourse ={};
+				if (grC.next()){
+					xcourse = getFields(grC, rec.UserID, enr_sys_id);  //Get all parent course details.
+
+					//Are there any subunits?
+					var grU = new GlideRecord('x_btal_bt_learning_course_unit_order');
+					grU.addQuery('course', grCS.getValue('course'));
+					grU.addActiveQuery();
+					grU.orderBy('unit_order');
+					grU.query();
+
+					xcourse.subunits = [];
+					if (grU.hasNext()) {	
+						while(grU.next()) {
+							var sRec = {};
+							var grUD = new GlideRecord('x_btal_bt_learning_lp_course');
+							grUD.addQuery('sys_id', grU.getValue('unit'));
+							grUD.query();
+							if(grUD.next()) {
+								sRec = getFields(grUD);	
+							}
+							sRec.unit_order = grU.getValue('unit_order');
+							xcourse.subunits.push(sRec);	
+						}
+					}
+					//Figure out percent complete.
+					if(xcourse.subunits.length> 0) {
+						var comp =0
+						for (var i = 0; i<xcourse.subunits.length;i++){
+							if (xcourse.subunits[i].comp == true) {
+								comp++;
+							}
+						}
+						xcourse.percentComp = (comp/xcourse.subunits.length)*100;
+					}
+				}
+				rec.Courses.push(xcourse);
+			}
+			rec.crsCount = rec.Courses.length;
+			data.UserDetails.push(rec);
+		}
+
+
+	}
+
+
+	//* Handle updates and save *****************
+	if (input && (input.NewComment || input.NewPrivComment || input.NewResult || input.NewStatus)){
+
+		data.NewComment = input.NewComment;
+		data.NewPrivComment = input.NewPrivComment;
+		data.NewResult = input.NewResult;
+		data.NewStatus = input.NewStatus;
+
+		data.UpdateRec = input.UpdateRec;
+		if(data.UpdateRec !=''){
+			updateRec();	
+		}
+		
+		data.UpdateRec = '';
+
+	}
+
+	//Update the Tutor record **************************************
+	if (input && input.NewTutor) {
+		if (input.NewTutor==true){
+			data.newTutor = input.NewTutor;
+			data.UpdateTutorRec = input.UpdateTutorRec;
+			updateTutor(data.curUserLP);
+			data.newTutor = false;
+		}
+	}
+//*****************************************************************
+
+
+	function getFields(gr, userID, enr_sys_id) {
+		var url_base = '?id=lp_enroll&ov=true&course_id='
+
+		var rec = {
+			'sys_id': gr.getValue('sys_id'),
+			'name': gr.getDisplayValue('name'),
+			'category': gr.getDisplayValue('category'),
+			'description':gr.getDisplayValue('description'),
+			'cost': gr.getDisplayValue('cost'),
+			'cost_sched': gr.getDisplayValue('cost_schedule'),
+			'preReqs':  gr.getDisplayValue('prerequisite'),
+			'prIDs': gr.getValue('prerequisite'),
+			'skills': gr.getDisplayValue('skills'),
+			'type': gr.getDisplayValue('type')
+			
+		}
+
+		rec.pr_Stat = true;
+		if(rec.preReqs == '' || rec.preReqs =='0') {
+			rec.preReqs = 'None';
+		} else {
+
+			rec.pr_Outs = [];
+			//Code to check that the user has completed the pre-reqs or not.
+			var grUC = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grUC.addEncodedQuery('course.sys_idIN'+rec.prIDs+'^user='+ data.userID);		
+			//grUC.addQuery('sys_id',enr_sys_id);
+			grUC.query();
+			if(!grUC.hasNext()) {
+				rec.pr_Stat = false;
+				rec.pr_Outs = rec.preReqs;
+			}else{
+				while (grUC.next()){
+					if (grUC.status != 'complete_competent') {
+						rec.pr_Stat = false;
+						rec.pr_Outs.push(grUC.getDisplayValue('Course'));
+					}
+				}
+			}
+		}
+		if(rec.skills == '' || rec.skills =='0') {
+			rec.skills = "None conferred";
+		}		
+
+		//Add the enrolled details to the object.
+		var grsE= new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grsE.addQuery('sys_id', enr_sys_id);
+		//grsE.addQuery('user', userID);
+		//grsE.orderByDesc('date_enrolled'); //Get most recent first.
+		grsE.query();
+
+		var i = 0;
+		var comp = 0;
+		if(grsE.next()){
+			rec.lpUser =  grsE.getDisplayValue('user');
+			rec.lpUserID = grsE.getValue('user');
+			rec.Status_sys_id = grsE.getValue('sys_id');
+			rec.status = grsE.getDisplayValue('status');
+			rec.statVal = grsE.getValue('status');
+			rec.course = grsE.getDisplayValue('course');
+			rec.date_enrolled = grsE.getDisplayValue('date_enrolled');
+			rec.date_completed  = grsE.getDisplayValue('date_completed');
+			rec.expiry_date  = grsE.getDisplayValue('expiry_date');
+			rec.due_date  = grsE.getDisplayValue('date_due');
+			rec.tutor = grsE.getDisplayValue('tutor');
+			rec.tutorID = grsE.getValue('tutor');
+			rec.result = grsE.getDisplayValue('result');
+			rec.URL = grsE.getValue('url');
+			rec.Quiz = grsE.getValue('enrolled_quiz_id');
+			rec.Active = grsE.getValue('active');
+			rec.Approved = grsE.getValue('approved');
+			if(rec.status && rec.status.indexOf('Competent') > -1){
+				rec.comp = true;
+			} else {
+				rec.comp = false;
+			}
+			rec.ViewURL= url_base + gr.getValue('sys_id') +'&user_id='+rec.lpUserID;
+		}
+		return rec;
+	}
+
+	function enroll(course, user) {
+		var grEn = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+		grEn.initialize();
+		grEn.user = user.toString();
+		grEn.course = course.toString();
+		grEn.type = 'course';
+		grEn.insert();
+		gs.addInfoMessage('You have enrolled in this course!');
+	}
+
+	function updateRec() {
+		var grU = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+		grU.addQuery('sys_id',data.UpdateRec);
+		grU.query();
+
+		if(grU.next()){
+			if(data.NewComment) {
+				grU.course_notes = data.NewComment;
+			}
+			if(data.NewPrivComment) {
+				grU.course_notes_private = data.NewPrivComment;
+			}
+			if(data.NewResult) {
+				grU.result = data.NewResult;
+			}
+			if(data.NewStatus) {
+				grU.status = data.NewStatus;
+			}
+		}
+		grU.update();
+	}
+	function updateTutor(tutor) {
+
+		var grUS = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+		grUS.addQuery('sys_id',data.UpdateTutorRec);
+		grUS.query();
+		if(grUS.next()){
+			gs.addInfoMessage('found record: ' + data.UpdateTutorRec + ' | ' + tutor);
+			grUS.tutor =tutor;
+			grUS.update();
+		}
+		data.newTutor =false;
+	}
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-17 05:25:10</sys_created_on>
+        <sys_id>0450c0ffdb2a10d0bbad468b3a961914</sys_id>
+        <sys_mod_count>340</sys_mod_count>
+        <sys_name>Person View</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_0450c0ffdb2a10d0bbad468b3a961914</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2021-07-06 05:09:52</sys_updated_on>
+        <template><![CDATA[<div class="fade fadeInOut" ng-show="c.toggleOV">
+  <div ng-if="!data.tutor" >
+    <h4>
+      You do not have permission to view this content.
+    </h4>
+  </div>
+  <div ng-if="data.tutor">
+    <div class="panel panel-default">
+      <div class="panel-heading hidden-print">
+        <div class="panel-title">
+          <h2>Learning Portal User Overview</h2>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-2 hidden-print" id="Users">
+          <h4><b>Learning Portal Users</b></h4>
+          <ul class="nav nav-pills nav-stacked edPanelGray ">
+            <li role="presentation" ng-class="{'active': user.UserID==data.filter}" ng-repeat="user in data.UserDetails track by user.UserID"><a href="#" ng-Click="selectUser(user.UserID)">{{user.UserName}}</a></li>            
+          </ul>  
+          <!--<div>
+Filter = {{data.filter}}
+</div>-->
+        </div>
+        <div ng-if="data.filter && data.filter!=''" ng-repeat="user in data.UserDetails | filter: {UserID:data.filter}" class="col-md-10" id="UserDetails">
+          <h3>
+            <b>{{user.UserName}}
+            </b>
+          </h3>
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="Details">    
+                  <a role="button" data-toggle="collapse" href="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails, collapseSkills">
+                    <div class="panel-title">Learning Portal Stats
+                    </div>
+                  </a>
+                </div>
+                <div id="collapseDetails" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="User Details">
+                  <div class="panel-body">
+       
+                    <div><span class="text-left">Started:</span> <span class="text-right"><b>{{user.started}}</b></span></div>
+                    <div><span class="text-left">Manager:</span> <span class="text-right"><b>{{user.manager}}</b></span></div>
+                    <div><span class="text-left">Competencies acheived:</span> <span class="text-right"><b>{{user.Skills.length}}</b></span></div>
+                    <div><span class="text-left">Courses completed:</span> <span class="text-right"><b>{{user.Crs_complete}} </b></span></div>
+                  </div>  
+                  <div  ng-if="data.owner==true" class="panel-footer hidden-print">
+                    <a class="btn btn-default btn-xs" href="?id=lp_form&table=x_btal_bt_learning_lp_user&ov=true&sys_id={{user.UserID}}"><i class="fa fa-edit"></i> Edit User</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="Skills">    
+                  <a role="button" data-toggle="collapse" href="#collapseSkills" aria-expanded="true" aria-controls="collapseDetails, collapseSkills">
+                    <div class="panel-title">Competencies
+                      <small class="pull-right hidden-print">
+                        <button class="btn btn-primary btn-xs" ng-click="showSKFilt()"><i class="fa fa-filter"></i>
+                          <span ng-if="c.showSKFilt">hide filter</span>
+                          <span ng-if="!c.showSKFilt">show filter</span>
+                        </button> 
+                        <button class="btn btn-primary btn-xs" ng-click="skl_orderBy()">
+                          <i ng-if="c.skl_orderby.indexOf('-')>-1" class="fa fa-sort-amount-desc"></i><span ng-if="c.skl_orderby.indexOf('-')>-1"> Sorted oldest to newest</span>
+                          <i ng-if="c.skl_orderby.indexOf('-')==-1" class="fa fa-sort-amount-asc"></i><span ng-if="c.skl_orderby.indexOf('-')==-1" > Sorted newest to oldest</span>
+                        </button>
+                      </small>
+                    </div>
+                  </a>
+                </div>
+                <div id="collapseSkills" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Skills">
+                  <div ng-if="user.Skills.length==0" class="panel-body">
+                    No competencies assigned yet - get moving!
+                  </div>
+                  <div ng-if="user.Skills.length>0" class="panel-body">
+                    <form ng-class="{'hidden': !c.showSKFilt}"  class="form-inline btn-spacer frm-bkg">
+                      <label for="searchSkl">Search for: <input id="searchSkl" class="form-control input-sm frm-spacer" ng-model="searchText"></label>
+                    </form>
+                    <div class="label label-default frm-spacer btn-spacer" ng-class="{'EdPrimary': skill.level=='Advanced'}" ng-repeat="skill in user.Skills | filter:searchText | orderBy: c.skl_orderby">{{skill.skill}}</div>  
+
+                  </div>
+                  <div ng-if="data.owner==true"  class="panel-footer hidden-print">             
+                    <a class="btn btn-default btn-xs" href="?id=lp_form&table=x_btal_bt_learning_lp_user_skills&sys_id=-1&ov=true&userID={{user.UserID}}&query=user%3D{{user.UserID}}"><i class="fa fa-address-card-o"></i> Add new skill</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="user.crsCount==0">
+            <h4>
+              <b>No Course History Available Yet - Enrol now!</b>
+            </h4>
+          </div>
+          <div ng-if="user.crsCount>0">
+            <h4>
+              <b>Course History</b>
+              <small class="pull-right  hidden-print">
+                <button class="btn btn-primary btn-xs" ng-click="showFilt()"><i class="fa fa-filter"></i><span ng-if="c.showFilt">hide filter</span>
+                  <span ng-if="!c.showFilt">show filter</span></button> 
+                <button class="btn btn-primary btn-xs" ng-click="crs_orderBy()">
+                  <i ng-if="c.crs_orderby.indexOf('-')>-1" class="fa fa-sort-amount-desc"></i><span ng-if="c.crs_orderby.indexOf('-')>-1"> Sorted oldest to newest</span>
+                  <i ng-if="c.crs_orderby.indexOf('-')==-1" class="fa fa-sort-amount-asc"></i><span ng-if="c.crs_orderby.indexOf('-')==-1" > Sorted newest to oldest</span>
+                </button>
+              </small>
+            </h4>
+            <form class="form-inline btn-spacer frm-bkg" ng-class="{'hidden': !c.showFilt}">
+              <div class="form-group">
+                <label>Search for: </label><input id="SearchCrs" type="text" class="form-control input-sm frm-spacer" ng-model="searchCourse">   
+                <label>Limit results: </label><input type="number" class="form-control input-sm frm-spacer edNarrow" ng-model="crs_limit" value="{{user.crsCount}}"> 
+              </div>
+            </form>
+          </div>
+          <!-- ********************************************* -->
+          <!--Loop through all courses and give them their own section of the accordion ****************************************************** -->
+
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default edPanel" ng-repeat="course in user.Courses | filter:searchCourse | orderBy: c.crs_orderby | limitTo: crs_limit track by course.Status_sys_id">         
+              <div class="panel-heading" role="tab" id="{{course.Status_sys_id}}Head">    	
+                <!--Button group to float buttons to end of panel header-->
+                <div class="btn-toolbar pull-right btn-group-right hidden-print">
+                  <div class="btn-group">
+                    <a role="button" class="btn btn-default btn-xs" href="{{course.ViewURL}}" role="button"><i class="fa fa-binoculars"></i> View details</a>  
+                  </div>
+                </div>
+                <a role="button" class="addChevron" data-toggle="collapse" data-parent="#accordion" href="#collapse{{course.Status_sys_id}}" aria-expanded="false" aria-controls="collapse{{course.Status_sys_id}}">
+                  <div class="panel-title row">                  
+                    <span class="col-xs-6"><h4>{{course.name}}</h4></span>
+                    <span ng-if="course.comp==true" class="col-xs-4"><div class="frm-bkg pull-right">
+                      <i ng-if="course.statVal == 'complete_competent'" class="fa fa-check-square-o fa-2x text-success "></i>
+                      <i ng-if="course.statVal == 'complete_nyc'" class="fa fa-times fa-2x text-danger"></i>
+                      <small>completed: {{course.date_completed}}</small></div>
+                    </span>
+                  </div>
+                </a>          
+              </div>
+              <div id="collapse{{course.Status_sys_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{course.Status_sys_id}}Head">
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <tbody>
+                      <tr><td width="25%">Category</td><td width="75%"><b>{{course.category}}</b></td></tr>
+                      <tr><td width="25%">Type</td><td width="75%"><b>{{course.type}}</b></td></tr>
+                      <tr ng-if="course.description.length>0"><td colspan="2">{{course.description}}</td></tr>
+                      <tr ng-if="course.cost>0"><td>Cost</td><td width="75%"><b>{{course.cost}} ({{course.cost_schedule}}</b></td></tr>
+                      <tr><td width="25%">Pre-Requisites</td><td width="75%"><b>{{course.preReqs}}</b></td></tr>
+                      <tr><td width="25%">Competencies</td><td width="75%"><b>{{course.skills}}</b></td></tr>
+                      <tr>
+                        <td width="25%" ng-class="{'text-success, bg-success': course.statVal =='complete_competent', 'text-danger, bg-danger':course.statVal=='complete_nyc'}">Status</td>
+                        <td width="75%" ng-class="{'text-success, bg-success': course.statVal =='complete_competent', 'text-danger, bg-danger':course.statVal =='complete_nyc'}"><b>{{course.status}}</b></td></tr>
+                      <tr>
+                        <td width="25%">Tutor</td>
+                        <td width="75%">
+                          <b>{{course.tutor}}</b>
+                          <button ng-if="data.tutor==true" title="set me as tutor" class="pull-right btn btn-default btn-xs" role="button" ng-click="addTutor(course)">
+                            <i class="fa fa-user-plus"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr><td width="25%">Course Content</td>
+                        <td ng-if="course.URL" width="75%"><a href="course.URL">{{course.URL}}</a></td>
+                        <td ng-if="course.Quiz" width="75%"><a href="course.Quiz">{{course.Quiz}}</a></td>
+                      </tr>
+                    </tbody>
+                  </table>  
+                  <button ng-if="data.tutor==true && course.tutorID == data.curUserLP" class="btn btn-primary pull-right" ng-click="openModal('course', course)"> <i class="fa fa-comments"></i> Add Comments/Update Results</button>
+                  <a  title="view/edit unit in form view" class="btn btn-default pull-right" href="?id=lp_course_status&table=x_btal_bt_learning_lp_user_course_status&ov=true&sys_id={{course.Status_sys_id}}"><i class="fa fa-edit"></i></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- ********************************************* -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/ng-template" id="modalTemplate">
+ <div class="panel panel-primary">
+ <div class="panel-heading">
+ <div class="panel-title">
+		<h4>Add notes to<span ng-if="data.tutor==true">/update results for</span> {{c.type}}: {{c.Uname}}</h4>
+    </div>
+    </div>
+ <div class="panel-body wrapper-xl">
+ 	<div class="form-horizontal">
+
+ 			<div class="form-group"><label for="frmComment">${Add comment:}</label><textarea id="frmComment" class="form-control" rows="3" placeholder="Add notes and comments here" ng-model="c.Comments"/></div>
+			<div class="form-group" ng-if="data.tutor==true"><label for="frmPrivComment">${Add private comment:}</label> <textarea id="frmPrivComment" rows="3" placeholder="Comments added here will be kept private from the person completing this course" class="form-control" ng-model="c.PrivComments"/></div>
+			<div class="form-group" ng-if="data.tutor==true"><label for="frmResult">${Add result:}</label> <input id="frmResult" type="text" size="30" placeholder="Use this space to record an outcome.  eg. competent or an exam score" class="form-control" ng-model="c.Results"/></div>
+			<div class="form-group" ng-if="data.tutor==true"><label for="frmStatus">${Update Status:}</label> 
+   			<select id="frmStatus" class="form-control" class="form-control" ng-model="c.Status">
+  				<option>Enrolled</option>
+       		<option>In progress</option>
+       		<option>Complete - Competent</option>
+       		<option>Complete - Not Yet Competent</option>
+       		<option>Cancelled</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    </div>
+
+ <div class="panel-footer text-right">
+ <button class="btn btn-primary" ng-click="c.closeModal()">${Update}</button>
+    </div>
+    </div>
+  </script>
+
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

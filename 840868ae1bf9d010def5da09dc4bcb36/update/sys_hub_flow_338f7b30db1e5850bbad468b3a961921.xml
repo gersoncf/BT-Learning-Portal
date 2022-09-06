@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Flow that runs when a record is added to the  Course Table</description>
+        <internal_name>add_new_course</internal_name>
+        <label_cache>[{"name":"Created_1.current","label":"Trigger➛LP Course Record","reference":"x_btal_bt_learning_lp_course","reference_display":"Course/Unit","type":"reference","base_type":"reference"},{"name":"e7888e18-8924-4b4e-bd5a-2ade45f8e8d3.table_name","label":"3➛LP Course Table","reference":"x_btal_bt_learning_lp_course","reference_display":"Course/Unit","type":"table_name","base_type":"table_name"},{"name":"e7888e18-8924-4b4e-bd5a-2ade45f8e8d3.record","label":"3➛LP Course Record","reference":"x_btal_bt_learning_lp_course","reference_display":"Course/Unit","type":"reference","base_type":"reference"},{"name":"Created_1.current.sys_id","label":"Trigger➛LP Course Record➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"x_btal_bt_learning_lp_course","column_name":"sys_id"},{"name":"6a61c94c-01c8-4948-b859-6a969f640453.unit_list","label":"1➛Unit List","reference_display":"Unit List","type":"string","base_type":"string"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.name","label":"1➛name","reference":"","reference_display":"name","type":"string","base_type":"string"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.description","label":"1➛description","reference":"","reference_display":"description","type":"multi_small","base_type":"multi_small"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.category","label":"1➛category","reference":"x_btal_bt_learning_lp_course_category","reference_display":"category","type":"reference","base_type":"reference"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.type","label":"1➛type","reference":"","reference_display":"type","type":"choice","base_type":"choice"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.active","label":"1➛active","reference":"","reference_display":"active","type":"boolean","base_type":"boolean"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.mandatory","label":"1➛mandatory","reference":"","reference_display":"mandatory","type":"boolean","base_type":"boolean"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.url","label":"1➛url","reference":"","reference_display":"url","type":"url","base_type":"url"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.quiz","label":"1➛quiz","reference":"asmt_metric_type","reference_display":"quiz","type":"reference","base_type":"reference"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.prerequisite","label":"1➛prerequisite","reference":"x_btal_bt_learning_lp_course","reference_display":"prerequisite","type":"glide_list","base_type":"glide_list"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.skills","label":"1➛skills","reference":"","reference_display":"skills","type":"glide_list","base_type":"glide_list"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.outcome_expires","label":"1➛outcome_expires","reference":"","reference_display":"outcome_expires","type":"boolean","base_type":"boolean"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.expiry_duration","label":"1➛expiry_duration","reference":"","reference_display":"expiry_duration","type":"glide_duration","base_type":"glide_duration"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.cost","label":"1➛cost","reference":"","reference_display":"cost","type":"string","base_type":"string"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.cost_schedule","label":"1➛cost_schedule","reference":"","reference_display":"cost_schedule","type":"choice","base_type":"choice"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.approval_required","label":"1➛approval_required","reference":"","reference_display":"approval_required","type":"boolean","base_type":"boolean"},{"name":"bb8b015c-7fae-4f07-bde1-3e43ac7b29c2.lblUnitInfo","label":"1➛lblUnitInfo","reference":"","reference_display":"lblUnitInfo","type":"string","base_type":"string"}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <name>Add New Course</name>
+        <natlang/>
+        <outputs/>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 06:02:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>338f7b30db1e5850bbad468b3a961921</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Add New Course</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_hub_flow_338f7b30db1e5850bbad468b3a961921</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-29 05:48:10</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_variable_value action="delete_multiple" query="document_key=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=338f7b30db1e5850bbad468b3a961921^sys_idNOT IN44ba6b85db1a9850bbad468b3a9619b9"/>
+    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Add New Course">338f7b30db1e5850bbad468b3a961921</flow>
+        <name>Created</name>
+        <remote_sys_id/>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:11</sys_created_on>
+        <sys_id>44ba6b85db1a9850bbad468b3a9619b9</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-29 05:48:10</sys_updated_on>
+        <trigger_definition display_value="Created">798916a0c31322002841b63b12d3ae7c</trigger_definition>
+        <trigger_inputs/>
+        <trigger_outputs/>
+        <trigger_type>record_create</trigger_type>
+    </sys_hub_trigger_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=44ba6b85db1a9850bbad468b3a9619b9"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>44ba6b85db1a9850bbad468b3a9619b9</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:11</sys_created_on>
+        <sys_id>c0ba6b85db1a9850bbad468b3a9619c7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:11</sys_updated_on>
+        <value>x_btal_bt_learning_lp_course</value>
+        <variable display_value="Table">cfca92e0c31322002841b63b12d3ae00</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>44ba6b85db1a9850bbad468b3a9619b9</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:11</sys_created_on>
+        <sys_id>c8ba6b85db1a9850bbad468b3a9619c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:11</sys_updated_on>
+        <value>parentISEMPTY</value>
+        <variable display_value="Condition">66aadea0c31322002841b63b12d3aebf</variable>
+    </sys_variable_value>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=338f7b30db1e5850bbad468b3a961921^sys_idNOT IN378f7b30db1e5850bbad468b3a961923"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>338f7b30db1e5850bbad468b3a961921</id>
+        <name>Add New Course</name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 06:02:53</sys_created_on>
+        <sys_id>378f7b30db1e5850bbad468b3a961923</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 06:02:53</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=378f7b30db1e5850bbad468b3a961923"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=338f7b30db1e5850bbad468b3a961921^sys_idNOT IN48ba6b85db1a9850bbad468b3a9619b2,ccbae785db1a9850bbad468b3a961988"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name,uiTypeLabel=Table Name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>200</max_length>
+        <model display_value="Add New Course">338f7b30db1e5850bbad468b3a961921</model>
+        <model_id>338f7b30db1e5850bbad468b3a961921</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921</name>
+        <next_element/>
+        <order>101</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:10</sys_created_on>
+        <sys_id>48ba6b85db1a9850bbad468b3a9619b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:10</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=document_id,uiTypeLabel=Document ID</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>current</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">document_id</internal_type>
+        <label>Record</label>
+        <mandatory>true</mandatory>
+        <max_length>200</max_length>
+        <model display_value="Add New Course">338f7b30db1e5850bbad468b3a961921</model>
+        <model_id>338f7b30db1e5850bbad468b3a961921</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:10</sys_created_on>
+        <sys_id>ccbae785db1a9850bbad468b3a961988</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:10</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_output action="delete_multiple" query="model=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_action_instance action="delete_multiple" query="flow=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_flow_logic action="delete_multiple" query="flow=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921^sys_idNOT IN88ba6b85db1a9850bbad468b3a9619b1,c0ba6b85db1a9850bbad468b3a9619b7"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>current</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:10</sys_created_on>
+        <sys_id>88ba6b85db1a9850bbad468b3a9619b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Record</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921_current_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:10</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-27 23:10:11</sys_created_on>
+        <sys_id>c0ba6b85db1a9850bbad468b3a9619b7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Table Name</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921_table_name_en</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-27 23:10:11</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_338f7b30db1e5850bbad468b3a961921"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_338f7b30db1e5850bbad468b3a961921"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_338f7b30db1e5850bbad468b3a961921"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=338f7b30db1e5850bbad468b3a961921"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=338f7b30db1e5850bbad468b3a961921"/>
+</record_update>

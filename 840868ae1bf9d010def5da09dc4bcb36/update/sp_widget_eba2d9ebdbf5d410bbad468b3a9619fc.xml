@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($rootScope) {
+	var c = this;
+	$rootScope.$on("field.change", function(evt, parms) {
+		if (parms.field.name == 'course') {
+			c.data.course_id = parms.newValue;
+		}
+
+	c.server.update();
+	});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.panel {
+  font-family: 'Montserrat';
+  font-size: 12px;
+}
+.warntext {
+ 	color: red; 
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>course_details</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Course Details</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.user_id = $sp.getParameter('user_id');
+	if(input && input.course_id) {
+		data.course_id = input.course_id;
+		//gs.addInfoMessage('data.course_id = ' + data.course_id);
+	} else {
+		data.course_id=$sp.getParameter('course_id');	
+	}
+	data.cost='';
+	data.skills='';
+	data.prereqs = '';
+	data.desc='';
+	data.name='';
+	var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+
+		grC.addActiveQuery();  //Only review records that are still active.
+		grC.addQuery('sys_id',data.course_id);
+		grC.query();
+
+	if (grC.next()) {
+		data.name = grC.getDisplayValue('name');
+		data.skills = grC.getDisplayValue('skills');
+		data.sk_array = data.skills.split(',');
+		data.prereqs = grC.getDisplayValue('prerequisite');
+		data.pr_array = data.prereqs.split(',');
+		data.prereqs_comp = '';	
+		if (data.prereqs && data.prereqs !='') {
+			data.prereqs_comp = getResults(grC.getValue('prerequisite'), data.user_id);
+		}
+
+		data.desc = grC.description.toString();
+		if(grC.cost && parseInt(grC.cost) > 0) {
+			data.cost = "$" + grC.cost.toString();
+			var costSched = grC.cost_schedule.toString();
+			if(costSched != 'one-off' && costSched != 'N/A' && costSched !='' ) {
+				data.cost = data.cost + " per " + costSched;
+			}				
+		} 
+		data.units = [];
+		var grUnits = new GlideRecord('x_btal_bt_learning_course_unit_order');
+		grUnits.addQuery('course', data.course_id);
+		grUnits.query();
+		while (grUnits.next()){
+			data.units.push(grUnits.getDisplayValue('unit'));
+		}
+	}
+
+
+
+	function getResults(pres, user) {
+		if (pres && user) {
+			var grUC = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grUC.addEncodedQuery('course.sys_idIN'+pres+'^user='+user);
+			grUC.query();
+
+			var stat = true;
+			var unfin = ''
+			while (grUC.next()){
+				if (grUC.status != 'complete_competent') {
+					stat = false;
+				}
+			}
+			if (stat == false) {
+				return 'You cannot yet enroll in this course. You have not completed the pre-requisite(s).';
+			}
+			return 'All pre-requisites have been completed.';			
+		}
+
+
+
+	}
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-10 09:59:28</sys_created_on>
+        <sys_id>eba2d9ebdbf5d410bbad468b3a9619fc</sys_id>
+        <sys_mod_count>44</sys_mod_count>
+        <sys_name>Course Details</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_eba2d9ebdbf5d410bbad468b3a9619fc</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-30 06:57:12</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><b>
+      {{c.data.name}}  
+      </b>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <p ng-if="data.cost!=''"><b>Price:</b>{{c.data.cost}}.</p>
+    <div ng-if="data.prereqs!=''"><b>Pre-requisites:</b>
+      <ul>
+        <li ng-repeat="pr in c.data.pr_array">{{pr}}</li>  
+      </ul>
+    </div>
+    <p ng-if="data.prereqs_comp!=''"><b>Pre-requisite status:</b> <span ng-class="{warntext: data.prereqs_comp.indexOf('cannot')>-1}">{{c.data.prereqs_comp}}</span></p>
+    <p><b>Description:</b><br>{{c.data.desc}}</p>
+    <div ng-if="data.skills!=''">
+      <b>Skills on completion:</b>
+      <ul>
+        <li ng-repeat="skill in c.data.sk_array">{{skill}}</li>
+      </ul>
+    </div>
+    <div ng-if="data.units.length> 0">
+      <b>Units</b>
+      <ul>
+        <li ng-repeat="unit in data.units">{{unit}}</li>  
+      </ul>  
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

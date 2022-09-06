@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="kb_uc_can_read_mtom">
+    <kb_uc_can_read_mtom action="INSERT_OR_UPDATE">
+        <kb_knowledge_base display_value="Learning Portal">12e1783ddb8e9c10bbad468b3a9619f1</kb_knowledge_base>
+        <sys_class_name>kb_uc_can_read_mtom</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-21 00:13:09</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e44fd734dbfa14d0bbad468b3a9619e3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Learning Portal.Learning Portal Users</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>kb_uc_can_read_mtom_e44fd734dbfa14d0bbad468b3a9619e3</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-21 00:13:09</sys_updated_on>
+        <user_criteria display_value="Learning Portal Users">effe1734dbfa14d0bbad468b3a961979</user_criteria>
+    </kb_uc_can_read_mtom>
+</record_update>

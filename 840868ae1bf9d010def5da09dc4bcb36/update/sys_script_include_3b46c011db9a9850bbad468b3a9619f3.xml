@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_btal_bt_learning.LP_Utils_server</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>LP_Utils_server</name>
+        <script><![CDATA[var LP_Utils_server = Class.create();
+LP_Utils_server.prototype = {
+    initialize: function() {
+    },
+
+	//Used server-side in workflow etc.
+	Get_Courses_from_MRVS: function(current) {
+		//var sysID = sys_id.toString();
+		var CourseIDs = '';
+		//var current = new GlideRecord('x_btal_bt_learning_lp_course');
+		//if(current.get(sysID)) {
+		//var mrvs = current.variables.lp_course_units;
+		var mrvs = current.variables.lp_course_units;
+		var rowCount = mrvs.getRowCount();
+		CourseIDs = rowCount;
+			/*for(var i = 0; i<rowCount; i++){
+				var row = mrvs.getRow(i);
+				if(row.existing_or_new == 'new'){
+					var grNC = new GlideRecord('x_btal_bt_learning_lp_course');
+					grNC.initialize();
+					grNC.name = row.course_unit_name;
+					grNC.category = row.sb_category;
+					grNC.type = row.sb_type;
+					grNC.parent = inputs.sys_id;
+					grNC.insert();
+					CourseIDs += grNC.sys_id + ",";
+				} else {
+					CourseIDs += row.sel_ext_course + ",";
+				}
+			}*/
+		//}
+		return CourseIDs;
+	},
+	
+	reEnrol: function(unitID) {
+		//Reset a unit, ready for re-try.  If unit is a quiz, generate a new quiz instance.  Up the attempts field by 1.
+		var grUS = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grUS.addQuery('sys_id', unitID);
+		grUS.query();
+		
+		if(grUS.next()) {
+			//Reset details of the unit/course.
+			grUS.status = 'enrolled';
+			grUS.active = 'true';
+			var attempts = grUS.getValue('attempts');
+			attempts++;
+			grUS.attempts = attempts;
+			grUS.date_completed = '';
+			grUS.date_started = gs.daysAgo(0);
+			
+			var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+			grC.addQuery('sys_id', grUS.getValue('course'));
+			grC.query();
+			
+			if(grC.next()){
+				var type = grC.getValue('type');
+				var quiz = grC.getValue('quiz');
+				var course = grC.getValue('sys_id');
+			}
+			
+			if(type == 'quiz') {
+				var user = new GlideRecord('x_btal_bt_learning_lp_user');
+				user.addQuery('sys_id', grUS.getValue('user'));
+				user.query();
+				
+				if (user.next()){
+					var usr = user.getValue('user');	
+				}
+				
+			//gs.info('ED>>>>>> Course Type: ' + type + ' | User: ' + usr);	
+				grUS.enrolled_quiz_id = this._getQuizInstance(course, quiz, usr);
+			}
+			grUS.update();
+		}
+	},
+	_getQuizInstance: function(crs, quiz, usr){
+		//If the unit/course is a quiz, get a new instance.
+			//gs.info('ED >>>> In private Function');
+		//Step 1. Get the metric category - first step in adding getting a quiz instance - Make sure the user is a member of that quiz's user group.
+		var grMC = new GlideRecord('asmt_metric_category');
+		grMC.addQuery('metric_type', quiz.toString());
+		grMC.query();
+
+		if(grMC.next()) {
+			//gs.info('ED >>>> Metric Category: ' + grMC.getDisplayValue('name'));
+			//Get the category id.
+			var metCat = grMC.getValue('sys_id').toString();
+
+		//Step 2. Now check if the user is a member of that group.  (For retries, they should be or they couldn't receive the quiz the first time around.)
+			var grACU = new GlideRecord('asmt_m2m_category_user');
+			grACU.addQuery('user', usr.toString());
+			grACU.addQuery('metric_category', metCat);
+			grACU.query();
+
+			
+			if (grACU.next()) {
+				//gs.info('ED >>>> Metric User(Already Present): ' + grACU.getDisplayValue('name'));
+			} else {
+				//If not there, add the user to the group.
+				grACU.initialize();
+				grACU.user = usr.toString();
+				grACU.metric_category = metCat.toString();
+				grACU.insert();		
+				//gs.info('ED >>>> Metric User(ADDED): ' + grACU.getDisplayValue('name'));
+			}
+
+			//Step 3. Now generate the quiz instance and return the tidied up version.
+			var instanceId = new global.AssessmentUtils().createAssessments(quiz.toString(), "", usr.toString());
+			return instanceId.toString().substring(0,32);
+		}
+	},
+	
+    type: 'LP_Utils_server'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-28 01:11:24</sys_created_on>
+        <sys_id>3b46c011db9a9850bbad468b3a9619f3</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>LP_Utils_server</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_script_include_3b46c011db9a9850bbad468b3a9619f3</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-02 05:07:45</sys_updated_on>
+    </sys_script_include>
+</record_update>

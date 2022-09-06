@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="32fe72691b7d3850def5da09dc4bcb18" sys_domain="global" table="incident" version="3" view="whs_form">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>cd3f36691b7d3850def5da09dc4bcb06</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>caller_id</element>
+            <position>1</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>453f36691b7d3850def5da09dc4bcb07</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>category</element>
+            <position>2</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c93f36691b7d3850def5da09dc4bcb07</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>subcategory</element>
+            <position>3</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>413f36691b7d3850def5da09dc4bcb08</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>business_service</element>
+            <position>4</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c53f36691b7d3850def5da09dc4bcb08</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>cmdb_ci</element>
+            <position>5</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>4d3f36691b7d3850def5da09dc4bcb08</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>6</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c13f36691b7d3850def5da09dc4bcb09</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>contact_type</element>
+            <position>7</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>493f36691b7d3850def5da09dc4bcb09</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>8</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>cd3f36691b7d3850def5da09dc4bcb09</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>hold_reason</element>
+            <position>9</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>453f36691b7d3850def5da09dc4bcb0a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>impact</element>
+            <position>10</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c93f36691b7d3850def5da09dc4bcb0a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>urgency</element>
+            <position>11</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>413f36691b7d3850def5da09dc4bcb0b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>priority</element>
+            <position>12</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c53f36691b7d3850def5da09dc4bcb0b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assignment_group</element>
+            <position>13</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>4d3f36691b7d3850def5da09dc4bcb0b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assigned_to</element>
+            <position>14</position>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:08:03</sys_created_on>
+            <sys_id>c13f36691b7d3850def5da09dc4bcb0c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="incident" sys_domain="global" view="7efebe291b7d3850def5da09dc4bcb7f">32fe72691b7d3850def5da09dc4bcb18</sys_ui_section>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:08:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>incident</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:07:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>32fe72691b7d3850def5da09dc4bcb18</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>incident</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_section_32fe72691b7d3850def5da09dc4bcb18</sys_update_name>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:07:05</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="WHS Form" name="whs_form">7efebe291b7d3850def5da09dc4bcb7f</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

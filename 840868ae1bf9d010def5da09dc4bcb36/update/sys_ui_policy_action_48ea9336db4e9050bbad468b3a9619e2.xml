@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>date_due</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 22:14:46</sys_created_on>
+        <sys_id>48ea9336db4e9050bbad468b3a9619e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>date_due</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_ui_policy_action_48ea9336db4e9050bbad468b3a9619e2</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-20 22:14:46</sys_updated_on>
+        <table>x_btal_bt_learning_lp_user_course_status</table>
+        <ui_policy display_value="Set UserView Read-Only">e77a1ff2db4e9050bbad468b3a96191e</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

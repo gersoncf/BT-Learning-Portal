@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="x_btal_bt_learning_u_further_action" label="Further action required" language="en" table="incident">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>x_btal_bt_learning_u_further_action</element>
+            <help/>
+            <hint/>
+            <label>Further action required</label>
+            <language>en</language>
+            <name>incident</name>
+            <plural>Further action required</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>Max Zhang</sys_created_by>
+            <sys_created_on>2021-08-06 05:40:08</sys_created_on>
+            <sys_id>be8643211bbd3850def5da09dc4bcbea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Further action required</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_documentation_incident_x_btal_bt_learning_u_further_action_en</sys_update_name>
+            <sys_updated_by>Max Zhang</sys_updated_by>
+            <sys_updated_on>2021-08-06 05:40:08</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

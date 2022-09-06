@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>true</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>asmt_assessment_instance</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="asmt_assessment_instance">stateCHANGESTOcomplete^EQ<item display_value="Complete" endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="complete"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message><![CDATA[<p>Learning Portal Record Updated.</p>]]></message>
+        <name>Return Quiz results to LP</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Find out if this assessment is related to a learning portal record.  If not, finish up and waste no more processing time.
+	var grLPCS = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+	grLPCS.addQuery('user.user', current.user);
+	grLPCS.addQuery('enrolled_quiz_id', current.sys_id);
+	grLPCS.query();
+
+	if (grLPCS.next()) {
+		//If the quiz is referenced in a learning portal record, continue....
+		
+		//1. Identify which results option has been specified for the course, blind, score or detailed results.
+		var resType = 'score_only'; //Default option if nothing is specified.
+		var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+		grC.addQuery('sys_id', grLPCS.getValue('course'));
+		grC.query();
+		
+		if(grC.next()) {
+			resType = grC.getValue('quiz_result_options');
+		}
+		
+
+		//Get the asmt_category_result  connected to this assessment instance via assessment group.  1 to 1 relationship.  
+		//the asmt_category_result  contains the result and the normalised result.
+		var grACR = new GlideRecord('asmt_category_result');
+		grACR.addQuery('assessment_group', current.assessment_group);
+		grACR.query();
+
+		if (grACR.next()) {
+			//Final result.
+			var result = grACR.getValue('normalized_value');
+			result - parseInt(result,10);
+			var resNum = result;
+			
+			grLPCS.setValue('result', result);
+			
+			var passfail = grLPCS.getValue('minimum_score_for_competency');
+			if(isNaN(passfail)) {
+				passfail = 0;
+			}
+			passfail = parseInt(passfail,10);
+			var passed = result>=passfail;
+			var notes="";
+			switch(resType) {
+				case 'blind':
+					notes = current.user.getDisplayValue() + ' has ' + passed ? 'passed':'failed' + 'this unit.';
+					break;
+				case 'score_only':
+				case 'detailed':
+				default:
+					notes = current.user.getDisplayValue() + ' achieved a result of ' + result + '%, which is ';
+					if(passed){
+						notes = notes + 'above the pass/fail mark of ' + passfail + '%. Congratulations!';
+					} else {
+						notes = notes + 'below the pass/fail mark of ' + passfail + '%. No worries, re-enrol and try again.';
+					} 		
+					if(resType == 'detailed') {
+						notes = notes + '\n' + getResults();	
+					}
+					break;
+			}
+
+
+			if (resNum >=passfail) {
+				grLPCS.setValue('status', 'complete_competent');
+			} else {
+				grLPCS.setValue('status', 'complete_nyc');
+			}
+			grLPCS.course_notes = notes;
+			grLPCS.update();
+		}
+
+	}
+	function getResults() {
+		/*Now, we can get a comparison of answers to correct answers*/
+		var grAMT = new GlideRecord('asmt_metric_result');
+		grAMT.addQuery('assessment_group', current.assessment_group);
+		grAMT.addQuery('passed','Failed');
+		grAMT.orderBy('assign_to_order');
+		grAMT.query();
+		var res = "";
+		var Q = 1;
+		if(!grAMT.hasNext()){
+			res = 'You answered every question correctly.';
+		} else {
+			res = 'Your Incorrect Answers:\n';
+			while (grAMT.next()){
+					grMet = new GlideRecord('asmt_metric');
+					if(grMet.get(grAMT.getValue('metric'))) {
+					var corAns = grMet.getDisplayValue('correct_answer_choice') || grMet.getDisplayValue('correct_answer_template') || grMet.getDisplayValue('correct_answer') || grMet.getDisplayValue('correct_answer_checkbox') || grMet.getDisplayValue('correct_answer_yesno');
+					}
+					res = res + 'Question: ' + grMet.question + '\n    | Correct Answer: ' + corAns + '\n    | Your Answer: ' + grAMT.getValue('string_value') + '\n\n';	
+			}	
+		}
+		
+		return res;
+		
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-28 00:10:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>391f1f071bfe58d0def5da09dc4bcb3d</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>Return Quiz results to LP</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_script_391f1f071bfe58d0def5da09dc4bcb3d</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-03 02:41:21</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=391f1f071bfe58d0def5da09dc4bcb3d"/>
+</record_update>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	c.showFilt=true;
+	c.frm_invalid=true;
+	
+	
+	
+	if (c.data.reqSumm == false || c.data.reqSumm == 'false' || c.data.reqSumm == '0'){
+		c.frm_invalid = false;
+	}
+	
+	c.your_summary ='';
+	
+	$scope.$watch('c.your_summary', function(newValue, oldValue){
+		if(c.data.reqSumm == true && (newValue && newValue!='')) {
+			c.frm_invalid=false;
+		} else {
+			if(c.data.reqSumm == true){
+				c.frm_invalid = true;	
+			}
+			
+		}
+	})
+		
+	$scope.acknowledge = function(bool) {
+		
+		if (c.your_summary) {
+			c.data.summary = c.your_summary;
+			
+		}
+		c.data.acknowledged = bool;
+		c.server.update();
+	}
+
+	spUtil.recordWatch($scope, "x_btal_bt_learning_lp_user_course_status", "sys_id="+c.data.sys_id, function(name, data) {
+		c.server.update();									
+	})
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.edFooter {
+  line-height: 2.4em;
+}
+.required {
+  color: gray;
+  font-size: 130%;
+}
+.required.empty {
+  color: red;
+  
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_kb_acknowledgement</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Read Acknowledgement</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	data.kb = $sp.getParameter('sys_id');
+	data.enrolID = $sp.getParameter('enrol_id');
+	
+	//No knowledge article? don't bother any further.
+	if(!data.kb) {
+		return;
+	}
+
+	
+	
+	//Determine if this user has an active course/unit that has this url.
+	
+	var grCS = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+	grCS.addQuery('knowledge_article', data.kb).addOrCondition('url','CONTAINS',data.kb);
+	if (data.enrolID) {
+		grCS.addQuery('sys_id', data.enrolID);
+	} else {
+		grCS.addQuery('user.user', gs.getUserID());
+		grCS.addQuery('status','!=','cancelled');
+		grCS.orderByDesc('sys_created_on');	
+	}
+	grCS.query();
+	
+	if(grCS.next()){
+		//gs.addInfoMessage('Record was found');
+		//User has a relevant record
+		data.user = grCS.getDisplayValue('user');
+		data.reqSumm = grCS.getValue('require_summary');
+		data.sys_id = grCS.getValue('sys_id');
+		data.course = grCS.getDisplayValue('course');
+		data.result = grCS.getValue('result');
+	
+		if (!data.reqSumm) {
+			data.reqSumm = false;
+		}
+	}
+		
+
+	if(input && input.acknowledged) {
+		data.acknowledged = input.acknowledged;
+		if (input.summary) {
+			data.summary = input.summary;
+		}
+		if (data.acknowledged == 'true') {
+			ack();
+			data.acknowledged = 'false';
+		}
+		
+	}
+
+
+	function ack() {
+		var grU = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grU.addQuery('sys_id', data.sys_id);
+		grU.query()
+
+		if(grU.next()){
+			var gdt = new GlideDateTime();
+			if(data.summary)
+				grU.course_notes = data.summary;
+			grU.status = 'complete_competent';
+
+			grU.result = 'Acknowledged by '+ data.user + ' on ' + gdt.getDisplayValue();
+			grU.update();
+		}	
+	}
+
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-20 06:06:22</sys_created_on>
+        <sys_id>bc86632cdb7ed0d0bbad468b3a9619a0</sys_id>
+        <sys_mod_count>107</sys_mod_count>
+        <sys_name>Read Acknowledgement</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_bc86632cdb7ed0d0bbad468b3a9619a0</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-14 04:56:13</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  
+
+<div class="alert alert-success" ng-if="data.sys_id && data.result">
+{{data.result}} 
+</div>
+
+<div ng-if="data.sys_id && !data.result">
+  <form>
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h4>Complete this unit: {{data.course}}</h4>
+          <small>To complete this unit you must read and acknowledge the information in the article.</small>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div ng-if="data.reqSumm == true">
+          <p>This course requires that as part of your acknowledgement, you must enter a summary
+            of the text you've just read.  Use your own words to highlight what was important 
+            to you in the article above.
+          </p>
+          <div class="form-group">
+            <label><span class="required" ng-class="{'empty':c.frm_invalid}">* </span>Your summary: </label>
+            <textarea name="your_summary" rows="3" class="form-control frm-spacer" ng-class="{'has-error':c.frm_invalid}" ng-model="c.your_summary" required></textarea>     
+          </div>        
+        </div>
+      </div>
+      <div class="panel-footer edFooter">
+        <small>By clicking this button, you are acknowledging that you have read and understand this content.</small>
+        <div class="btn-group pull-right">
+          <button ng-click="acknowledge('true')" type="submit" ng-class="{'disabled':c.frm_invalid}" class="btn btn-primary" title="I have read and acknowledged this article">
+            Acknowledge
+          </button>  
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+  </div>]]></template>
+    </sp_widget>
+</record_update>

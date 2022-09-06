@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>sc</category>
+        <client_script><![CDATA[function($scope, $location, $timeout, $window, $document, $rootScope, spUtil,spAriaUtil) {
+	var c = this;
+	//$scope.selectedCatalog = c.data.catalogSelectorArr[c.data.selectedCatalogIndex];
+	//$scope.changeCatalog = function (selectedCatalog) {
+	//	$timeout(function() {
+	//		if (selectedCatalog && selectedCatalog.hasOwnProperty("value")) {
+	//			$location.search('catalog_id', selectedCatalog.value ? selectedCatalog.value : -1);
+	//			$location.search('sys_id', null);
+	//		}
+	//	});
+	//}
+	$scope.handleKeyPressOnCategory = function($event, category) {
+		$event.stopPropagation();
+		var currentElement = $($event.currentTarget);
+		var allCategories = currentElement.closest('ul.category-list').find('.group-item');
+		var index = -1;
+		if(allCategories.length > 0) {
+			index = allCategories.index(currentElement);
+		}
+		switch($event.which) {
+			case 40: // bottom key
+				if(index+1 < allCategories.length) {
+					allCategories.get(index+1).focus();
+				}
+				break;
+			case 38: // top key
+				if(index > 0) {
+					allCategories.get(index-1).focus();
+				}
+				break;
+			case 37: // Left key
+				if(category.showChildren) {
+					$scope.displayChildren($event, category);
+				}
+				break;
+			case 39: //right key
+				if(!category.showChildren) {
+					$scope.displayChildren($event, category);
+				}
+				break;
+		}
+		
+	}
+	$scope.hideCategoryWidgetInXS = (c.options.hide_xs == 'true');
+	if (c.data.categoryId) {
+		if (!$scope.hideCategoryWidgetInXS)
+			$scope.hideCategoryWidgetInXS = true;
+	} else {
+		if ($scope.hideCategoryWidgetInXS)
+			$scope.hideCategoryWidgetInXS = false;
+	}
+	
+	spUtil.getPreference('glide.ui.accessibility', function(value) {
+		if (value == "true")
+			$scope.tabindex = 0;
+		else
+			$scope.tabindex = -1;
+	});
+	$scope.displayChildren = function($event, category) {
+		$event.stopPropagation();
+		if(!category || !category.subcategories || category.subcategories.length === 0) {
+			return;
+		}
+		category.showChildren = !category.showChildren;
+		if (category.showChildren) {
+			spAriaUtil.sendLiveMessage(category.title + ' '+ c.data.messages.expanded);
+		} 
+		else {
+			spAriaUtil.sendLiveMessage(category.title + ' ' +c.data.messages.collapsed);
+		}
+	};
+	
+	$scope.toggleSubCategories =  function(val) {
+		toggleSubCategories(c.data.categoriesList, val);
+	};
+	
+	function toggleSubCategories(categories, val) {
+		categories.forEach(function(category) {
+			category.showChildren = val;
+			if (category.subcategories && category.subcategories.length > 0) {
+				toggleSubCategories(category.subcategories, val);
+			}
+		});
+	}
+	
+	$scope.loadMore =  function() {
+		c.data.new_limit = c.data.limit + (c.options.number_of_categories_to_load || 15);
+		c.data.more_msg = c.data.pleaseWait;
+		c.server.update();
+	};
+	
+	$scope.categorySelected = function(category) {
+			$timeout(function() {
+				$location.search('sys_id', category.sys_id);
+				$location.search('id', c.data.page ||'lp_courses');
+			});
+	};
+	
+	var listenerForBrowseCategories = $scope.$on("$sp.service_catelog.show.categories_widget", function() {
+		$scope.hideCategoryWidgetInXS = false;
+	});
+	
+	$scope.hideBrowseCategory = function () {
+		$scope.hideCategoryWidgetInXS = true;
+		$rootScope.$broadcast("$sp.service_catelog.show.items_widget");
+	}
+	
+	$scope.$on("$destroy", function() {
+		listenerForBrowseCategories();
+	});
+	
+	$scope.isTouchDevice = function() {
+		return ('ontouchstart' in $window);
+	}
+	
+	$scope.getCategoryPadding = function(categoryLevel) {
+		if (categoryLevel >= 4)
+			categoryLevel = 4;
+		return 15*categoryLevel + "px";
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.category-widget {
+	border: 1px solid $panel-inner-border;
+  
+  .category-list {
+    .fa {
+      margin-right: 5px;
+    }
+    .l-h-1_6x {
+      line-height: 1.6em;
+    }
+    a {
+		width: 100%;
+      	vertical-align: middle;
+	    display: inline-block;
+    }
+    .list-group {
+      margin-bottom: 0;
+    }
+    .list-group-item {
+      padding: 0;
+      border: 0;
+    }
+    .group-item {
+      padding: 10px 15px;
+    }
+    .group-item-default {
+      &amp;:hover, &amp;:focus {
+        background-color: darken($panel-default-heading-bg, 2%);
+      }
+    }
+    .group-item-primary {
+      &amp;:hover, &amp;:focus {
+        border-left: 3px solid $primary !important;
+      }
+    }
+    .group-item-success {
+      &amp;:hover {
+        background-color: lighten($panel-success-heading-bg, 3%)
+      }
+    }
+    .group-item-info {
+      &amp;:hover, &amp;:focus {
+        background-color: lighten($panel-info-heading-bg, 3%)
+      }
+    }
+    .group-item-warning {
+      &amp;:hover, &amp;:focus {
+        background-color: $panel-warning-heading-bg
+      }
+    }
+    .group-item-danger {
+      &amp;:hover, &amp;:focus {
+        background-color: lighten($panel-danger-heading-bg, 3%)
+      }
+    }
+    
+    .list-bg-default {
+      background-color: $panel-default-heading-bg;
+    }
+    .list-bg-primary {
+      background-color: lighten($panel-info-heading-bg, 6%);
+    }
+    .list-bg-success {
+      background-color: lighten($panel-success-heading-bg, 6%);
+    }
+    .list-bg-info {
+      background-color: lighten($panel-info-heading-bg, 6%);
+    }
+    .list-bg-warning {
+      background-color: lighten($panel-warning-heading-bg, 3%);
+    }
+    .list-bg-danger {
+      background-color: lighten($panel-danger-heading-bg, 6%);
+    }
+  }
+}
+.panel-primary .badge {
+  background-color: $primary;
+  color: white;
+}
+.panel-default .badge {
+  background-color: $panel-default-text;
+  color: white
+}
+.panel-success .badge {
+  background-color:  $panel-success-text;
+  color: white;
+}
+.panel-info .badge {
+  background-color: $panel-info-text;
+  color: white;
+}
+.panel-warning .badge {
+  background-color: $panel-warning-text;
+  color: white;
+}
+.panel-danger .badge {
+  background-color: $panel-danger-text;
+  color: white;
+}
+.category-list .badge {
+  text-align: right;
+}
+.text-active {
+   color: $link-color;
+   border-left: 3px solid $primary
+}
+.text-default {
+   color: $text-muted;
+}
+
+.EdHead {
+  margin-top: 10px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data>{"options" :&#13;
+   {&#13;
+      "hide_xs" : false&#13;
+   }&#13;
+}</demo_data>
+        <description>Category listing for Learning Portal Courses</description>
+        <docs/>
+        <field_list>color</field_list>
+        <has_preview>true</has_preview>
+        <id>lp_categories</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>LP Categories</name>
+        <option_schema>[{"name":"hide_xs","default_value":false,"section":"Behavior","label":"Hide at XS","type":"boolean"},{"name":"omit_badges","section":"Behavior","label":"Omit badges (may impact performance for large items in categories)","type":"boolean"},{"name":"check_can_view","default_value":"true","section":"Behavior","label":"Check canView per item","type":"boolean"},{"hint":"Choose between a flattened and a nested category structure (Nested may impact performance for large items in categories)","name":"category_layout","section":"Presentation","label":"Category Layout","type":"choice","choices":[{"label":"Flat","value":"Flat"},{"label":"Nested","value":"Nested"}]},{"displayValue":"Page","name":"page","section":"Data","label":"page","type":"reference","value":"sp_page","ed":{"reference":"sp_page"}},{"hint":"Number of categories to load on page load","name":"number_of_categories_to_load","section":"Data","default_value":"15","label":"Number of categories to load","type":"integer"}]</option_schema>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[(function() {
+
+	var grCtgy = new GlideRecord('x_btal_bt_learning_lp_course_category');
+	grCtgy.addActiveQuery();
+	grCtgy.query();
+	
+	data.CategoryIDs = "";
+	//Retrieve all the course categories the current user is allowed to see.
+	while(grCtgy.next()) {
+		if (grCtgy.canRead()){
+			if (data.CategoryIDs.length > 0) {
+				data.CategoryIDs+=","
+			}
+			data.CategoryIDs+=grCtgy.sys_id;
+		}
+	}
+
+	data.categoriesList = [];
+	var categoriesInPage = options.number_of_categories_to_load || 15;
+	data.limit = categoriesInPage;
+
+	data.showMoreMsg = gs.getMessage("Show More");
+	data.pleaseWait = gs.getMessage("Please wait... fetching categories");
+	var categoryId = !$sp.getParameter('sys_id') ? "" : $sp.getParameter('sys_id') + "";
+	data.categoryId = categoryId;
+	var viewType = '';
+	var checkCanView = false;
+	var nestedLayout = (options.category_layout !== "Flat");
+	var dynamicCategory = false;
+	
+	
+	data.categoryId = categoryId;
+	var msg = data.messages = {};
+	msg.expanded = gs.getMessage("Expanded");
+	msg.collapsed = gs.getMessage("Collapsed");
+	msg.catalogTitle = options.catalog_title? gs.getMessage(options.catalog_title) : gs.getMessage('Course Categories');
+	
+	data.largeDataSet = gs.getProperty("glide.sc.largeSet.optimization.enable", "false");
+	if (data.largeDataSet == 'true')
+		 nestedLayout = false;
+	
+	if (options.page) {
+		var page = new GlideRecord('sp_page');
+		if (page.get(options.page))
+			data.page = page.id + '';
+	}
+	checkCanView = (options.check_can_view == 'true');
+	
+	if (input && input.new_limit)
+		data.limit = input.new_limit;
+	if (input && input.categoriesList)
+		data.categoriesList = input.categoriesList.slice(); //Copy the input array
+	
+	if (input && input.startWindow) {
+		data.endWindow = input.endWindow;
+	}
+	else {
+		data.startWindow = 0;
+		data.endWindow = 0;
+	}
+
+	while (data.categoriesList.length < data.limit + 1) {
+			data.startWindow = data.endWindow;
+			data.endWindow = data.endWindow + categoriesInPage;
+			var catGr = queryCategory(nestedLayout, data.startWindow, data.endWindow);
+			if (!catGr.hasNext())
+				break;
+			fetchCategories(catGr, data.categoriesList);
+	}
+	
+	if (data.categoriesList.length > data.limit)
+			data.showMore = true;
+	else
+		data.showMore = false;
+	
+	data.more_msg = gs.getMessage("Showing {0} categories", data.limit);
+	
+	
+	function fetchCategories(categoriesGr, categories) {
+		while (categoriesGr.next()) {
+			
+			var categoryDetails = getCategoryDetails(categoriesGr.sys_id + "", 0);
+			categoryDetails.sys_id = categoriesGr.getUniqueValue();
+			categories.push(categoryDetails);
+		}
+		
+	}
+	
+	function queryCategory(nestedLayout, startWindow, endWindow) {
+			var categoriesGr = new GlideRecord('x_btal_bt_learning_lp_course_category');
+			categoriesGr.addActiveQuery();
+			categoriesGr.orderBy('title');
+			if (nestedLayout)
+				categoriesGr.addNullQuery("parent");
+			categoriesGr.chooseWindow(startWindow, endWindow);
+			categoriesGr.query();
+			return categoriesGr;
+	}
+
+	function getCourseCount(catID) {
+		var grCrs = new GlideRecord('x_btal_bt_learning_lp_course');
+		grCrs.addActiveQuery();
+		grCrs.addQuery('subtask_only', 'false');
+		grCrs.addQuery('category', catID);
+		grCrs.query();
+		return grCrs.getRowCount();		
+	}
+	
+	function getCategoryDetails(catID, level) {
+		var categoryDetails = {};
+		var showChildren = false;
+		if (!catID) {
+			return categoryDetails;
+		}
+		var grDets = new GlideRecord('x_btal_bt_learning_lp_course_category')
+		grDets.addQuery('sys_id', catID);
+		grDets.query();
+
+		if (grDets.next()) {		
+			categoryDetails.title = grDets.getDisplayValue('title');
+			categoryDetails.level = level;
+			categoryDetails.description = grDets.getDisplayValue('description');
+			categoryDetails.icon = grDets.getDisplayValue('icon');
+			//categoryDetails.header_icon = categoryJS.getHeaderIconSRC();
+			categoryDetails.homepage_image = grDets.getDisplayValue('Image');
+			categoryDetails.sys_id = grDets.getValue('sys_id');
+			categoryDetails.showChildren = (categoryDetails.sys_id === categoryId);
+
+			if (data.largeDataSet != 'true') {
+				categoryDetails.count = categoryDetails.totalCount = getCourseCount(catID);
+			} else {
+				categoryDetails.count = 1;
+			}
+
+			var subCategoryCounts = 0;
+			if (nestedLayout) {
+				var grSubs = new GlideRecord('x_btal_bt_learning_lp_course_category');
+				grSubs.addActiveQuery();
+				grSubs.addQuery('parent', catID);
+				grSubs.query()
+
+				if(grSubs.hasNext()) {
+					//At least one subcategory found
+					categoryDetails.subcategories = [];
+					while (grSubs.next()) {
+						var subID = grSubs.getValue('sys_id')+"";
+						var category = getCategoryDetails(subID, level + 1);
+						categoryDetails.totalCount = categoryDetails.totalCount + category.totalCount;
+						categoryDetails.subcategories.push(category);
+						categoryDetails.showChildren = categoryDetails.showChildren || category.showChildren;
+					}
+				} else {
+					categoryDetails.subcategories = [];
+				}
+			}
+			else {
+				categoryDetails.totalCount = categoryDetails.count;
+			}
+			return categoryDetails;
+		} else {
+			return categoryDetails;
+		}
+
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-19 02:50:25</sys_created_on>
+        <sys_id>2ac60e9edb4e1050bbad468b3a96199b</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>LP Categories</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_2ac60e9edb4e1050bbad468b3a96199b</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-30 05:24:59</sys_updated_on>
+        <template><![CDATA[<div ng-class="{'hidden-xs' : hideCategoryWidgetInXS}" class="panel panel-{{::options.color}} category-widget no-border EdHead">
+  <div class="panel-heading">
+    <h2 class="h4 panel-title">
+      <span class="pull-right visible-xs" >
+      	<i class="fa fa-times-circle" ng-click="hideBrowseCategory()" aria-label="${Show Items}" tabindex="0"/>
+      </span>
+      <span ng-if="::options.glyph">
+        <fa name="{{::options.glyph}}" />
+      </span>{{::data.messages.catalogTitle}}</h2>
+  </div>
+  <ul class="list-group category-list" role="list" aria-label="${Categories}">
+    <li role="listitem" 
+        class="list-group-item text-overflow-ellipsis" 
+        ng-include="'category-template.html'" 
+        ng-repeat="category in data.categoriesList | limitTo: data.limit track by category.sys_id">
+    </li>
+  </ul>
+  <div class="panel-footer text-center" ng-if="data.showMore">
+    <a href="javascript:void(0)" role="button" class="text-center" ng-click="loadMore()" >{{::data.showMoreMsg}}</a>
+    <div class="text-muted text-center">
+      {{data.more_msg}}
+    </div>
+  </div>
+</div>
+<script type="text/ng-template" id="category-template.html">
+	<div ng-click="categorySelected(category)"
+  ng-keydown="handleKeyPressOnCategory($event, category)"
+		sn-focus="category.sys_id == data.categoryId"
+		ng-enabled="category.totalCount > 0"
+    ng-class="{true: 'text-active', false: ''}[category.sys_id == data.categoryId]"
+          tabindex="0" class="group-item group-item-primary" style="padding-left:{{getCategoryPadding(category.level + 1)}}">
+      <i ng-if="::category.subcategories.length > 0 && category.totalCount > category.count" 
+          class="l-h-1_6x pull-left fa collapse-icon" 
+          ng-class="{true: 'fa-minus-square-o', false: 'fa-plus-square-o'}[category.showChildren]" 
+          aria-label="{{category.showChildren? '${collapse category} ' + category.title : '${expand category} ' + category.title}}"
+          ng-click="displayChildren($event, category)"/></i>
+      <span class="badge pull-right pointer" ng-if="options.omit_badges != 'true' && data.largeDataSet != 'true'">{{::category.totalCount}}</span>
+      <span class="block text-overflow-ellipsis category" 
+				  id="{{::category.sys_id}}"
+          uib-tooltip="{{::category.title}} {{::category.catalog_tooltip}}"
+          tooltip-placement="top"
+          tooltip-enable="!isTouchDevice()"
+          tooltip-append-to-body="true">
+          {{::category.title}}
+          <span class="sr-only">${items}</span>
+      </span>
+    </div>
+  	<ul class="list-group sub-category-list list-bg-primary" role="list" aria-label="{{category.title}} ${subcategories}" ng-if="category.showChildren && category.subcategories.length > 0" ng-class="{true: 'no-indent', false: ''}[category.level > 2]">
+      <li role="listitem" 
+      		class="list-group-item text-overflow-ellipsis" 
+          ng-include="'category-template.html'" 
+          ng-repeat="category in category.subcategories track by category.sys_id" 
+          ng-if="category.totalCount > 0">
+      </li>
+  	</ul>
+</script>]]></template>
+    </sp_widget>
+</record_update>

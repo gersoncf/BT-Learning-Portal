@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Enroll in a course">483cc397db31d410bbad468b3a96193b</catalog_item>
+        <catalog_variable>IO:6b1cdfd3db71d410bbad468b3a96193e</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-14 00:51:53</sys_created_on>
+        <sys_id>a1bbf7e41b8e9810def5da09dc4bcb0c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>user</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_a1bbf7e41b8e9810def5da09dc4bcb0c</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-14 00:51:53</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Set up form">345bf3e41b8e9810def5da09dc4bcb03</ui_policy>
+        <variable>user</variable>
+        <variable_set/>
+        <visible>ignore</visible>
+    </catalog_ui_policy_action>
+</record_update>

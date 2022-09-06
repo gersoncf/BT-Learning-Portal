@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_btal_bt_learning.learning portal course designer" name="x_btal_bt_learning.learning portal course designer">bc5868261bf9d010def5da09dc4bcb92</contains>
+        <role display_value="x_btal_bt_learning.learning portal admin" name="x_btal_bt_learning.learning portal admin">74586cee1bf9d010def5da09dc4bcb02</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-07 04:51:52</sys_created_on>
+        <sys_id>b88f682a1b3dd010def5da09dc4bcb49</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_btal_bt_learning.learning portal course designer.x_btal_bt_learning.learning portal admin</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_user_role_contains_b88f682a1b3dd010def5da09dc4bcb49</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-07 04:51:52</sys_updated_on>
+    </sys_user_role_contains>
+</record_update>

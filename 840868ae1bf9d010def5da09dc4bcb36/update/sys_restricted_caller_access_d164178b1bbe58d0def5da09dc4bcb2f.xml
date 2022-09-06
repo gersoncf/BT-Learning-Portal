@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
+    <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <operation>read</operation>
+        <rca_type/>
+        <source>d65e4495c3331200e44574e1c1d3aeb2</source>
+        <source_scope display_value="Service Portal Surveys">67ac5062db10220035417878f0b8f5c4</source_scope>
+        <source_table>sp_widget</source_table>
+        <source_type>6</source_type>
+        <status>2</status>
+        <sys_class_name>sys_restricted_caller_access</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-27 23:12:01</sys_created_on>
+        <sys_id>d164178b1bbe58d0def5da09dc4bcb2f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>67ac5062db10220035417878f0b8f5c4</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_restricted_caller_access_d164178b1bbe58d0def5da09dc4bcb2f</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-27 23:12:01</sys_updated_on>
+        <target>840868ae1bf9d010def5da09dc4bcb36</target>
+        <target_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</target_scope>
+        <target_table>sys_app</target_table>
+        <target_type>3</target_type>
+    </sys_restricted_caller_access>
+</record_update>

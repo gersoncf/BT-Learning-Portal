@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Units" section_id="78aee370dbda5850bbad468b3a9619cd" sys_domain="global" table="x_btal_bt_learning_lp_course" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>course_units</element>
+            <position>0</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-27 04:48:58</sys_created_on>
+            <sys_id>05ae2770dbda5850bbad468b3a96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Units" display_value="Units" name="x_btal_bt_learning_lp_course" sys_domain="global" view="Default view">78aee370dbda5850bbad468b3a9619cd</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-27 04:48:58</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Units</caption>
+            <header>false</header>
+            <name>x_btal_bt_learning_lp_course</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-27 04:48:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>78aee370dbda5850bbad468b3a9619cd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_btal_bt_learning_lp_course</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_section_78aee370dbda5850bbad468b3a9619cd</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-27 04:48:57</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

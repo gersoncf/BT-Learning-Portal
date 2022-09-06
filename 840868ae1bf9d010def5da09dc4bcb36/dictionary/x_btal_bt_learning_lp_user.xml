@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="Learning Portal User" max_length="40" name="x_btal_bt_learning_lp_user" sizeclass="34" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="History" max_length="4000" name="history" type="journal"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Manager" max_length="32" name="manager" reference="x_btal_bt_learning_lp_user" type="reference"/>
+        <element label="Notes" max_length="4000" name="notes" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" display="true" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element default="not_requested" label="User Approved" max_length="40" name="user_approved" type="string"/>
+        <index name="index">
+            <element name="manager"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

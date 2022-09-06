@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="skill_level" table="x_btal_bt_learning_lp_user_skills" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>skill_level</element>
+            <name>x_btal_bt_learning_lp_user_skills</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-22 00:08:04</sys_created_on>
+            <sys_id>e16ef017db021450bbad468b3a9619a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>skill_level</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_choice_x_btal_bt_learning_lp_user_skills_skill_level</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-22 00:08:04</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>skill_level</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Beginning</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_user_skills</name>
+            <sequence>100</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-22 00:08:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fe9ef417db021450bbad468b3a96195a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-22 00:08:59</sys_updated_on>
+            <value>beginning</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>skill_level</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Intermediate</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_user_skills</name>
+            <sequence>200</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-22 00:08:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a96ef017db021450bbad468b3a9619a4</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-22 00:08:42</sys_updated_on>
+            <value>intermediate</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>skill_level</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Advanced</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_user_skills</name>
+            <sequence>300</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-22 00:09:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c6aef417db021450bbad468b3a961974</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-22 00:09:11</sys_updated_on>
+            <value>advanced</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

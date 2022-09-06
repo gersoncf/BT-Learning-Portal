@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="User Skills" max_length="40" name="x_btal_bt_learning_lp_user_skills" sizeclass="64" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Course" max_length="32" name="course" reference="x_btal_bt_learning_lp_course" type="reference"/>
+        <element label="Expiry Date" max_length="40" name="expiry_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" display="true" label="Skill" max_length="32" name="skill" reference="x_btal_bt_learning_lp_skill_library" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Skill Level" max_length="40" name="skill_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Beginning" sequence="100" value="beginning"/>
+                <element inactive_on_update="false" label="Intermediate" sequence="200" value="intermediate"/>
+                <element inactive_on_update="false" label="Advanced" sequence="300" value="advanced"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="User" max_length="32" name="user" reference="x_btal_bt_learning_lp_user" type="reference"/>
+        <index name="index">
+            <element name="skill"/>
+        </index>
+        <index name="index2">
+            <element name="course"/>
+        </index>
+        <index name="index3">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

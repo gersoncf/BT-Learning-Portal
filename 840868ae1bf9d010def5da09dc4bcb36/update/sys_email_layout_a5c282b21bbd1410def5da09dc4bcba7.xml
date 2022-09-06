@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_email_layout">
+    <sys_email_layout action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <advanced_layout/>
+        <description/>
+        <layout><![CDATA[<p><span style="font-family: verdana, geneva;"></span>&nbsp;</p>
+<div class="WordSection1">
+<div style="font-family: montserrat, verdana, geneva; font-size: 10pt;" align="center">
+<table class="MsoNormalTable" style="background: white; height: 171.5px;" border="0" width="700" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td colspan="3" style="border-width: 2px 2px 0px; border-image: initial; padding-left: 0px; text-align: left; vertical-align: middle; background-color: #ffffff; background-repeat: no-repeat; background-size: contain; width: 674px;"><img src="LP_email_header.pngx" vspace="0" hspace="0" border="" align="baseline" alt="" title="" width="700" style="vspace: 0px; hspace: 0px; align: baseline;" /></td>
+</tr>
+<tr style="height: 39px;">
+<td colspan="3" style="padding: 12.5pt 26.3pt 15.65pt 31.3pt; border-width: 0px 2px; border-image: initial; height: 39px; width: 617.219px; border-color: initial #002c2b initial #002c2b; border-style: initial solid initial solid;">
+<p><span style="font-family: verdana, geneva; font-size: 12pt;">${notification:body}</span></p>
+</td>
+</tr>
+<tr style="height: 23px;">
+<td colspan="2" style="border-width: 0px 2px 2px; border-image: initial; margin-top: 20px; text-align: left; vertical-align: middle; padding-left: 0px; background-size: cover; background-position: right -50px bottom; height: 23px; width: 674px; border-color: initial #002c2b #002c2b #002c2b; border-style: initial solid solid solid;"><span style="color: #454545; font-family: Montserrat, -apple-system;"><span style="font-family: verdana, geneva;"><a href="/sp" title="BT Service Portal" style="color: #454545; text-decoration: none;"><strong><span style="font-size: 12pt;"><img src="LP_email_footer.pngx" vspace="0" hspace="0" border="" align="baseline" alt="" title="" width="700" style="vspace: 0px; hspace: 0px; align: baseline;" /></span></strong></a></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p></p>
+<style><!--
+body {background<span id="CmCaReT"></span>-color: #ececec}
+--></style>]]></layout>
+        <name>Learning Portal Layout</name>
+        <sys_class_name>sys_email_layout</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-08 07:59:48</sys_created_on>
+        <sys_id>a5c282b21bbd1410def5da09dc4bcba7</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Learning Portal Layout</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_email_layout_a5c282b21bbd1410def5da09dc4bcba7</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-08 09:38:18</sys_updated_on>
+    </sys_email_layout>
+</record_update>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Incident" source="com.snc.incident">ab4187cfdb040110a562f132f39619df</dependency>
+        <min_version>1.0.0</min_version>
+        <sys_created_by>Osbert.Chor@btautomation.com.au</sys_created_by>
+        <sys_created_on>2022-04-23 03:27:16</sys_created_on>
+        <sys_id>237561591b4fc910100c55fa274bcbf1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_updated_by>Osbert.Chor@btautomation.com.au</sys_updated_by>
+        <sys_updated_on>2022-04-23 03:27:16</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

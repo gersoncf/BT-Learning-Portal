@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time/>
+        <name>Check for lapsed due dates</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Edmund Davis">6e380833dbd80d10a562f132f3961909</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2020-08-31 05:27:34</run_start>
+        <run_time>1969-12-31 17:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[//Cancel Enrolments after Due Date if status is enrolled or in_progress.
+var grOD = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+grOD.addActiveQuery();
+//grOD.addNotNullQuery('date_due');
+//grOD.addNullQuery('parent');
+//grOD.addQuery('status','enrolled').addOrCondition('status','in_progress');
+grOD.addEncodedQuery('date_due<javascript:gs.beginningOfToday()^status=enrolled^ORstatus=in_progress^parentISEMPTY^date_dueISNOTEMPTY');
+grOD.query();
+
+while(grOD.next()) {
+	gs.info('ED>>>>> Record found: ' + grOD.getDisplayValue('course') + ' } ' + grOD.getDisplayValue('user'));
+	var od_notes = grOD.getDisplayValue('course') + " was cancelled because the course was not completed and the due date has passed.";
+	grOD.setValue('status', 'cancelled');
+	grOD.setValue('active', 'false');
+	grOD.update();
+	
+	//Cancel any subunits.
+	var grSD = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+	grSD.addQuery('parent',grOD.getValue('sys_id').toString());
+	grSD.addEncodedQuery('status!=cancelled');
+	//grSD.addQuery('status','!=','cancelled');
+	grSD.query();
+	while (grSD.next()) {
+		grSD.setValue('status', 'cancelled');
+		grSD.update();
+	}
+	
+	//Write a note to the user record detailing the cancellation.
+	var grUOD = new GlideRecord('x_btal_bt_learning_lp_user');
+	grUOD.addQuery('sys_id', grOD.getValue('user').toString());
+	grUOD.query();
+	if (grUOD.next()) {
+		grUOD.history = od_notes;
+		grUOD.update();
+	}
+}
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-31 23:24:31</sys_created_on>
+        <sys_id>979d3f941b439cd0def5da09dc4bcba7</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Check for lapsed due dates</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sysauto_script_979d3f941b439cd0def5da09dc4bcba7</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-31 23:24:44</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

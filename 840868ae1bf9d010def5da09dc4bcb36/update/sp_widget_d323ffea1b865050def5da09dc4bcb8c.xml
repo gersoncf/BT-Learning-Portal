@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	spUtil.recordWatch($scope, "x_btal_bt_learning_lp_user_course_status", "user.userDYNAMIC90d1921e5f510100a9ad2572f2b477fe", function(name, data) {
+		c.server.update();
+	});
+	spUtil.recordWatch($scope, "x_btal_bt_learning_lp_user_skills", "user.userDYNAMIC90d1921e5f510100a9ad2572f2b477fe", function(name, data) {
+		c.server.update();
+	});
+	
+}
+
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>$edPanCol: #79948a;
+
+.cont-fluid {
+ 	width: 100vw; 
+  position: relative;
+  left: 0px;
+  right: 0px;
+}
+.StatBar {
+  font-family: 'Montserrat', sans-serif;
+  //font-size: 12px;
+  vertical-align: baseline;
+}
+ .btns {
+ margin-top: 2px;  
+}
+.progress {
+  margin-bottom: unset;
+}
+.theme-bkg {
+	background-color: $breadcrumb-color;
+}
+
+.edPanel {
+  border: 1px solid $brand-primary;
+  &amp; .panel-heading {
+    color: #000;
+    background-color: $breadcrumb-color;
+    border-color: $brand-primary;
+  }
+}
+.edCard {
+  font-size: 80%;
+  color: #000;
+  padding-left:2px;
+  padding-right: 2px;
+}
+
+
+.panel-title a::after {
+	content: "\f107";
+	color: #000;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "FontAwesome";
+  font-size: 120%;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.panel-title a[aria-expanded="true"]::after {
+	content: "\f106";
+  .rotate(@180);
+}
+
+
+.Expired {
+  color: red;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_status</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>My Learning Status</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var userID = gs.getUserID();
+	
+	var cURL = "?id=lp_active_training&aN=false&table=x_btal_bt_learning_lp_user_course_status&filter=user.userDYNAMIC90d1921e5f510100a9ad2572f2b477fe"
+	var bURL = "?view=userview&id=lp_course_status&table=x_btal_bt_learning_lp_user_course_status&sys_id="
+	var cVUrl = "?id=lp_enroll&sys_id=483cc397db31d410bbad468b3a96193b&sysparm_category=2c0b59874f7b4200086eeed18110c71f";  //&course_id=5a1e9f351bded850def5da09dc4bcbb0&user_id=96425f371b865450def5da09dc4bcbda"
+
+	
+	//Get Data from the Course Status table
+	var grStat = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+	grStat.addEncodedQuery('user.userDYNAMIC90d1921e5f510100a9ad2572f2b477fe');
+	grStat.addNullQuery('parent');  //Only retreive courses and units that arent part of a larger course.
+	//grStat.addQuery('status','enrolled').addOrCondition('status','in_progress');
+	grStat.orderByDesc('sys_created_on');
+	grStat.query();
+	
+	data.todos = [];
+		
+	data.CourseData = [];
+	data.Enrolled = [];
+	data.InProg = [];
+	data.Complete = [];
+	data.NYC = [];
+	var courses = "";
+	
+	
+	while(grStat.next()) {	
+		
+		var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+		grC.addQuery('sys_id', grStat.getValue('course'));
+		grC.query();
+		
+		if (grC.next()) {
+			var crs_type = grC.getValue('type');
+			
+		//Courses and to-dos.
+		//1. Links to quizzes/acknowledgements
+		if ((crs_type=='quiz' || crs_type=='kb') &&grStat.getValue('active')==true) {
+			var todos = {
+				'course': grC.getDisplayValue('name'),
+				'type': grC.getValue('type'),
+				'date_due': grStat.getDisplayValue('date_due')
+			}	
+			if(todos.type == 'quiz'){
+				todos.label = 'Take quiz: ';
+				todos.url = '?id=take_survey&instance_id=' + grStat.getValue('enrolled_quiz_id');	
+			} else {
+				
+				todos.label = 'Read and Acknowledge: ';
+				todos.url = grStat.getValue('url');
+				if(!todos.url) {
+					todos.url = '?id=kb_article&sys_id=' + grStat.getValue('knowledge_article') + '&enrol_id=' + grStat.getValue('sys_id');					
+				}
+			}
+			data.todos.push(todos);	
+		}
+		}
+
+	//2. Links to enrolled courses
+	
+	
+	
+	//3. Link to personal overview.
+
+
+		//Check that this course hasn't already been recorded.
+		if (courses.indexOf(grStat.getValue('course')) > -1) {
+			continue;
+		}
+		courses+=grStat.getValue('course') + ",";
+		
+		var rec = {
+			'Course':grStat.getDisplayValue('course'),
+			'course_id': grStat.getValue('course'),
+			'URL': cVUrl + '&course_id=' + grStat.getValue('course') + '&user_id=' + userID,//  grStat.getValue('sys_id'),
+			'Enrolled': grStat.getDisplayValue('date_enrolled'),
+			'Completed': grStat.getDisplayValue('date_completed'),
+			'Expires': grStat.getDisplayValue('expiry_date'),
+			'Status': grStat.getValue('status')
+		}
+
+		//Get sub-unit details, if any
+		var grUnits = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grUnits.addQuery('parent', grStat.sys_id);		
+		grUnits.query();
+		rec.p_comp = 0;
+		rec.p_nyc = 0;
+		rec.p_inp = 0;
+		rec.unitCount = 0;
+		rec.subunits = [];
+		while (grUnits.next()) {
+			var subs = {
+				'Unit': grUnits.getDisplayValue('course'),
+				'status': grUnits.getValue('status'),
+				'DateComp': grUnits.getDisplayValue('date_completed')
+			}
+			rec.unitCount++;
+			if(subs.status == 'complete_competent') {
+				rec.p_comp++;
+			} else {
+				if(subs.status=='complete_nyc'){
+					rec.p_nyc++;
+				}	else {
+					rec.p_inp++;
+				}
+			}
+			
+			rec.subunits.push(subs);
+		}
+		if(rec.unitCount>0){
+			rec.percentComp = rec.p_comp/rec.unitCount;	
+			rec.percentNYC = rec.p_nyc/rec.unitCount;
+			rec.percentInP = rec.p_inp/rec.unitCount;
+			rec.pc_width = rec.percentComp*100;
+			rec.nyc_width = rec.percentNYC*100;
+			rec.inP_width = rec.percentInP*100;
+		}
+		
+
+		//Add the data to the relevant collection.
+		switch (grStat.getValue('status')){
+			case 'enrolled':
+			case 'in_progress':
+				rec.State= 'Enrolled/In Progress';
+				rec.ViewAll =  cURL + "^status=enrolled^ORstatus=in_progress";
+				data.Enrolled.push(rec);				
+				break;
+			/*case 'in_progress':
+				rec.State= 'In Progress';
+				rec.ViewAll = cURL + "^status=in_progress"
+				data.InProg.push(rec);
+				break;
+			case 'complete_competent':
+				rec.State= 'Competent';
+				rec.Primary='true';
+				rec.ViewAll = cURL + "^status=complete_competent";
+				data.Complete.push(rec);
+				break;*/
+			case 'complete_nyc':
+				rec.State= 'Not Yet Competent';
+				rec.Danger='true';
+				rec.ViewAll= cURL + "^status=complete_nyc";
+				data.NYC.push(rec);
+				break;
+		}
+	}				
+	if (data.Enrolled.length > 0 || data.InProg.length > 0 || data.Complete.length>0 || data.NYC.length>0)
+		data.NoProg = 'false';			
+
+
+	//if (enrolled == 0 && InProgress==0 && Complete_comp == 0 && Complete_nyc==0){
+	//rec.NoProg = 'true';
+	//}
+	//data.Enrolled = enrArr;
+	data.CourseData.push(data.Enrolled);
+	data.CourseData.push(data.InProg);
+	data.CourseData.push(data.Complete);
+	data.CourseData.push(data.NYC);
+
+
+	/* SKILLS ******************************************************************************************************************/
+	
+	var sklURL = "?id=lp_form&table=x_btal_bt_learning_lp_user_skills&view=sp&sys_id="
+	var sklVA_URL = "?id=lp_active_training&aN=false&table=x_btal_bt_learning_lp_user_skills&filter=active=true^user.user.sys_idSTARTSWITH" + userID;	
+	
+	//Get Data from the user skills table.
+	var grSkills = new GlideRecord('x_btal_bt_learning_lp_user_skills');
+	grSkills.addEncodedQuery('user.userDYNAMIC90d1921e5f510100a9ad2572f2b477fe');
+	grSkills.addNotNullQuery('skill');
+	grSkills.query();
+	
+	data.Skills1 = [];
+	data.Adv = [];
+	data.Int = [];
+	data.Beg = [];
+	data.NotC = [];
+	
+	if (!grSkills.hasNext()) {
+		data.noSkills = 'Complete training and assessment to add competencies to your profile.'
+	} else {
+		data.noSkills = '';
+		
+		while (grSkills.next()){
+				
+			var recS = {
+				'sys_id': grSkills.getValue('sys_id'),
+				'Name':grSkills.getDisplayValue('skill'),
+				'Level':grSkills.getDisplayValue('skill_level'),
+				'Added':grSkills.getDisplayValue('sys_created_on'),
+				'Expires': grSkills.getDisplayValue('expiry_date'),
+				'Course': grSkills.getDisplayValue('course'),
+				'URL': sklURL + grSkills.getValue('sys_id')
+			}
+			
+			
+			/*	var gda = new GlideDate()
+				var gdAdd = gda.setValue(grSkills.getValue('sys_created_on'));
+				if(gdAdd) {
+					recS.Added= gdAdd.getByFormat('dd MMM yy');	
+				}*/
+				
+			if(recS.Expires) {
+				var Gdt = new GlideDateTime();
+				var Exp = new GlideDateTime();
+				Exp.setValue(recS.Expires);
+				recS.expSoon = 'false';
+				recS.expTime = Exp.getNumericValue() - Gdt.getNumericValue();
+				if(recS.expTime <=2592000000) {   //One Month
+					recS.expSoon = 'true';
+				}
+				//var Edate = gdA.setValue(grSkills.getValue('expiry_date'));	
+				//recS.Expires= Edate.getByFormat('dd MMM yy');
+			}
+			switch(recS.Level) {
+				case 'Beginning':
+					recS.Colour = 'edPanel';
+					recS.ViewAll = sklVA_URL +  "^skill_level=beginning";
+					data.Beg.push(recS);
+					break;
+				case 'Intermediate':
+					recS.Colour = 'edPanel';
+					recS.ViewAll = sklVA_URL +  "^skill_level=intermediate";
+					data.Int.push(recS);
+					break;
+				case 'Advanced':
+					recS.Colour = 'panel-primary';
+					recS.ViewAll = sklVA_URL +  "^skill_level=advanced";
+					data.Adv.push(recS);
+					break;
+				default:
+					recS.Level = 'Unclassified'
+					recS.Colour = 'panel-info';
+					recS.ViewAll = sklVA_URL + 'skill_levelNOT INbeginning,intermediate,advanced';
+					data.NotC.push(recS);
+					break;
+			}
+		}	
+	}
+	
+	data.Skills1.push(data.Beg);	
+	data.Skills1.push(data.Int);
+	data.Skills1.push(data.Adv);
+	data.Skills1.push(data.NotC);
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 05:22:27</sys_created_on>
+        <sys_id>d323ffea1b865050def5da09dc4bcb8c</sys_id>
+        <sys_mod_count>417</sys_mod_count>
+        <sys_name>My Learning Status</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_d323ffea1b865050def5da09dc4bcb8c</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-16 05:07:16</sys_updated_on>
+        <template><![CDATA[<div class="row StatBar">  
+  
+  <!--COURSES -->
+  <div class="col-md-6 panel panel-default">
+    <h3>
+      Current Course Status
+    </h3>
+     <div ng-if="data.NoProg=='true'">No course history yet.  Boo.  Sadface.</div>
+    <p ng-if="data.NoProg=='false'">
+      Click a heading to see further detail.
+    </p>
+    <div ng-if="data.NoProg=='true'">No course history yet.  Boo.  Sadface.</div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- Current To-dos-->
+        
+      <div class="panel panel-danger" ng-if="data.todos.length>0">
+        <div class="panel-heading" role="tab" id="ToDos-Head">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#ToDos-List" aria-expanded="true" aria-controls="ToDos-List" >
+              <span class="text-overflow" width="60%">My to-do list</span>
+              <span ng-if="data.todos.length> 0" class="badge pull-right">{{data.todos.length}}</span>
+            </a>
+          </h4>
+        </div>
+        <div id="ToDos-List" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="ToDos-Head">  
+          <ul class="list-group">
+            <li class="list-group-item text-overflow" ng-repeat="todo in data.todos">
+              <a ng-href="{{todo.url}}" title="{{todo.label}}{{todo.course}}">
+                <div><b>{{todo.label}}{{todo.course}}</b>
+                  <span class="pull-right edCard">
+                    <span ng-if="todo.data_due"><i class="fa fa-calendar" title="Completion due by {{todo.date_due}}"></i>&nbsp;Due: {{todo.date_due}}</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>   
+        </div>
+      
+      <div class="panel" ng-class="{'panel-danger': Course[0].Danger,'panel-primary': Course[0].Primary, 'edPanel':!Course[0].Primary && !Course[0].Danger}" ng-repeat="Course in data.CourseData" ng-if="Course.length>0">  
+        <div class="panel-heading" role="tab" id="{{Course[0].Status}}Head">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{Course[0].Status}}List" aria-expanded="false" aria-controls="{{Course[0].Status}}List" >
+              <span class="text-overflow" width="60%">{{Course[0].State}}</span>
+              <span ng-if="Course.length> 0" class="badge pull-right">{{Course.length}}</span>
+              <span ng-if="!Course" class="label pull-right">No items</span>
+            </a>
+          </h4>
+        </div>
+        <div id="{{Course[0].Status}}List" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{Course[0].Status}}">  
+          <ul class="list-group">
+            <li class="list-group-item text-overflow" ng-repeat="enr in Course | limitTo: 3">
+              <a href="{{enr.URL}}" title="View {{enr.Course}}">
+                <div><b>{{enr.Course}}</b>
+                  <span class="pull-right edCard">
+                    <span ng-if="enr.Completed"><i class="fa fa-calendar" title="Completed {{enr.Completed}}"></i>&nbsp;Completed: {{enr.Completed}}</span>
+                    <span ng-if="!enr.Completed"><i class="fa fa-calendar" title="Enrolled {{enr.Enrolled}}"></i>&nbsp;Enrolled: {{enr.Enrolled}}</span>
+                    <span ng-if="enr.Expires"><i class="fa fa-clock-o" title="Expiry Date"></i>&nbsp;Date Expires: {{enr.Expires}}</span>
+                  </span>
+                </div>
+                <div style="max-width:95%;" ng-if="enr.unitCount>0" class = "progress">
+                  <div ng-if="enr.pc_width>0" title="{{enr.pc_width}}% Complete - Competent" class="progress-bar progress-bar-striped" role="progressbar" style ="width: {{enr.pc_width}}%;" aria-valuenow="{{enr.pc_width}}" aria.valuemin="0" aria.valuemax="100">{{enr.pc_width}}% Competent
+                    <span class="sr-only">{{enr.pc_width}}% Complete - Competent</span>
+                  </div>
+                  <div ng-if="enr.nyc_width>0"  title="{{enr.nyc_width}}% Complete - Not yet competent" class="progress-bar progress-bar-striped progress-bar-danger" role="progressbar" style ="width: {{enr.nyc_width}}%;" aria-valuenow="{{enr.nyc_width}}" aria.valuemin="0" aria.valuemax="100">{{enr.nyc_width}}% NYC
+                    <span class="sr-only">{{enr.nyc_width}}% Complete - Not Yet Competent</span>
+                  </div>
+                  <!--<div ng-if="enr.inP_width>0"  title="{{enr.inP_width}}% Still in progress" class="progress-bar progress-bar-striped" role="progressbar" style ="width: {{enr.inP_width}}%;" aria-valuenow="{{enr.inP_width}}" aria.valuemin="0" aria.valuemax="100">{{enr.inP_width}}% In progress
+                    <span class="sr-only">{{enr.inP_width}}% Still in progress</span>
+                  </div>-->
+
+                </div>
+              </a>
+            </li>
+            <li class="list-group-item list-group-item-success" ng-if="Course.length > 3"><a href="{{Course[0].ViewAll}}" title="View All: {{Course[0].State}}"><b>View All: {{Course[0].State}}</b></a></li>
+          </ul>
+        </div> 
+      </div>
+    </div>
+    
+  
+  </div>
+  
+  <!-- SKILLS -->
+  <div class="col-md-6 panel panel-default">
+    <h3>
+      Current Competencies
+    </h3>
+    <p ng-if="data.noSkills.length>0">
+      {{data.noSkills}}
+    </p>
+    <p ng-if="data.noSkills.length==0">
+      Click a heading to see further detail.
+    </p>
+    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+      <div class="panel {{Skill[0].Colour}}" ng-repeat="Skill in data.Skills1" ng-if="Skill.length>0">
+        <div class="panel-heading" role="tab" id="{{Skill[0].Level}}Head">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#{{Skill[0].Level}}List" aria-expanded="false" aria-controls="{{Skill[0].Status}}List" >
+              <span class="text-overflow" width="60%">{{Skill[0].Level}} Level Competencies</span>
+              <span ng-if="Skill.length> 0" class="badge pull-right">{{Skill.length}}</span>
+              <span ng-if="!Skill" class="label pull-right">No items</span>
+            </a>
+          </h4>
+        </div>
+        <div id="{{Skill[0].Level}}List" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{Skill[0].Level}}">  
+          <ul class="list-group">
+            <li class="list-group-item"  ng-repeat="skl in Skill | limitTo: 3">
+              <a href="{{skl.URL}}" title="View {{skl.Name}}">
+                <i ng-if="skl.expSoon == 'true' && skl.expTime<=0" class="fa fa-ban Expired" title="Competency has lapsed"></i>
+                <i ng-if="skl.expSoon == 'true' && skl.expTime>0" class="fa fa-clock-o Expired" title="Competency will lapse soon"></i>
+                <b ng-class="{'Expiring': skl.expSoon=='true' && skl.expTime > 0, 'Expired': skl.expSoon=='true' && skl.expTime <=0 }">{{skl.Name}}</b>
+                <div class="pull-right edCard">
+                  <span><i class="fa fa-calendar" title="Date added"></i>&nbsp;Earned: {{skl.Added}}</span>
+                  <span class="Expired" ng-if="skl.expSoon == 'true' && skl.expTime>0"> | <i class="fa fa-clock-o" title="Expires: {{skl.Expires}}"></i>&nbsp;Expires: {{skl.Expires}}</span>
+                  <span class="Expired" ng-if="skl.Expires && skl.expTime <= 0">| <i class="fa fa-clock-o" title="Expired: {{skl.Expires}}"></i>&nbsp;Expired: {{skl.Expires}}</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-group-item list-group-item-success" ng-if="Skill.length > 3"><a href="{{Skill[0].ViewAll}}" title="View All {{Skill[0].Level}} Competencies"><b>View All {{Skill[0].Level}} Competencies</b></a></li>
+          </ul>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+]]></template>
+    </sp_widget>
+</record_update>

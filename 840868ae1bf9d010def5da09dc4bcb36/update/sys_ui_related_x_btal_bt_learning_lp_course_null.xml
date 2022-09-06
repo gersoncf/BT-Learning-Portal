@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_related sys_domain="global" table="x_btal_bt_learning_lp_course" version="2" view="">
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Course/Unit - Default view" name="x_btal_bt_learning_lp_course" related_list="NULL" sys_domain="global" view="Default view">d3b06ff51bded850def5da09dc4bcbe5</list_id>
+            <order_by/>
+            <position>0</position>
+            <related_list>REL:b550e7f51bded850def5da09dc4bcb01</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-30 06:22:09</sys_created_on>
+            <sys_id>dfb06ff51bded850def5da09dc4bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-30 06:22:09</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Course/Unit - Default view" name="x_btal_bt_learning_lp_course" related_list="NULL" sys_domain="global" view="Default view">d3b06ff51bded850def5da09dc4bcbe5</list_id>
+            <order_by/>
+            <position>1</position>
+            <related_list>x_btal_bt_learning_lp_course.prerequisite</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-30 06:22:09</sys_created_on>
+            <sys_id>57b06ff51bded850def5da09dc4bcbe6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-30 06:22:09</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Course/Unit - Default view" name="x_btal_bt_learning_lp_course" related_list="NULL" sys_domain="global" view="Default view">d3b06ff51bded850def5da09dc4bcbe5</list_id>
+            <order_by/>
+            <position>2</position>
+            <related_list>x_btal_bt_learning_lp_user_course_status.course</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-30 06:22:09</sys_created_on>
+            <sys_id>dbb06ff51bded850def5da09dc4bcbe6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-30 06:22:09</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Course/Unit - Default view</calculated_name>
+            <filter/>
+            <name>x_btal_bt_learning_lp_course</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-30 06:22:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d3b06ff51bded850def5da09dc4bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Course/Unit - Default view</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_related_x_btal_bt_learning_lp_course_null</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-30 06:22:09</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>

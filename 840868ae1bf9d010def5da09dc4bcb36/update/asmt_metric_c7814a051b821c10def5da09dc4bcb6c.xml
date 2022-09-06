@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="asmt_metric">
+    <asmt_metric action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <add_info_label>Additional Information</add_info_label>
+        <allow_add_info>false</allow_add_info>
+        <allow_not_applicable>false</allow_not_applicable>
+        <auto_gen>false</auto_gen>
+        <category display_value="Intro to ServiceNow">478146051b821c10def5da09dc4bcbea</category>
+        <cond_question>always</cond_question>
+        <condition/>
+        <context/>
+        <correct_answer/>
+        <correct_answer_checkbox/>
+        <correct_answer_choice>0f814a051b821c10def5da09dc4bcb78</correct_answer_choice>
+        <correct_answer_template/>
+        <correct_answer_yesno/>
+        <datatype>choice</datatype>
+        <default_value_field/>
+        <depends_on/>
+        <description/>
+        <details/>
+        <displayed_when/>
+        <displayed_when_checkbox/>
+        <displayed_when_template/>
+        <displayed_when_yesno/>
+        <duration/>
+        <field_validation/>
+        <mandatory>true</mandatory>
+        <max>3</max>
+        <max_weight/>
+        <maximum_normalization_input>false</maximum_normalization_input>
+        <method>assessment</method>
+        <metric_type display_value="Intro to ServiceNow">768146051b821c10def5da09dc4bcbe1</metric_type>
+        <min>1</min>
+        <name>New Choice</name>
+        <order>100</order>
+        <plugin/>
+        <question>What do the letters HTTP stand for?</question>
+        <randomize_answers>true</randomize_answers>
+        <read_only>false</read_only>
+        <reference_table/>
+        <scale>high</scale>
+        <scored>true</scored>
+        <script><![CDATA[// The following variables are available:  // - primary: contains the sys_id of the assessable object to be evaluated  // - string_result: the script sets the display string value for this metric to this variable  // - actual_result: the script sets the actual value for this metric to this variable  // - scaled_result: the script sets the scaled value (used in calculations) for this metric to this variable  //  // For example: // var gr = new GlideRecord('cmdb_ci'); // gr.addQuery('manufacturer', primary); // gr.query(); // actual_result = gr.getRowCount(); // string_result = actual_result + ''; // if (actual_result &gt; 100) scaled_result = 5; // else scaled_result = 1;]]></script>
+        <source_field/>
+        <string_option>wide</string_option>
+        <sys_class_name>asmt_metric</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-15 05:15:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c7814a051b821c10def5da09dc4bcb6c</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>New Choice</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>asmt_metric_c7814a051b821c10def5da09dc4bcb6c</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-03 00:09:48</sys_updated_on>
+        <template/>
+        <weight>10</weight>
+    </asmt_metric>
+    <sys_translated_text action="delete_multiple" query="documentkey=c7814a051b821c10def5da09dc4bcb6c"/>
+</record_update>

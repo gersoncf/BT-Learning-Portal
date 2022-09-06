@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>h4, p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btns {
+ margin-top: 4px;
+ margin-bottom: 4px;
+ font-family: 'Montserrat', sans-serif;
+}
+ </css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_actions</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>LP Actions</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	//Get Data from the Course Status table
+	var UserID = gs.getUserID();
+	
+data.roles = '';
+	data.tutorplus = false;
+	data.ownerplus = false;
+	data.coursedesplus = false;
+	data.lpadmin = false;
+	
+	var grUR = new GlideRecord('sys_user_has_role');
+	grUR.addQuery('state', 'active');
+	grUR.addQuery('user', UserID);
+	grUR.addEncodedQuery('roleLIKELearning Portal');
+	grUR.query();
+	
+	while (grUR.next()){
+		
+		switch (grUR.getDisplayValue('role')){
+			case 'x_btal_bt_learning.learning portal admin':
+				data.lpadmin = true;
+				data.coursedesplus = true;
+				data.ownerplus = true;
+				data.tutorplus = true;
+				break;
+			case 'x_btal_bt_learning.learning portal course designer':
+				data.coursedesplus = true;
+				break;
+			case 'x_btal_bt_learning.learning portal owner':
+				data.ownerplus = true;
+				data.coursedesplus = true;
+				data.tutorplus = true;
+				break;
+			case 'x_btal_bt_learning.learning portal tutor':
+				data.tutorplus = true;
+				break;
+		}
+		
+		
+		if(data.roles.length>0){
+			data.roles +=",";
+		}
+		data.roles += grUR.getDisplayValue('role');
+		
+	}
+	gs.addInfoMessage(data.roles);
+	
+	
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 22:51:38</sys_created_on>
+        <sys_id>d8536b3edb4e9050bbad468b3a9619e6</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>LP Actions</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_d8536b3edb4e9050bbad468b3a9619e6</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-07-24 01:13:36</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="panel-title">Actions</h4>
+  </div>  
+  <div class="panel-body">
+	Options will appear below based on your permissions.
+    <div class= "col-md-12 btns"><a class="btn btn-primary" title="Browse Training and Courses" href="?id=lp_courses">Browse Training and Courses</a><span class="pull-right">See what training is available.</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.tutorplus==true" class="btn btn-default" title="Update a User's Results" href="?id=lp_active_training&table=x_btal_bt_learning_lp_user_course_status&filter=active=true">Update results</a><span class="pull-right">Update a user's results</span></div>
+  	<div class= "col-md-12 btns"><a ng-if="data.coursedesplus==true" class="btn btn-default" title="Add new skills" href="?id=lp_active_training&table=x_btal_bt_learning_lp_skill_library&filter=active=true">Add new skills</a><span class="pull-right">Add new skills to the library</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.coursedesplus==true" class="btn btn-default" title="Add a new course" href="?id=lp_enroll&sys_id=3ea97fa9dbca9c10bbad468b3a9619e8">Add new course</a><span class="pull-right">Add a new course to the catalog.</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.ownerplus==true" class="btn btn-default" title="Add a new user" href="?id=lp_enroll&sys_id=3a97aed9db4a5c10bbad468b3a96190e">Add new user</a><span class="pull-right">Add a new user to the Learning Portal.</span></div>
+    
+  </div>
+
+  <!--<div class="list-group">
+    <a class= "list-group-item" title="Browse Training and Courses" href="?id=lp_courses">
+      <h4>Browse Training and Courses</h4>See what training is available.
+    </a>
+    <a class= "list-group-item" ng-if="data.tutorplus==true" title="Update a User's Results" href="?id=lp_active_training&table=x_btal_bt_learning_lp_user_course_status&filter=active=true">
+      <h4>Update results</h4>Update a user's results
+    </a>
+    <a class= "list-group-item"  ng-if="data.coursedesplus==true"  title="Add a new course" href="?id=lp_enroll&sys_id=3ea97fa9dbca9c10bbad468b3a9619e8">
+      <h4>Add new course</h4>Add a new course to the catalog.</a>
+    <a class= "list-group-item"  ng-if="data.ownerplus==true" title="Add a new user" href="?id=lp_enroll&sys_id=3a97aed9db4a5c10bbad468b3a96190e">
+      <h4>Add new user</h4><span>Add a new user to the Learning Portal.</span></a>
+  </div>  
+</div>
+  
+<div class="row StatBar">    
+    <div class="col-md-12">
+    <h4><b>Learning Portal Options:</b></h4>
+    </div>
+    <div class= "col-md-12 btns"><a class="btn btn-primary" title="Browse Training and Courses" href="?id=lp_courses">Browse Training and Courses</a><span class="pull-right">See what training is available.</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.tutorplus==true" class="btn btn-default" title="Update a User's Results" href="?id=lp_active_training&table=x_btal_bt_learning_lp_user_course_status&filter=active=true">Update results</a><span class="pull-right">Update a user's results</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.coursedesplus==true" class="btn btn-default" title="Add a new course" href="?id=lp_enroll&sys_id=3ea97fa9dbca9c10bbad468b3a9619e8">Add new course</a><span class="pull-right">Add a new course to the catalog.</span></div>
+    <div class= "col-md-12 btns"><a ng-if="data.ownerplus==true" class="btn btn-default" title="Add a new user" href="?id=lp_enroll&sys_id=3a97aed9db4a5c10bbad468b3a96190e">Add new user</a><span class="pull-right">Add a new user to the Learning Portal.</span></div>
+</div>-->
+ 
+</div>]]></template>
+    </sp_widget>
+</record_update>

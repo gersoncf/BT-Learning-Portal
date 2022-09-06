@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$rootScope,$window,$document, $uibModal,$timeout, spUtil,$location) {
+  /* widget controller */
+  var c = this;
+	
+	if(!c.toggleOV) {
+		c.toggleOV = false;
+	}
+	
+	$rootScope.$on("lp.toggleOV", function(event, data) {
+		//spUtil.addInfoMessage('Matrix widget Saw toggle: '+ data);
+		c.toggleOV= !data;
+	});
+	
+	c.toggle = false;
+	
+	c.lpUser = {
+		displayValue: c.data.usernames,
+		value: c.data.userlist,
+		name: 'lpUser'
+	};
+	c.lpUser2 = {
+		displayValue: c.data.usernames,
+		value: c.data.userlist,
+		name: 'lpUser'
+	};
+	c.lpCourse = {
+		displayValue: "",
+		value: "",
+		name: 'lpCourse'
+	};
+	c.lpSkill = {
+		displayValue: "",
+		value: "",
+		name: 'lpSkill'
+	};
+
+	$scope.crsfilter = function(course) {	
+		var crss = c.lpCourse.value.toString();
+		return crss.indexOf(course.sys_id) !==-1;
+	}
+
+	$scope.usrfilter = function(users) {	
+		var usrs = c.lpUser.value.toString();
+		return usrs.indexOf(users.lpUserID) !==-1;
+	}
+	$scope.sklfilter = function(skill) {	
+		var skls = c.lpSkill.value.toString();
+		return skls.indexOf(skill.sys_id) !==-1;
+	}
+
+	$scope.$on("field.change", function(evt, parms) {
+		//spUtil.addInfoMessage('Name: ' + parms.field.variable_name);
+		if (parms.field.name == 'lpUser' || parms.field.name == 'lpCourse' || parms.field.name == 'lpSkill') {
+			//c.data.userFilter = parms.field.value;
+			c.data.userlist = c.lpUser.value;
+			spUtil.addInfoMessage(c.lpSkill);
+		}
+	});
+
+
+	$scope.toggle = function() {
+		c.toggle = !c.toggle;
+	}
+
+	$scope.printPage = function(){
+		$window.print();
+	}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+table {
+  font-family: 'Montserrat';
+  font-size: 90%;
+}
+.toggleText {
+	position: relative;
+  top: -50%;
+}
+.input-switch {
+margin-bottom: 3px;
+}
+
+.label-clear {
+  background: #FFF;
+  color: black;
+  border: 1px solid #666666;
+}
+
+
+.cellVal, .yesSkill, .noSkill {
+  text-align:center;
+}
+
+.StatVal::after, .yesSkill::after {
+  display:block;
+  text-align:center;
+  font-family: "FontAwesome";
+  font-size: 150%;
+  font-weight: 600;
+  border-radius:2px;
+  padding: 2px 1px;
+}
+
+.Beginning::after {
+  content: "\f00c";
+}
+.Intermediate::after {
+  content: "\f00c";
+	//background: lighten($brand-warning, 15%);
+  //color: darken($brand-info, 30%);  
+  color: $brand-warning;
+}
+.Advanced::after {
+  content: "\f00c";
+	//background: lighten($brand-primary, 15%);
+  //color: darken($brand-primary, 30%);  
+  color: $brand-primary;  
+}
+.Expiring::after {
+  content: "\f00c";
+	//background: lighten($brand-danger, 15%);
+  //color: darken($brand-primary, 30%);  
+  color: $brand-danger;  
+}
+.Expired::after {
+  content: "\f05e";
+	//background: lighten($brand-danger, 15%);
+  //color: darken($brand-primary, 30%);  
+  color: $brand-danger;  
+}
+
+
+.complete_competent::after {
+  content: "\f046";
+	background: lighten($brand-success, 30%);
+  color: darken($brand-success, 30%);  
+  
+}
+.complete_nyc::after {
+  content: "\f00d";
+	//background: lighten($brand-danger,30%);
+  color: darken($brand-danger, 30%);  ;  
+}
+.enrolled::after, .in_progress::after {
+  content: "\f044";
+  color: #000;  
+}
+.prereqsouts::after {
+  content: "\f05e";
+  //background: lighten($brand-danger,30%);
+  color: lighten(gray, 15%);  
+  
+}
+.label {
+ display: inline-block; 
+}
+.text-success {
+  color: $brand-success;
+}
+.text-danger {
+  color: $brand-danger;
+}
+.table td {
+  border-top: 1px solid #e8e7e7;
+}
+.fadeInOut.ng-hide-add {
+    transition: all ease-in-out 250ms;   
+}
+.fadeInOut.ng-hide-remove {
+  transition: all ease-in-out 750ms;   
+}
+.fadeInOut.ng-hide {
+   opacity: 0;
+}
+.fade {
+    opacity: 1; 
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_coursepivot</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Unit/User matrix</name>
+        <option_schema>[{"name":"course_show","section":"Presentation","default_value":"5","label":"Default number of courses to show in course history","type":"integer"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	//Does the current user have the Course Designer role or better.
+	data.viewerID = gs.getUserID();
+	data.tutor = gs.hasRole('x_btal_bt_learning.learning portal tutor');
+	data.owner = gs.hasRole('x_btal_bt_learning.learning portal owner');
+	data.showDesc = false;
+	
+	//If the current user is a tutor, get their sysid here for convenience
+			if(data.tutor) {	
+				var grT = new GlideRecord('x_btal_bt_learning_lp_user')
+				grT.addQuery('user.sys_id',gs.getUserID());
+				grT.query();
+				
+				if(grT.next()){
+					data.curUserLP = grT.getValue('sys_id');
+				} 
+			}
+
+	if (input && input.filter){
+		data.filter =input.filter;
+	} else {
+		data.filter = $sp.getParameter('userID');
+		//Get the current users
+		data.UserDetails = [];
+		data.Courses = [];
+		data.Users = [];
+		data.Skills = [];
+		
+		
+		/**** All Active Users *******************************************/
+		var grU = new GlideRecord('x_btal_bt_learning_lp_user');
+		grU.addActiveQuery();
+		grU.orderBy('user.last_name');
+		grU.query();
+		var userlist = [];
+		var usernames = [];
+		while (grU.next()) {
+			userlist.push(grU.getValue('sys_id'));
+			usernames.push(grU.getDisplayValue('user'));
+			
+			var usr  = {
+				'name': grU.getDisplayValue('user'),
+				'sys_id': grU.getValue('sys_id'),
+				'table': 'x_btal_bt_learning_lp_user'
+			}			
+			data.Users.push(usr);
+			data.userlist = userlist.toString();
+			data.usernames = usernames.toString();
+		}
+		/**** END All Active Users ***************************************/
+		/**** All Active Skills *******************************************/
+		var grS = new GlideRecord('x_btal_bt_learning_lp_skill_library');
+		grS.addActiveQuery();
+		grS.query();
+		
+		while (grS.next()) {
+			var skl  = {
+				'skill': grS.getDisplayValue('skill_name'),
+				'sys_id': grS.getValue('sys_id'),
+				'table': 'x_btal_bt_learning_lp_skill_library'
+			}		
+			
+			skl.userSkills = getUserSkills(skl.sys_id);
+			
+			data.Skills.push(skl);
+		}
+		/**** END All Active Skills ***************************************/
+		/**** All Active Courses *******************************************/
+		var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+		grC.addActiveQuery();
+		grC.addNullQuery('parent');
+		grC.query();
+		
+		while (grC.next()) {
+			var crs  = {
+				'name': grC.getValue('name'),
+				'sys_id': grC.getValue('sys_id'),
+				'table': 'x_btal_bt_learning_lp_course'
+			}			
+			crs.prereqs = grC.getValue('prerequisite');
+			if (!crs.prereqs) {
+				crs.prereqs = '';
+			}
+			
+			crs.userStats = getUserStatus(crs.sys_id,crs.prereqs);			
+			data.Courses.push(crs);
+		}
+		/**** END All Active Courses ***************************************/
+	}
+	function getUserStatus(sys_id, prereqs) {
+		//gs.addInfoMessage('course id: ' +sys_id + ' | prereqs: ' + prereqs);
+		var grU2 = new GlideRecord('x_btal_bt_learning_lp_user');
+		grU2.addActiveQuery();
+		grU2.orderBy('user.last_name');
+		grU2.query();
+		var usrStat = [];
+		while (grU2.next()) {
+			var recUS = {
+				'lpUser': grU2.getDisplayValue('user'),
+				'lpUserID': grU2.getValue('sys_id'),
+				'pr_stat': true
+			}
+			
+			var grUS = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grUS.addQuery('course', sys_id);
+			grUS.addQuery('user',grU2.sys_id);
+			grUS.orderByDesc('date_enrolled');  //Get Most Recent
+			grUS.query();
+			if (grUS.next()){
+				recUS.status=grUS.getDisplayValue('status');
+				recUS.statusVal=grUS.getValue('status');
+				recUS.date_enrolled=grUS.getDisplayValue('date_enrolled');
+				recUS.date_completed= grUS.getDisplayValue('date_completed');
+				recUS.expiry_date= grUS.getDisplayValue('expiry_date');
+				recUS.status_sys_id=grUS.getValue('sys_id');
+				
+			}	
+
+//Code to check that the user has completed the pre-reqs or not.
+				if(prereqs !='') {
+					recUS.pr_Outs = [];
+					
+					var grUP = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+					grUP.addEncodedQuery('course.sys_idIN'+prereqs+'^user='+ recUS.lpUserID);		
+					grUP.query();
+					if(!grUP.hasNext()) {
+						recUS.pr_Stat = false;
+						recUS.pr_Outs = prereqs;
+						recUS.statusVal="prereqsouts";
+						recUS.status = "Pre-requisites not completed";
+					} else {
+						while (grUP.next()){
+							if (grUP.status != 'complete_competent') {
+								recUS.pr_Stat = false;
+								recUS.pr_Outs.push(grUP.getDisplayValue('Course'));
+								recUS.status = "Pre-requisites not completed";
+							}
+						}
+					}
+				}
+
+
+
+			usrStat.push(recUS);
+		}
+		return usrStat;
+	}
+	function getUserSkills(sys_id) {
+		//gs.addInfoMessage('course id: ' +sys_id + ' | prereqs: ' + prereqs);
+		var grU2 = new GlideRecord('x_btal_bt_learning_lp_user');
+		grU2.addActiveQuery();
+		grU2.orderBy('user.last_name');
+		grU2.query();
+		var usrSkl = [];
+		while (grU2.next()) {
+			var recSk = {
+				'lpUser': grU2.getDisplayValue('user'),
+				'lpUserID': grU2.getValue('sys_id')
+			}
+
+			var grUSk = new GlideRecord('x_btal_bt_learning_lp_user_skills');
+			grUSk.addQuery('skill', sys_id);
+			grUSk.addQuery('user',grU2.sys_id);
+			grUSk.orderByDesc('sys_created_on');  //Get Most Recent
+			grUSk.query();
+			if (grUSk.next()){
+				recSk.skill=grUSk.getDisplayValue('skill');
+				recSk.skillID=grUSk.getValue('skill');
+				recSk.date_earned=grUSk.getDisplayValue('sys_created_on');
+				recSk.date_updated=grUSk.getDisplayValue('sys_updated_on');
+				recSk.expiry_date= grUSk.getDisplayValue('expiry_date');
+				recSk.skill_level= grUSk.getDisplayValue('skill_level');
+				recSk.skill_sys_id=grUSk.getValue('sys_id');
+				recSk.course=grUSk.getDisplayValue('course');
+
+			}	
+			if (recSk.expiry_date) {
+				var gdt = new GlideDateTime();
+				var gdtExp = new GlideDateTime(recSk.expiry_date);
+				//gs.addInfoMessage(gdt + ' | ' + gdtExp);
+				var diff = GlideDateTime.subtract(gdt,gdtExp);
+				//gs.addInfoMessage(diff.getNumericValue());
+				//recSk.timeLeft = timeLeft.getNumericValue();
+				//gs.addInfoMessage(timeLeft.getNumericValue());
+								
+				if (gdt.after(gdtExp)) {
+					recSk.skill_level = "Expired";
+				} else {
+					if (diff.getNumericValue() < 2592000000){
+						recSk.skill_level = "Expiring"												
+					}					
+				}
+
+				
+			}
+			
+			
+			usrSkl.push(recSk);
+		}
+		return usrSkl;
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-25 04:12:16</sys_created_on>
+        <sys_id>de5cb09a1bfe94d0def5da09dc4bcb50</sys_id>
+        <sys_mod_count>326</sys_mod_count>
+        <sys_name>Unit/User matrix</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_de5cb09a1bfe94d0def5da09dc4bcb50</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-12-17 06:05:55</sys_updated_on>
+        <template><![CDATA[<div class="fade fadeInOut" ng-show="c.toggleOV">
+  <div ng-if="!data.tutor" >
+    <h4>
+      You do not have permission to view this content.
+    </h4>
+  </div>
+  <div ng-if="data.tutor">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h2 ng-if="!c.toggle">Learning Portal Users - Course Matrix</h2>
+          <h2 ng-if="c.toggle">Learning Portal User - Competencies Matrix</h2>
+        </div>
+      </div>    
+      <div class="panel-body">
+        <div class="input-switch">
+          <span class="toggleText">Courses&nbsp;</span>
+          <input aria-label="toggle between courses and competencies" id="toggle" type="checkbox" ng-model="c.toggle">
+          <label class="switch" for="toggle"></label>
+          <span class="toggleText">&nbsp;Competencies</span>
+        </div>  
+        <!-- COURSES/UNITS -->
+        <div ng-if ="!c.toggle">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+                  1. Select Courses to view results
+                  <sn-record-picker field="c.lpCourse" default-query="'active=true'" multiple="true" table="'x_btal_bt_learning_lp_course'" display-field="'course'" value-field="'sys_id'" search-fields="'course'" page-size="15" ></sn-record-picker>
+                </div>
+                <div class="col-md-6">
+                  2. Select Learning portal users to filter your view.
+                  <sn-record-picker field="c.lpUser" multiple="true" default-query="'active=true'" table="'x_btal_bt_learning_lp_user'" display-field="'user'" value-field="'sys_id'" search-fields="'user'" page-size="15" ></sn-record-picker>
+                </div>
+              </div>
+            </div>
+            <table class="table table-striped table-hover table-responsive">
+              <thead>
+                <tr>
+                  <th>Courses</th>
+                  <th class="text-center" ng-repeat="user in data.Courses[0].userStats | filter: usrfilter track by user.lpUserID">{{user.lpUser}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="course in data.Courses | filter: crsfilter | orderBy:'name' track by course.sys_id">
+                  <td class="text-left"><b>{{course.name}}</b></td>
+                  <td class="text-center" ng-repeat="user in course.userStats | filter:usrfilter track by user.lpUserID" class="cellVal" >
+                    <span class="StatVal" ng-class="user.statusVal" ng-if="user.statusVal" data-toggle="tooltip" data-placement="right" title="{{user.lpUser}} - {{user.status}} - enrolled: {{user.date_enrolled}} | completed: {{user.date_completed}}"></span>
+                    <span ng-if="!user.statusVal"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel-footer">
+            <small>
+              <div class="pull-left">Key&nbsp;&nbsp;</div>
+              <div class="label label-default label-clear StatVal enrolled">Enrolled</div>
+              <div class="label label-default label-clear StatVal complete_competent">Competent</div>
+              <div class="label label-default label-clear StatVal complete_nyc">Not yet competent</div>
+              <div class="label label-default label-clear StatVal prereqsouts">Needs to complete pre-requisites</div>
+            </small>  
+          </div>
+        </div>
+        <!-- END COURSES/UNITS -->
+
+        <!-- SKILLS/COMPETENCIES --> 
+        <div ng-if="c.toggle">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+                  1. Select Competencies to view results
+                  <sn-record-picker field="c.lpSkill" default-query="'active=true'" multiple="true" table="'x_btal_bt_learning_lp_skill_library'" display-field="'skill_name'" value-field="'sys_id'" search-fields="'skill'" page-size="15" ></sn-record-picker>
+                </div>
+                <div class="col-md-6">
+                  2. Select/Remove Learning portal users to filter your view.
+                  <sn-record-picker field="c.lpUser" multiple="true" default-query="'active=true'" table="'x_btal_bt_learning_lp_user'" display-field="'user'" value-field="'sys_id'" search-fields="'user'" page-size="15" ></sn-record-picker>
+                </div>
+              </div>
+              <table class="table table-striped table-hover table-responsive">
+                <thead>
+                  <tr>
+                    <th>Competencies</th>
+                    <th class="text-center" ng-repeat="user in data.Skills[0].userSkills | filter: usrfilter track by user.lpUserID">{{user.lpUser}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="skill in data.Skills | filter: sklfilter | orderBy:'name' track by skill.sys_id">
+                    <td class="text-left"><b>{{skill.skill}}</b></td>
+                    <td class="text-center" ng-repeat="user in skill.userSkills | filter:usrfilter track by user.lpUserID" class="cellVal" >
+                      <span class="yesSkill" ng-class="user.skill_level" ng-if="user.skillID" data-toggle="tooltip" data-placement="right" title="{{user.lpUser}} - {{user.skill}} - {{user.skill_level}} (earned: {{user.date_earned}} | last updated: {{user.date_updated}} | expires: {{user.expiry_date}})"></span>
+                      <span class="noSkill" ng-if="!user.skillID"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <small>
+              <div class="pull-left">Key&nbsp;&nbsp;</div>
+              <div class="label label-default label-clear yesSkill Beginning">Beginning</div>
+              <div class="label label-default label-clear yesSkill Intermediate">Intermediate</div>
+              <div class="label label-default label-clear yesSkill Advanced">Advanced</div>
+              <div class="label label-default label-clear yesSkill Expiring">Expiring Soon</div>
+              <div class="label label-default label-clear yesSkill Expired">Expired</div>
+            </small>
+          </div>
+        </div>
+      </div>
+      <!-- END SKILLS/COMPETENCIES --> 
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

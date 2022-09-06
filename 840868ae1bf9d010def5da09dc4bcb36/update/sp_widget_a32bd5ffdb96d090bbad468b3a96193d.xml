@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $uibModal, spUtil, $rootScope) {
+	/* widget controller */
+	var c = this;
+	c.loadingIndicator=false;
+
+
+
+
+
+	//Record watch for Course and Course Status
+
+
+
+	spUtil.recordWatch($scope, "x_btal_bt_learning_lp_user_course_status", c.data.rw_str, function(name, data) {
+		c.loadingIndicator = false;
+		c.server.update();									
+	})
+	spUtil.recordWatch($scope, "x_btal_bt_learning_lp_course", "sys_id="+c.data.courseID, function(name, data) {
+		c.loadingIndicator = false;
+		c.server.update();									
+	})
+
+
+	$scope.toggleDesc = function(){
+		c.data.showDesc = !c.data.showDesc;
+	}
+	$scope.toggleNotes = function(){
+		c.data.showNotes = !c.data.showNotes;
+	}
+
+	$scope.enrol = function(unit) {
+		//c.data.enrol = true;
+		c.unitName = unit.name;
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'enrolTemplate',
+			scope: $scope
+		});
+		//c.server.update();
+	}
+	c.closeEnrol = function(bool) {
+		//Update the relevant record with new values.
+		//c.data.enrol = bool;
+		c.modalInstance.close();
+		if (bool==true){	
+			c.data.enrol = true;
+			c.server.update();
+			c.loadingIndicator=true;
+		}
+
+	}		
+
+
+	$scope.retry = function(unit) {
+		c.data.re_unitID = unit.Status_sys_id;
+		c.server.update();
+	}	
+
+	$scope.openModal = function(type, unit) {
+		c.type = type;
+		c.sysID = unit.Status_sys_id;
+		c.Uname = unit.name;
+
+		//spUtil.addInfoMessage('Unit Name: ' + c.Uname)
+
+		c.modalInstance = $uibModal.open({
+			templateUrl: 'modalTemplate',
+			size: 'lg',
+			scope: $scope
+		});
+	}	
+
+	c.closeModal = function() {
+		//Update the relevant record with new values.
+		c.data.UpdateRec = c.sysID;
+		if (c.Comments) {
+			c.data.NewComment = c.Comments;
+		}
+		if(c.PrivComments) {
+			c.data.NewPrivComment = c.PrivComments;
+		}
+		if(c.Results) {
+			c.data.NewResult = c.Results;
+		}
+		if(c.Status) {
+
+			c.data.NewStatus = c.Status.value;
+		}
+
+		c.modalInstance.close();
+		c.sysID = '';
+		c.server.update();
+
+
+
+	}	
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.panel-group .panel {
+  position: relative;
+  font-size: 100%;
+}
+.panel-group .panel .panel-heading a::after {
+	content: "\f107";
+	color: #000;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-family: "FontAwesome";
+  font-size: 150%;
+  font-weight: 600;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  
+}
+.panel-group .panel .panel-heading a[aria-expanded="true"]::after {
+	content: "\f106";
+}
+
+.loadOverlay {
+	position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  background: rgba(255,255,255,0.75);
+  border-radius: 4px;
+  margin-left: 15px;
+  z-index: 2;
+}
+.loadSpinner {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: $brand-primary;
+  margin: 0;
+  z-index: 3;
+}
+.courseDetails {
+	overflow: auto;
+  max-height: 50vh;
+}
+
+
+.text-success {
+  color: $brand-success;
+}
+.text-danger {
+  color: $brand-danger;
+}
+
+.panel-heading.row {
+  margin: 0px;
+}
+.table td {
+  border-top: 1px solid #e8e7e7;
+}
+.edFix {
+  margin-right: 15px;
+  top: -5px;
+  position: relative;
+}
+.edPanel {
+ border: 1px solid $brand-primary;  
+}
+.btn-ed {
+  position: relative;
+  top: 5px;
+  color: #FFF !important;
+}
+.btn-avoid-chevron {
+	right: 40px;
+}
+.btn-spacer {
+  margin-bottom: 3px; 
+}
+.hideDesc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 45px;
+}
+.crs-status {
+  padding-top:7px;
+  vertical-align: top;
+	//padding-right: 50px;
+  &amp; i {
+    padding-top:0px;
+    font-size: 200%;
+    vertical-align: middle;
+  }
+}
+.descToggle {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.chevron {
+  //Modified from Chevron shape from CSS-tricks.com
+  //https://css-tricks.com/the-shapes-of-css/#chevron-shape-via-anthony-ticknor
+  width: 100px;
+  height: 60px;
+  //box-sizing: content-box;
+  padding-top: 15px;
+  padding-left: 2px;
+  position: relative;
+  right:30px;
+  top:-1px;
+  background: rgba(255,0,0,1); //Red.
+  color: white;
+  //letter-spacing: 0.2em;
+  line-height: 80%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  z-index:2;
+}
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 90%;
+  left: 0;
+  height: 25%;
+  width: 51%;
+  border-bottom-left-radius: 2px;
+  background: rgba(255,255,255,1);
+  transform: skew(0deg, -10deg);
+}
+.chevron:after {
+  content: '';
+  position: absolute;
+  top: 90%;
+  right: 0;
+  height: 25%;
+  width: 50%;
+  border-bottom-right-radius: 2px;
+  background: rgba(255,255,255,1);
+  transform: skew(0deg, 10deg);
+}
+.chevron-primary {
+	background: $brand-primary;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_course_view</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Course View</name>
+        <option_schema>[{"name":"portal_kb_url","section":"Behavior","default_value":"/lp?id=kb_article&amp;sys_id=","label":"Portal KB URL Fragment","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	//Does the current user have the Course Designer role or better.
+	data.crd = gs.hasRole('x_btal_bt_learning.learning portal course designer');
+	data.tutor = gs.hasRole('x_btal_bt_learning.learning portal tutor');
+	data.showDesc = false;
+	data.showNotes = false;
+	
+	data.kb_url = options.portal_kb_url;
+	
+	
+	//Start with the parent course record.
+	data.courseID = $sp.getParameter('course_id');
+	data.userID = $sp.getParameter('user_id');
+	
+	if(!data.userID) {
+		data.userID = gs.getUserID();
+	}
+	
+	data.viewerID = gs.getUserID();
+	//Get the viewer's LP user sys id
+	var grLV = new GlideRecord('x_btal_bt_learning_lp_user')
+	grLV.addQuery('user.sys_id', data.viewerID).addOrCondition('sys_id', data.viewerID)
+	grLV.query();
+	if (grLV.next()) {
+		data.viewerID = grLV.getValue('sys_id');
+	}
+	
+	
+	//Get active result statuses
+	var grStat = new GlideRecord('sys_choice');
+	grStat.addEncodedQuery('nameSTARTSWITHx_btal_bt_learning_lp_user_course_status^element=status^inactive=false');
+	grStat.query();
+	
+	data.statuses = [];
+	while (grStat.next()) {
+		var sts = {
+			'label':grStat.getValue('label'),
+			'value': grStat.getValue('value')
+		}
+		data.statuses.push(sts);
+	}
+	data.rw_str = 'active=true^user.sys_id='+data.userID+'^ORuser.user.sys_id='+ data.userID;
+	//data.rw_str = 'active=true^user.sys_id='+data.userID+'^ORuser.user.sys_id='+ data.userID + '^course.sys_id=' + data.courseID;
+	
+	var grLU = new GlideRecord('x_btal_bt_learning_lp_user')
+	grLU.addQuery('user.sys_id', data.userID).addOrCondition('sys_id', data.userID)
+	grLU.query();
+	
+	if (grLU.next()) {
+		data.lp_User = grLU.getValue('sys_id');
+	} else {
+		return;  // Don't worry about loading anything else - No LP user found.		
+	}
+	
+	
+		data.viewSelf=false;
+		if(data.viewerID == data.lp_User ) {
+			data.viewSelf = true;
+		}
+	
+	
+	
+	
+	if(!data.courseID) {
+		data.courseID = $sp.getParameter('sys_id');	
+	}
+	
+
+	if(!data.courseID) {
+		gs.addInfoMessage("That's all there is!");
+		return;   //Show nothing and waste no processing time if there isn't a course record to view.
+	}
+
+	if (input && input.enrol == true) {
+		enrol(data.courseID, data.lp_User);
+	} else {
+		data.enrol = false;	
+	}
+
+	
+	//*** Handle updates and save *****************
+	if (input && (input.NewComment || input.NewPrivComment || input.NewResult || input.NewStatus)){
+		data.NewComment = input.NewComment;
+		data.NewPrivComment = input.NewPrivComment;
+		data.NewResult = input.NewResult;
+		data.NewStatus = input.NewStatus;
+		data.UpdateRec = input.UpdateRec;		
+		//gs.addInfoMessage('Update Values: ' + data.NewComment + ' on Record: ' + data.UpdateRec );
+		if(data.UpdateRec !=''){
+			updateRec();	
+		}
+		data.UpdateRec = '';
+		
+	}
+	/************ Handle a unit re-enrollment ***********/
+	if(input && input.re_unitID){
+		data.re_unitID = input.re_unitID;
+		var lpUtils = new LP_Utils_server();
+		lpUtils.reEnrol(data.re_unitID);
+	}
+	
+	
+	
+	
+	var grC = new GlideRecord('x_btal_bt_learning_lp_course');
+
+	grC.addQuery('sys_id',data.courseID.toString());
+	grC.query();
+
+	if (grC.next()) {
+		data.rec = getFields(grC);  //Get all parent course details.
+		
+		//Are there any subunits?
+		var grU = new GlideRecord('x_btal_bt_learning_course_unit_order');
+		grU.addQuery('course', data.courseID);
+		grU.addActiveQuery();
+		grU.orderBy('unit_order');
+		grU.query();
+		
+		data.rec.subunits = [];
+		if (grU.hasNext()) {	
+			while(grU.next()) {
+				var sRec = {};
+				var grUD = new GlideRecord('x_btal_bt_learning_lp_course');
+				grUD.addQuery('sys_id', grU.getValue('unit'));
+				grUD.query();
+				if(grUD.next()) {
+					sRec = getFields(grUD);	
+				}
+				sRec.unit_order = grU.getValue('unit_order');
+				data.rec.subunits.push(sRec);	
+			}
+		}
+		
+		
+		//Figure out percent complete.
+		if(data.rec.subunits.length> 0) {
+			var comp =0
+			for (var i = 0; i<data.rec.subunits.length;i++){
+				if (data.rec.subunits[i].comp == true) {
+					comp++;
+				}
+			}
+			data.rec.percentComp = (comp/data.rec.subunits.length)*100;
+			data.rec.percentComp = data.rec.percentComp.toFixed(0);
+		}
+
+	}
+	function getFields(gr) {
+		
+		var rec = {
+			'sys_id': gr.getValue('sys_id'),
+			'name': gr.getDisplayValue('name'),
+			'category': gr.getDisplayValue('category'),
+			'description':gr.getDisplayValue('description'),
+			'appr_req': gr.getValue('approval_required'),
+			'has_cost': gr.getValue('cost'),
+			'cost': gr.getDisplayValue('cost'),
+			'cost_sched': gr.getDisplayValue('cost_schedule'),
+			'preReqs':  gr.getDisplayValue('prerequisite'),
+			'prIDs': gr.getValue('prerequisite'),
+			'skills': gr.getDisplayValue('skills'),
+			'type': gr.getDisplayValue('type')
+		}
+
+		rec.pr_Stat = true;
+		if(rec.preReqs == '' || rec.preReqs =='0') {
+			rec.preReqs = 'None';
+		} else {
+			
+			rec.pr_Outs = [];
+			//Code to check that the user has completed the pre-reqs or not.
+			var grUC = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+			grUC.addEncodedQuery('course.sys_idIN'+rec.prIDs+'^user='+ data.userID+'^ORuser.user='+data.userID);
+			grUC.addQuery('status','!=','cancelled');
+			grUC.query();
+			if(!grUC.hasNext()) {
+				rec.pr_Stat = false;
+				rec.pr_Outs = rec.preReqs;
+			}else{
+				while (grUC.next()){
+					if (grUC.status != 'complete_competent') {
+						rec.pr_Stat = false;
+						rec.pr_Outs.push(grUC.getDisplayValue('Course'));
+					}
+				}
+			}
+		}
+		if(rec.skills == '' || rec.skills =='0') {
+			rec.skills = "None conferred";
+		}		
+		
+		var grsE= new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grsE.addQuery('course', rec.sys_id);
+		grsE.addQuery('status', '!=','cancelled');
+		grsE.addQuery('user.user', data.userID.toString()).addOrCondition('user', data.userID.toString());
+		grsE.orderByDesc('sys_created_on'); //Get most recent first.
+		grsE.query();
+
+		var i = 0;
+		var comp = 0;
+		rec.enrolled = false;
+		if(grsE.next()){
+			rec.enrolled = true;
+			data.sysUserID = grsE.getValue('user.sys_id');
+			
+			rec.lpUser =  grsE.getDisplayValue('user');
+			rec.lpUserID = grsE.getValue('user');
+			rec.approval = grsE.getDisplayValue('approved');
+			rec.Status_sys_id = grsE.getValue('sys_id');
+			rec.status = grsE.getDisplayValue('status');
+			rec.statusVal = grsE.getValue('status');
+			rec.course = grsE.getDisplayValue('course');
+			rec.date_enrolled = grsE.getDisplayValue('date_enrolled');
+			rec.date_completed  = grsE.getDisplayValue('date_completed');
+			rec.expiry_date  = grsE.getDisplayValue('expiry_date');
+			rec.due_date  = grsE.getDisplayValue('date_due');
+			rec.tutor = grsE.getDisplayValue('tutor');
+			if(grsE.getDisplayValue('result')) {
+				if(isNaN(grsE.getDisplayValue('result'))) {
+					rec.result = grsE.getDisplayValue('result');		
+				} else {
+					rec.result = grsE.getDisplayValue('result') + '%';		
+				}
+			} else {
+				rec.result = '';
+			}
+			rec.URL = grsE.getValue('url');
+			if(rec.type =='Knowledge Article') {
+				if(!rec.URL && grsE.getValue('knowledge_article')) { 
+					rec.URL = data.kb_url +  grsE.getValue('knowledge_article');	
+				}
+				rec.URL = rec.URL + '&enrol_id=' + rec.Status_sys_id;
+			}
+			if (rec.statusVal =='enrolled' || rec.statusVal=='in_progress'){
+				rec.Quiz = '?id=take_survey&instance_id='+grsE.getValue('enrolled_quiz_id');
+				rec.quiz_name = 'Quiz instance: ' + grsE.getDisplayValue('enrolled_quiz_id');	
+			}
+			var notes = grsE.getDisplayValue('course_notes');
+			rec.course_notes = notes.split("\n");
+			if(data.viewSelf == false){
+				var pnotes = grsE.getDisplayValue('course_notes_private');
+				if(pnotes){
+					rec.course_notes_private = pnotes.split("\n\n");		
+				}
+			}
+			if (rec.statusVal=='complete_nyc'){
+				rec.status = 'Not Yet Competent';
+			} 
+			if (rec.statusVal=='complete_competent'){
+				rec.status = 'Competent';
+			} 
+			rec.comp = rec.statusVal == 'complete_competent';
+		}
+		return rec;
+		}
+
+	function enrol(course, user) {
+		var grEn = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+		grEn.initialize();
+		grEn.user = user.toString();
+		grEn.course = course.toString();
+		grEn.type = 'course';
+		grEn.insert();
+		//gs.addInfoMessage('You have enrolled in this course!');
+		data.enrol = false;
+	}
+	
+	function updateRec() {
+		var grU = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+		grU.addQuery('sys_id',data.UpdateRec);
+		grU.query();
+		
+		if(grU.next()){
+			if(data.NewComment) {
+				grU.course_notes = data.NewComment;
+			}
+			if(data.NewPrivComment) {
+				grU.course_notes_private = data.NewPrivComment;
+			}
+			if(data.NewResult) {
+				grU.result = data.NewResult;
+			}
+			if(data.NewStatus) {
+				grU.status = data.NewStatus;
+			}
+		}
+		grU.update();
+		gs.addInfoMessage('Record update: notes added');
+		
+		
+	}
+	
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-05 01:46:29</sys_created_on>
+        <sys_id>a32bd5ffdb96d090bbad468b3a96193d</sys_id>
+        <sys_mod_count>578</sys_mod_count>
+        <sys_name>Course View</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_a32bd5ffdb96d090bbad468b3a96193d</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-30 08:32:54</sys_updated_on>
+        <template><![CDATA[
+<div ng-if="!data.lp_User" >
+  <h4>
+    You do not have permission to view this content.
+  </h4>
+</div>
+<div ng-if="data.lp_User">
+
+  <div class="panel panel-default">
+    <div class="loadOverlay" ng-show="c.loadingIndicator">
+      <i class="loadSpinner fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </div>
+
+    <div ng-if="data.rec.status && data.rec.statusVal!='cancelled' && data.rec.statusVal!='enrolled' && data.rec.statusVal!='in_progress'" class="chevron pull-right">{{data.rec.status}}</div> 
+    <div ng-if="data.rec.status && (data.rec.statusVal=='enrolled' || data.rec.statusVal=='in_progress')" class="chevron chevron-primary pull-right">{{data.rec.status}}</div> 
+    <div class="panel-heading">
+      <a ng-if="!data.rec.status && data.rec.pr_Stat ==true" ng-click="enrol(data.rec)" role="button" class="pull-right btn btn-primary btn-lg btn-ed"><i class="fa fa-graduation-cap"></i> Enrol</a>
+      <a ng-if="(data.rec.statusVal=='complete_nyc' || data.rec.statusVal =='cancelled') && data.rec.pr_Stat ==true" ng-click="enrol()" role="button" class="pull-right btn btn-primary btn-lg btn-ed btn-avoid-chevron"><i class="fa fa-graduation-cap"></i> Re-enrol</a>
+
+      <div class="panel-title">
+        <h2>
+          <span  ng-if="data.tutor == true && data.rec.lpUserID && data.rec.lpUserID != data.viewerID">Tutor View | </span>{{data.rec.name}} <span ng-if="data.tutor == true && data.rec.lpUserID && data.userID != data.viewerID"> ({{data.rec.lpUser}})</span>
+          <span class="label label-danger pull-right edFix" ng-if="data.rec.pr_Stat == false" >
+            <h4 class="text-danger"><i class="fa fa-ban"></i> Pre-requisites have not been completed.</h4> 
+          </span>  
+        </h2>
+      </div>
+
+    </div>
+    <div class="panel-body">
+      <div ng-if="data.rec.subunits.length==0" class="col-md-12" id="CourseNoUnits">
+        <h4><b>
+          Course Details
+          </b>
+        </h4>
+        <table class="table table-hover">
+          <tbody>
+            <tr><td>Category</td><td>{{data.rec.category}}</td></tr>
+            <tr><td>Type</td><td>{{data.rec.type}}</td></tr>
+            <tr ng-show="data.rec.appr_req !='0' && !data.rec.approval"><td colspan="2"><b>Approval is Required</b></tr>						
+            <tr ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Requested'"><td colspan="2"><b>Approval has been Requested</b></tr>						
+            <tr class="bg-danger text-danger" ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Rejected'"><td class="bg-danger" colspan="2"><b>Approval has been rejected</b></tr>						
+            <tr class="bg-success text-success" ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Approved'"><td class="bg-success" colspan="2"><b>Approved! Have at it!</b></tr>
+            <tr><td colspan="2"><b>Description</b><br>{{data.rec.description}}</td></tr>
+            <tr ng-if="data.rec.cost>0"><td>Cost</td><td>{{data.rec.cost}} ({{data.rec.cost_schedule}}</td></tr>
+            <tr><td>Pre-Requisites</td><td>{{data.rec.preReqs}}</td></tr>
+            <tr ng-if="data.rec.pr_Stat ==false"><td  class="bg-danger">Outstanding pre-requisites</td><td class="bg-danger">{{data.rec.pr_Outs}}</td></tr>
+            <tr><td>Competencies</td><td>{{data.rec.skills}}</td></tr>
+            <tr>
+              <td width="33%" ng-class="{'text-success, bg-success': data.rec.statusVal == 'complete_competent', 'text-danger, bg-danger':data.rec.statusVal == 'complete_nyc'}">Status</td>
+              <td width="75%" ng-class="{'text-success, bg-success': data.rec.statusVal == 'complete_competent', 'text-danger, bg-danger':data.rec.statusVal == 'complete_nyc'}"><b>{{data.rec.status}}</b></td>
+            </tr>						
+            <tr ng-if="data.rec.type!='ServiceNow Quiz'"><td>URL</td><td><a href="{{data.rec.URL}}" title="View Content: {{data.rec.course}}">{{data.rec.course}}</a></td></tr>
+            <tr ng-if="data.rec.type=='ServiceNow Quiz'"><td>Quiz</td><td><a href="{{data.rec.Quiz}}" title="View Content: {{data.rec.course}}">{{data.rec.quiz_name}}</a></td></tr>
+            <tr ng-if="data.rec.result"><td width="25%">Result</td><td width="75%"><b>{{data.rec.result}}</b></td></tr>
+            <tr ng-if="data.rec.course_notes">
+              <td>Notes/History</td>
+              <td>
+                <div ng-class="{'hideDesc': data.showNotes==false}">
+                  <div ng-repeat="note in data.rec.course_notes track by $index">
+                    {{note}}
+                  </div>               
+                </div>
+                <a class="descToggle pull-right" ng-show="data.showNotes" ng-click="toggleNotes()">read less</a>
+                <a class="descToggle pull-right" ng-show="!data.showNotes" ng-click="toggleNotes()">read more</a>             
+              </td>
+            </tr>
+            <tr ng-if="data.rec.course_notes_private"><td>Private Notes/History</td><td>
+              <div ng-repeat="note in data.rec.course_notes_private track by $index">
+                {{note}}
+              </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>  
+        <a ng-if="data.crd == true" role="button" class="btn btn-default btn-spacer" title="Edit {{data.rec.name}}" href="?id=lp_form&table=x_btal_bt_learning_lp_course&sys_id={{data.rec.sys_id}}&view=sp">
+          <i class="fa fa-pencil"></i> Edit Course
+        </a>
+        <button ng-if="data.rec.Status_sys_id" class="btn btn-primary pull-right" ng-click="openModal('course', data.rec)">
+          <i class="fa fa-comments"></i> Add Comments<span ng-if="data.tutor==true">/Update Results</span>
+        </button>
+      </div>
+
+      <div ng-if="data.rec.subunits.length> 0" class="col-md-4" id="Course">
+        <div class="panel panel-primary edPanel courseDetails">
+          <div class= "panel-heading">
+            <h4><b>
+              Course Details
+              </b>
+            </h4>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped table-hover">
+              <tbody>
+                <tr ng-show="data.rec.enrolled"><td width="33%">Progress</td><td width="66%"><div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="data.rec.percentComp"
+                       aria-valuemin="0" aria-valuemax="100" style="width:{{data.rec.percentComp}}%">
+                    <span>{{data.rec.percentComp}}% Complete</span>
+                  </div>
+                  </div></td></tr>
+                <tr><td width="33%">Category</td><td width="66%"><b>{{data.rec.category}}</b></td></tr>
+                <tr><td width="33%">Type</td><td width="66%"><b>{{data.rec.type}}</b></td></tr>
+                <tr ng-show="data.rec.appr_req !='0' && !data.rec.approval"><td colspan="2"><b>Approval is Required</b></tr>						
+                <tr ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Requested'"><td colspan="2"><b>Approval has been Requested</b></tr>						
+                <tr class="" ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Rejected'"><td class="bg-danger" colspan="2"><b>Approval has been rejected</b></tr>						
+                <tr class="" ng-show="data.rec.appr_req !='0' && data.rec.approval == 'Approved'"><td class="bg-success" colspan="2"><b>Approved! Have at it!</b></tr>
+                <tr><td colspan="2">
+                  <div ng-class="{'hideDesc': data.showDesc==false}">{{data.rec.description}}
+                  </div>
+                  <a class="descToggle pull-right" ng-show="data.showDesc" ng-click="toggleDesc()">read less</a>
+                  <a class="descToggle pull-right" ng-show="!data.showDesc" ng-click="toggleDesc()">read more</a>
+                  </td></tr>
+
+                <tr ng-if="data.rec.has_cost>0"><td>Cost</td><td width="66%"><b>{{data.rec.cost}} ({{data.rec.cost_sched}})</b></td></tr>
+                <tr><td width="33%">Pre-Requisites</td><td width="66%"><b>{{data.rec.preReqs}}</b></td></tr>
+                <tr><td width="33%">Competencies</td><td width="66%"><b>{{data.rec.skills}}</b></td></tr>
+                <tr ng-if="data.rec.result"><td width="25%">Result</td><td width="75%"><b>{{data.rec.result}}</b></td></tr>
+                <tr>
+                  <td width="33%" ng-class="{'text-success, bg-success': data.rec.statusVal == 'complete_competent', 'text-danger, bg-danger':data.rec.statusVal == 'complete_nyc'}">Status</td>
+                  <td width="66%" ng-class="{'text-success, bg-success': data.rec.statusVal == 'complete_competent', 'text-danger, bg-danger':data.rec.statusVal == 'complete_nyc'}"><b>{{data.rec.status}}</b></td>
+                </tr>
+
+                <tr ng-if="data.rec.course_notes"><td>Notes/History</td><td>
+                  <div ng-class="{'hideDesc': data.showNotes==false}">
+                    <div ng-repeat="note in data.rec.course_notes track by $index">
+                      {{note}}
+                    </div>
+                  </div>
+                  <a class="descToggle pull-right" ng-show="data.showNotes" ng-click="toggleNotes()">read less</a>
+                  <a class="descToggle pull-right" ng-show="!data.showNotes" ng-click="toggleNotes()">read more</a>             
+                  </td>
+                </tr>
+                <tr ng-if="data.rec.course_notes_private"><td>Private Notes/History</td><td>
+                  <div ng-repeat="note in data.rec.course_notes_private track by $index">
+                    {{note}}
+                  </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>  
+
+            <button  ng-if="data.rec.Status_sys_id"  class="btn btn-primary btn-spacer" ng-click="openModal('course', data.rec)">
+              <i class="fa fa-comments"></i> Add Comments<span ng-if="data.tutor==true">/Update Results</span>
+            </button>
+            <a ng-if="data.crd == true" role="button" class="btn btn-default btn-spacer" title="Edit {{data.rec.name}}" href="?id=lp_form&table=x_btal_bt_learning_lp_course&sys_id={{data.rec.sys_id}}&view=sp">
+              <i class="fa fa-pencil"></i> Edit Course
+            </a>
+          </div>
+        </div>
+      </div>
+      <div ng-if="data.rec.subunits.length>0" class="col-md-8" id="Units">
+        <div class="panel panel-default edPanel">
+          <div class="panel-heading">
+            <h4>
+              <b>
+                Units
+                <small> (Click on name to expand)</small>
+              </b>
+            </h4>
+          </div>
+          <div class="panel-body">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <!--Loop through all subunits and give them their own section of the accordion ****************************************************** -->
+              <div class="panel panel-default edPanel" ng-repeat="unit in data.rec.subunits">
+                <div class="panel-heading row" role="tab" id="{{unit.unit_order}}Head">    
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{unit.unit_order}}" aria-expanded="false" aria-controls="collapse{{unit.unit_order}}">
+                    <div class="panel-title col-xs-6">
+                      <h4>
+                        {{unit.name}}
+                      </h4>
+                    </div>
+                    <div class="col-xs-5">
+                      <div class="crs-status pull-right">	
+                        <span ng-if="unit.statusVal=='complete_competent'"><i title="Unit Completed - Competent" class="fa fa-check-circle-o text-success"></i> Competent</span>
+                        <span ng-if="unit.statusVal=='complete_nyc'"><i title="Unit Completed - Not Yet Competent" class="fa fa-times-circle-o text-danger"></i> Not yet competent</span>
+                        <span ng-if="unit.statusVal=='in_progress' || unit.statusVal=='enrolled'"><i  title="Unit is still in progress" class="fa fa-cogs"></i> In progress</span>   
+                      </div>                 
+                    </div>  
+                  </a>
+                </div>
+                <!--
+commented out version automatically opens the first accordion item.
+<div id="collapse{{unit.unit_order}}" ng-class="{'in': unit.unit_order < 101}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{unit.unit_order}}Head">-->
+                <div id="collapse{{unit.unit_order}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{unit.unit_order}}Head">
+                  <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                      <tbody>
+                        <tr><td width="25%">Category</td><td width="75%"><b>{{unit.category}}</b></td></tr>
+                        <tr><td width="25%">Type</td><td width="75%"><b>{{unit.type}}</b></td></tr>
+                        <tr ng-if="unit.description.length>0"><td colspan="2">{{unit.description}}</td></tr>
+                        <tr ng-if="unit.cost>0"><td>Cost</td><td width="75%"><b>{{unit.cost}} ({{unit.cost_schedule}}</b></td></tr>
+                        <tr><td width="25%">Pre-Requisites</td><td width="75%"><b>{{unit.preReqs}}</b></td></tr>
+                        <tr><td width="25%">Competencies</td><td width="75%"><b>{{unit.skills}}</b></td></tr>
+                        <tr>
+                          <td width="25%" ng-class="{'text-success, bg-success': unit.statusVal == 'complete_competent', 'text-danger, bg-danger':unit.statusVal=='complete_nyc'}">Status</td>
+                          <td width="75%" ng-class="{'text-success, bg-success': unit.statusVal == 'complete_competent', 'text-danger, bg-danger':unit.statusVal=='complete_nyc'}"><b>{{unit.status}}</b></td></tr>
+                        <tr><td width="25%">Tutor</td><td width="75%"><b>{{unit.tutor}}</b></td></tr>
+                        <tr><td width="25%">Course Content</td>
+                          <td ng-if="unit.type!='ServiceNow Quiz'" width="75%"><a href="{{unit.URL}}">{{unit.name}}</a></td>
+                          <td ng-if="unit.type=='ServiceNow Quiz'" width="75%"><a href="{{unit.Quiz}}">{{unit.quiz_name}}</a></td>
+                        </tr>
+                        <tr ng-if="unit.result"><td width="25%">Result</td><td width="75%"><b>{{unit.result}}</b></td></tr>
+                        <tr ng-if="unit.course_notes"><td>Notes/History</td><td>
+                          <div ng-repeat="note in unit.course_notes track by $index">
+                            {{note}}
+                          </div>
+                          </td>
+                        </tr>
+                        <tr ng-if="unit.course_notes_private"><td>Private Notes/History</td><td>
+                          <div ng-repeat="note in unit.course_notes_private track by $index">
+                            {{note}}
+                          </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>  
+                    <a ng-if="data.crd == true" role="button" class="btn btn-default btn-spacer" title="Edit {{unit.name}}" href="?id=lp_form&table=x_btal_bt_learning_lp_course&sys_id={{unit.sys_id}}&view=sp">
+                      <i class="fa fa-pencil"></i> Edit Unit
+                    </a>
+                    <div ng-if="unit.statusVal=='complete_nyc'">
+                      <button class="btn btn-danger pull-right" ng-click="retry(unit)"> <i class="fa fa-refresh"></i> Reset and try again</button>                      
+                    </div>
+                    <div ng-if="unit.statusVal!='complete_nyc'">
+                      <button ng-if="unit.Status_sys_id" class="btn btn-primary pull-right" ng-click="openModal('unit', unit)"> <i class="fa fa-comments"></i> Add Comments<span ng-if="data.tutor==true">/Update Results</span>
+                      </button>            
+                    </div>
+
+                    <a class="btn btn-default pull-right" href="?id=lp_course_status&table=x_btal_bt_learning_lp_user_course_status&sys_id={{unit.Status_sys_id}}"><i class="fa fa-edit"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--****************************************************************************************************************************** -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="modalTemplate">
+ <div class="panel panel-default">
+ <div class="panel-heading">
+ <div class="panel-title">
+		<h4>Add notes to<span ng-if="data.tutor==true && data.viewSelf==false">/update results for</span> {{c.type}}: {{c.Uname}}</h4>
+  </div>
+  </div>
+ <div class="panel-body wrapper-xl">
+ 	<div class="form-horizontal">
+
+ 			<div class="form-group"><label for="frmComment">${Add comment:}</label><textarea id="frmComment" class="form-control" rows="3" placeholder="Add notes and comments here" ng-model="c.Comments"/></div>
+			<div class="form-group" ng-if="data.tutor==true && data.viewSelf==false"><label for="frmPrivComment">${Add private comment:}</label> <textarea id="frmPrivComment" rows="3" placeholder="Comments added here will be kept private from the person completing this course" class="form-control" ng-model="c.PrivComments"/></div>
+			<div class="form-group" ng-if="data.tutor==true && data.viewSelf==false"><label for="frmResult">${Add result:}</label> <input id="frmResult" type="text" size="30" placeholder="Use this space to record an outcome.  eg. competent or an exam score" class="form-control" ng-model="c.Results"/></div>
+			<div class="form-group" ng-if="data.tutor==true && data.viewSelf==false"><label for="frmStatus">${Update Status:}</label> 
+   			<select ng-options="item.label for item in data.statuses track by item.value" id="frmStatus" class="form-control" class="form-control" ng-model="c.Status">
+  				<option value="">--none--</option>
+  </select>
+  </div>
+  </div>
+  </div>
+  </div>
+
+ <div class="panel-footer text-right">
+ <button class="btn btn-primary" ng-click="c.closeModal()">${Update}</button>
+  </div>
+  </div>
+</script>
+<script type="text/ng-template" id="enrolTemplate">
+	<div class="panel panel-primary">
+ 		<div class="panel-heading">
+ 			<div class="panel-title">
+				<h4>Enrol in {{c.unitName}}?</h4>
+  </div>
+  </div>
+ 		<div class="panel-body">
+ 			<p>Once you click 'Enrol', your request to undertake this course will be processed.</p>
+ 			<div class="alert alert-info">
+      	<p><strong>Please note:</strong><br>If approval is required, you will receive a notification, once approved, you are ready to go.</p>
+      	<p>If approval is not required, wait a moment, the system will update itself, and the details of your course will be displayed.</p>
+  </div>	
+  </div>
+  	<div class="panel-footer text-right">
+ 			<button class="btn btn-danger" ng-click="c.closeEnrol(false)">${Cancel}</button>
+      <button class="btn btn-primary" ng-click="c.closeEnrol(true)">${Enrol}</button>
+  </div>
+  </div>
+</script>
+]]></template>
+    </sp_widget>
+</record_update>

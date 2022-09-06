@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="groupid" label="groupID" language="en" table="var__m_sys_hub_action_input_36cafb821b3e94d0def5da09dc4bcb94">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>groupid</element>
+            <help/>
+            <hint/>
+            <label>groupID</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_input_36cafb821b3e94d0def5da09dc4bcb94</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-08-24 23:25:52</sys_created_on>
+            <sys_id>fecafb821b3e94d0def5da09dc4bcb9e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>groupID</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_documentation_var__m_sys_hub_action_input_36cafb821b3e94d0def5da09dc4bcb94_groupid_en</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-08-24 23:25:52</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

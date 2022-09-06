@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Learning Portal">db0c09621bbdd010def5da09dc4bcbcf</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>LP Users</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_btal_bt_learning_lp_user</name>
+        <order>700</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_btal_bt_learning.learning portal admin,x_btal_bt_learning.learning portal owner</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-07 04:36:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f20c2c261b3dd010def5da09dc4bcbc7</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Users</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_app_module_f20c2c261b3dd010def5da09dc4bcbc7</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-20 22:28:15</sys_updated_on>
+        <timeline_page/>
+        <title>Users</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

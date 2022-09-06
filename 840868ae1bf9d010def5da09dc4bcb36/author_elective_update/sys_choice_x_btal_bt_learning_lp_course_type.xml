@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="type" table="x_btal_bt_learning_lp_course" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 03:52:36</sys_created_on>
+            <sys_id>d68bed3e1b3d1410def5da09dc4bcb4d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>type</sys_name>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_choice_x_btal_bt_learning_lp_course_type</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 03:52:36</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Course</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>25</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-27 22:40:39</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>78c32301db1a9850bbad468b3a961941</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-27 22:56:47</sys_updated_on>
+            <value>group_of_units</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>ServiceNow Quiz</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>100</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 03:52:36</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>646b6d3e1b3d1410def5da09dc4bcb26</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 03:52:36</sys_updated_on>
+            <value>quiz</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Knowledge Article</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>200</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 03:52:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d79bad3e1b3d1410def5da09dc4bcbc5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 03:52:57</sys_updated_on>
+            <value>kb</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>External Assessment</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>300</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 03:53:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7bab617e1b3d1410def5da09dc4bcb4a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 03:53:16</sys_updated_on>
+            <value>external assessment</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>External Training</label>
+            <language>en</language>
+            <name>x_btal_bt_learning_lp_course</name>
+            <sequence>400</sequence>
+            <synonyms/>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 03:53:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5fbbad3e1b3d1410def5da09dc4bcbc9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 03:53:30</sys_updated_on>
+            <value>external training</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

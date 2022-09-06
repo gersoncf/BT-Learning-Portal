@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>sc</category>
+        <client_script><![CDATA[function ($scope, spUtil, $rootScope, $location, $timeout, $window) {
+	$scope.hideItemWidget = !$scope.data.category_id;
+	if ($scope.data.category) {
+		if (!$scope.data.categories)
+			$scope.data.categories = [];
+			$scope.data.categories.forEach(function(category, index, categories){
+			categories[index].url = category.url + '&catalog_id=' + $scope.data.catalog_id;
+		});
+		if ($scope.data.sc_catalog)
+			$scope.data.categories.unshift({label: $scope.data.sc_catalog, url: '?id=' + $scope.data.sc_category_page + '&catalog_id=' + $scope.data.catalog_id});
+		if ($scope.data.show_popular_item) {
+			if ($scope.data.all_catalog_msg)
+				$scope.data.categories.unshift({label: $scope.data.all_catalog_msg, url: '?id=' + $scope.data.sc_category_page + '&catalog_id=-1'});
+			else
+				$scope.data.categories.push({label: $scope.data.all_cat_msg, url: '#'});
+		} else {
+			if ($scope.data.all_catalog_msg) {
+				$scope.data.categories.unshift({label: $scope.data.all_catalog_msg, url: '?id=' + $scope.data.sc_category_page + '&catalog_id=-1'});
+			}
+			//$scope.data.categories.unshift({label: "Learning Portal Home", url: '?id=my_learning_portal'});
+			$scope.data.categories.push({label: $scope.data.category.title, url: '#'});
+		}
+		$timeout(function() {
+				$rootScope.$broadcast('sp.update.breadcrumbs', $scope.data.categories);
+		});
+		spUtil.setSearchPage('sc');
+	}
+	$scope.showCategories =  function() {
+		$scope.hideItemWidget = true;
+		$rootScope.$broadcast("$sp.service_catelog.show.categories_widget");
+	}
+	
+	var listenerForCatItems = $scope.$on("$sp.service_catelog.show.items_widget", function() {
+		$scope.hideItemWidget = false;
+	});
+	/*=============== Begin link handling ===============*/
+	
+	$scope.changeView = function (view) {
+		spUtil.setPreference('catalog-item-list-view', view)
+		$scope.view = view;
+	}
+	
+	spUtil.getPreference('catalog-item-list-view', function(value) {
+		$scope.view = value || 'card';
+	});
+	
+	$scope.isTouchDevice = function(){
+		return ('ontouchstart' in $window);
+	}
+	
+	$scope.loadMore = function (){
+		$scope.data.new_limit = $scope.data.limit + ($scope.options.limit_item || 9);
+		$scope.stopLoader =  false;
+		$scope.server.update().then(function () {
+			var old_limit = $scope.data.limit - ($scope.options.limit_item || 9);
+			$scope.data.items[old_limit].highlight = true;
+			$scope.stopLoader =  true;
+		});
+	}
+	
+	$scope.onClick = function($event, item) {
+	//	if (item.status !='') {
+	//		spUtil.addInfoMessage('You have already enrolled in/completed this course');
+	//		$event.stopPropagation();
+	//	$event.preventDefault();
+	//	} else {
+		var lp = getLinkParts(item);
+		if (typeof lp == "string")
+			return; // can't intercept/redirect external content item
+		$event.stopPropagation();
+		$event.preventDefault();
+		var evt = {item: item, search: lp};
+		// This will let a wrapper widget intercept and redirect somewhere else
+		$scope.$emit($scope.options.click_event_name, evt);
+		//}
+	};
+
+	function getLinkParts(item) {
+		//if (item.sys_class_name == 'sc_cat_item_content' && item.content_type == 'external')
+			return item.url;
+		
+		//return {
+		//	id: item.page,
+		//	sys_id: item.content_type == 'kb' ? item.kb_article : item.sys_id,
+		//	sysparm_category: $scope.data.category_id
+		//};
+	}
+
+	$scope.getItemHREF = function(item) {
+		var lp = getLinkParts(item);
+		if (typeof lp == "string")
+			return lp;
+		return "?id=" + lp.id + "&sys_id=" + lp.sys_id + "&sysparm_category=" + $scope.data.category_id + ($scope.data.catalog_id ? "&catalog_id=" + $scope.data.catalog_id : "");
+	}
+	
+	var unregister = $rootScope.$on($scope.options.click_event_name, function($event, o) {
+		if ("url" in o)
+			$location.href = o.url;
+		else
+			$location.search(o.search);
+	});
+	var mql;
+	
+	if ($window.matchMedia) {
+		mql = $window.matchMedia('screen and (max-width: 768px)');
+    mql.addListener(handleMatchMedia);
+    handleMatchMedia(mql);
+	}
+	
+	function handleMatchMedia(mql) {
+			if (!mql.matches) {
+        spUtil.getPreference('catalog-item-list-view', function(value) {
+					$scope.view = value || 'card';
+					$scope.isMobile = false;
+				});
+			}
+			else {
+				$timeout(function() {
+					$scope.view = 'card';
+					$scope.isMobile = true;
+				})
+			}
+	}
+	$scope.$on("$destroy", function() {
+		unregister();
+		listenerForCatItems();
+		if (mql)
+			mql.removeListener(handleMatchMedia);
+	});
+	
+	$scope.startItemList = function()  {
+		$scope.stopLoader = true;
+	}
+	/*=============== End link handling ===============*/
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.toggle {
+  //color: $dropdown-link-disabled-color;
+  color: gray;
+  i:not(.active):hover {
+	  color: $list-group-link-heading-color;
+  }
+}
+
+.fa.active {
+  color: $primary;
+}
+.fa.danger {
+  color: $danger;
+}
+.crsStat {
+  font-size: 140%; 
+} 
+.item-table {
+  background-color: #fff;
+   tr {
+     th {
+       padding: 16px 10px;
+     }
+     td {
+       padding: 16px 10px;
+       border: none;
+     }
+   }
+}
+
+.btn-loadmore {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.edHeader {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  background-color: white;
+}
+
+.edGreyedOut {
+  background: rgba(0,0,0,.3);
+  //opacity: .7;
+  cursor: not-allowed;
+  
+}
+/*.edStat {
+  background: red;
+  position: absolute;
+  right: 0px;
+  top: 45%;
+  padding
+}*/
+.chevron {
+  //Modified from Chevron shape from CSS-tricks.com
+  //https://css-tricks.com/the-shapes-of-css/#chevron-shape-via-anthony-ticknor
+  width: 55px;
+  height: 20px;
+  box-sizing: content-box;
+  padding-top: 5px;
+  padding-left,padding-right: 1px;
+  position: absolute;
+  right:18px;
+  background: rgba(255,0,0,1);
+  color: white;
+  font-size: 9px;
+  //letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  //overflow:hidden;
+}
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 70%;
+  left: 0;
+  height: 40%;
+  width: 51%;
+  background: rgba(255,0,0,1);
+  transform: skew(0deg, 10deg);
+}
+.chevron:after {
+  content: '';
+  position: absolute;
+  top: 70%;
+  right: 0;
+  height: 40%;
+  width: 50%;
+  background: rgba(255,0,0,1);
+  transform: skew(0deg, -10deg);
+}
+.chevron-primary {
+	background: $brand-primary;
+}
+.chevron-primary:after, .chevron-primary:before {
+	background: $brand-primary;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_courses</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>LP Courses Page</name>
+        <option_schema>[{"name":"click_event_name","default_value":"$sp.cat_item_list.click","section":"other","label":"Click event name","type":"string"},{"hint":"Number of items to display per page","name":"limit_item","default_value":"15","section":"other","label":"Number of items per page","type":"integer"},{"hint":"Show items from child categories along with the items of the present category","name":"show_items_from_child","section":"other","default_value":"false","label":"Show items from Child Categories","type":"boolean"},{"hint":"Popular Items that has been used","name":"popular_items_created","section":"Data","default_value":"6","label":"Popular Items used in","type":"choice","choices":[{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"12","value":"12"},{"label":"0","value":"0"}]},{"name":"show_mandatory","section":"Data","label":"Show Mandatory Courses","type":"boolean"}]</option_schema>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[(function() {
+
+	var userID = gs.getUserID();
+	var dToday = new GlideDateTime();
+
+
+	if (input && input.category_id)
+		data.category_id = input.category_id;
+	else
+		data.category_id = $sp.getParameter("sys_id");
+
+	data.catalog_id = "-1";
+
+	if (options && options.sys_id)
+		data.category_id = options.sys_id;
+
+
+	if (!data.category_id && options.show_mandatory == 'true') {
+		data.items = getMandatoryItems();
+		data.category = {title: 'Mandatory Courses/Training',
+											 description: "When no training category is selected, mandatory items are displayed."};	
+		//data.category.title = 'Mandatory Training Items'
+		//data.category.description = "When no training category is selected, mandatory items are displayed."
+	} else {
+		//data.sc_catalog_page = $sp.getDisplayValue("sc_catalog_page") || "sc_home";
+		//data.sc_category_page = $sp.getDisplayValue("sc_category_page") || "sc_category";
+
+		//catalogDisplayValue = catalogDisplayValue ? catalogDisplayValue : $sp.getCatalogs().displayValue + "";
+		//var catalogIDs = (data.catalog_id && data.catalog_id !== "-1") ? data.catalog_id : $sp.getCatalogs().value + "";
+		//var catalogArr = catalogDisplayValue.split(",");
+		//var catalogIDArr = catalogIDs.split(",");
+		//data.sc_catalog = catalogArr.length > 1 ? "" : catalogArr[0];
+
+		data.show_more = false;
+		//data.show_mandatory = false;
+
+		var grCtgy = new GlideRecord('x_btal_bt_learning_lp_course_category');
+		grCtgy.addQuery('sys_id',data.category_id);
+		grCtgy.query();
+
+		if(grCtgy.next()){
+			data.category = {title: grCtgy.getDisplayValue('title'),
+											 description: grCtgy.getDisplayValue('description')};	
+		}
+
+		data.items = [];
+		var itemsInPage = options.limit_item || 9;
+
+		data.limit = itemsInPage;
+		if (input && input.new_limit)
+			data.limit = input.new_limit;
+		if (input && input.items) {
+			data.items = input.items.slice();//Copy the input array
+		}
+
+		if (input && input.startWindow) {
+			data.endWindow = input.endWindow;
+		}
+		else {
+			data.startWindow = 0;
+			data.endWindow = 0;
+		}
+
+		while (data.items.length < data.limit + 1) {
+			data.startWindow = data.endWindow;
+			data.endWindow = data.endWindow + itemsInPage;
+			var itemGR = queryItems(data.category_id, data.startWindow, data.endWindow);
+			if (!itemGR.hasNext())
+				break;
+			fetchItemDetails(itemGR, data.items);
+		}
+
+		if (data.items.length > data.limit)
+			data.show_more = true;
+
+		data.more_msg = gs.getMessage(" Showing {0} items", data.limit);
+
+		data.categories = [];
+
+		//If the category has a parent, modify the URL... Do I need...
+		/*while(categoryJS && categoryJS.getParent()) {
+		var parentId =  categoryJS.getParent();
+		categoryJS = new sn_sc.CatCategory(parentId);
+		var category = {
+			label: categoryJS.getTitle(),
+			url: '?id='+data.sc_category_page+'&sys_id=' + parentId
+		};
+		data.categories.unshift(category);
+	}*/
+	}
+	//data.all_catalog_msg = (($sp.getCatalogs().value + "").split(",")).length > 1 ? gs.getMessage("All Catalogs") : "";
+
+	function fetchItemDetails(itemRecord, items) {
+		while (itemRecord.next()) {	
+			var item = {};
+			item.name = itemRecord.getDisplayValue('name');
+			item.short_description = itemRecord.getDisplayValue('description');
+			if (item.short_description.length > 60) {
+				item.short_description = item.short_description.substring(0,60) + '...';
+			}
+			if(itemRecord.getValue('image')) 
+				item.picture = itemRecord.getValue('image') +'.iix';
+
+			if(itemRecord.getValue('cost') > '0') {
+				item.price = '$'+ itemRecord.getValue('cost');
+				if (itemRecord.getValue('cost_schedule') != 'single_payment' ){
+					item.price = item.price + "("+ itemRecord.getValue('cost_schedule') + ")";
+				}
+			}
+			item.sys_id = itemRecord.getValue('sys_id');
+			item.mandatory = itemRecord.getValue('mandatory');
+			item.hasPrice = item.price !="" ? 'true': 'false';
+			item.page = 'sc_cat_item';
+			item.type = itemRecord.getDisplayValue('type');
+			item.order = itemRecord.getValue('order');
+			item.url = '?id=lp_enroll&sys_id=483cc397db31d410bbad468b3a96193b&sysparm_category=2c0b59874f7b4200086eeed18110c71f&course_id=' + item.sys_id + '&user_id=' +userID;				
+
+			getUserCrsStatus(itemRecord.sys_id, item);
+
+			//Get the current user's enrollment history as related to this course.
+			/*var grUsrStat = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+			grUsrStat.addQuery('user.user', userID);
+			grUsrStat.addQuery('course', itemRecord.sys_id);
+			grUsrStat.query();
+			if (grUsrStat.next()){
+				item.Orig_status = grUsrStat.getValue('status');
+				switch(grUsrStat.getValue('status')) {
+					case 'complete_competent':
+						item.status = 'Completed';
+						break;
+					case 'enrolled':
+					case 'in_Progress':
+						item.status = 'Enrolled';
+						break;
+					default:
+						item.status = '';
+						break;
+				}
+				item.expiry = grUsrStat.getDisplayValue('expiry_date');
+				if(item.expiry && item.expiry < dToday) {
+					item.expired = true;
+				}
+			} else {
+				item.status='';
+			}*/
+			items.push(item);
+			}
+		
+	}
+	function queryItems(categoryId, startWindow, endWindow) {
+		var grCrss = new GlideRecord('x_btal_bt_learning_lp_course');
+			grCrss.addActiveQuery();
+			grCrss.addQuery('category', categoryId);
+			grCrss.addQuery('subtask_only', 'No').addOrCondition('subtask_only','');
+			grCrss.chooseWindow(startWindow, endWindow);	
+			grCrss.orderBy('name');
+			grCrss.query();
+			return grCrss;
+	}
+	
+	function getMandatoryItems () {
+		var limit = 9;	
+		var items = [];
+
+		var grMand = new GlideRecord('x_btal_bt_learning_lp_course');
+		grMand.addActiveQuery();
+		grMand.addQuery('mandatory','true');
+		grMand.query();
+
+		while (grMand.next() && items.length < limit) {
+			var item = {};
+			item.name = grMand.getDisplayValue('name');
+			item.short_description = grMand.getDisplayValue('description');
+			if (item.short_description.length > 60) {
+				item.short_description = item.short_description.substring(0,60) + '...';
+			}
+			if(grMand.getValue('image')) 
+				item.picture = grMand.getValue('image') +'.iix';
+
+			if(grMand.getValue('cost') > '0') {
+				item.price = '$'+ grMand.getValue('cost');
+				if (grMand.getValue('cost_schedule') != 'single_payment' ){
+					item.price = item.price + "("+ grMand.getValue('cost_schedule') + ")";
+				}
+			}
+			item.sys_id = grMand.getValue('sys_id');
+			item.mandatory = grMand.getValue('mandatory');
+			item.hasPrice = item.price !="" ? 'true': 'false';
+			item.page = 'sc_cat_item';
+			item.type = grMand.getDisplayValue('type');
+			item.order = grMand.getValue('order');
+			item.url = '?id=lp_enroll&sys_id=483cc397db31d410bbad468b3a96193b&sysparm_category=2c0b59874f7b4200086eeed18110c71f&course_id=' + item.sys_id + '&user_id=' +userID;				
+
+			getUserCrsStatus(grMand.sys_id, item)
+			items.push(item);	
+		}
+		return items;
+	}
+
+
+ function getUserCrsStatus(crsID, item) {
+		var grUsrStat = new GlideRecord('x_btal_bt_learning_lp_user_course_status')
+			grUsrStat.addQuery('user.user', userID);
+			grUsrStat.addQuery('course', crsID);
+			grUsrStat.query();
+			if (grUsrStat.next()){
+				item.Orig_status = grUsrStat.getValue('status');
+				switch(grUsrStat.getValue('status')) {
+					case 'complete_competent':
+						item.status = 'Completed';
+						break;
+					case 'enrolled':
+					case 'in_Progress':
+						item.status = 'Enrolled';
+						break;
+					default:
+						item.status = '';
+						break;
+				}
+				item.expiry = grUsrStat.getDisplayValue('expiry_date');
+				if(item.expiry && item.expiry < dToday) {
+					item.expired = true;
+				}
+			} else {
+				item.status='';
+			}
+}
+	
+	
+	function getAllowedCatalogItems () {
+		var allowedItems = [];
+		catalogIDArr.forEach(function(catalogID) {
+			var catalogObj = new sn_sc.Catalog(catalogID);
+			var catItemIds = catalogObj.getCatalogItemIds();
+			for(var i=0; i<catItemIds.length; i++) {
+				if (!allowedItems.includes(catItemIds[i]))
+					 allowedItems.push(catItemIds[i]);
+			}
+		});
+		return allowedItems;
+	}
+	
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 01:22:14</sys_created_on>
+        <sys_id>283cfaea1bc25050def5da09dc4bcb1a</sys_id>
+        <sys_mod_count>163</sys_mod_count>
+        <sys_name>LP Courses Page</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_283cfaea1bc25050def5da09dc4bcb1a</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-16 05:28:42</sys_updated_on>
+        <template><![CDATA[<div class="m-t-sm " ng-class="{'hidden-xs' : hideItemWidget, 'm-l-sm': !isMobile}">
+  <h4 ng-if="data.error">{{data.error}}</h4>
+  <div ng-init="spSearch.targetCatalog()">
+    <div class="row edHeader">
+      <div class="col-xs-9">
+        	<a ng-click="showCategories()" class="visible-xs m-b-sm pointer" aria-label="${All Categories}">
+            <i class="fa fa-chevron-left m-r-xs"></i> ${All Categories}
+        	</a>
+          <h1 class="h4 m-t-none break-word" aria-label="{{data.category}} ${Category}">{{::data.category.title}}</h1>
+        	<p class="hidden-xs break-word">
+            {{::data.category.description}}
+          </p>
+      </div>
+      <div class="col-xs-3" ng-if="!isMobile">
+        <div class="pull-right padder-t-sm text-lg toggle" ng-show="!data.error && data.items.length > 0">
+          <i class="fa fa-th" ng-click="changeView('card')" aria-label="${Card View}" ng-class="{'active' : view == 'card'}" uib-tooltip="${Card View}" tooltip-placement="top" tooltip-enable="!isTouchDevice()" tooltip-append-to-body="true" aria-label="${Card View}" tabindex="0"></i>
+          <span class="m-l-sm m-r-sm "> | </span>
+          <i class="fa fa-list-ul" ng-click="changeView('grid')" aria-label="${Grid View}" ng-class="{'active' : view == 'grid'}" uib-tooltip="${Grid View}" tooltip-placement="top" tooltip-enable="!isTouchDevice()" tooltip-append-to-body="true" aria-label="${Grid View}" tabindex="0"></i>
+        </div>
+       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4" ng-if="!data.items.length && !data.error">
+        ${No items in category}
+      </div>
+      <table class="table table-striped item-table" ng-if="view == 'grid' && data.items.length > 0">
+        <thead>
+          <tr>
+            <th>${Item}</th>
+            <th>${Description}</th>
+            <th ng-if="data.showPrices">${Price}</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr ng-repeat="item in data.items | orderBy: 'order' | limitTo: data.limit track by item.sys_id" ng-click="onClick($event, item)" ng-init="startItemList()">
+            <div ng-class ="{edGreyedOut: item.status !=''}">
+            <td>
+              <div ng-if="item.status=='Completed'" class="label label-primary pull-right">
+                {{item.status}}
+              </div>
+              <div ng-if="item.status=='Enrolled'" class="label label-default pull-right">
+                {{item.status}}
+              </div>
+              <img ng-src="{{::item.picture}}?t=small" ng-if="item.picture" alt="{{::item.name}}" class="m-r-sm m-b-sm item-image pull-left"/>
+              <div>
+                <a target="{{::item.target}}" ng-href="{{::getItemHREF(item)}}" sn-focus="{{::item.highlight}}"> {{::item.name}}<span ng-if="item.content_type == 'external'" aria-label="${External Link}"> ➚</span> </a>
+              </div>
+            </td>
+            <td class="break-word">{{::item.short_description}}</td>
+            <td>{{::item.price}}</td>
+            <span ng-show="item.mandatory" class="pull-right label label-warning">Mandatory</span>
+              </div>
+          </tr>
+        </tbody>
+      </table> 
+      <div ng-if="view == 'card'">
+      	<div class="col-sm-6 col-md-4" ng-repeat="item in data.items | orderBy: 'order' | limitTo: data.limit track by item.sys_id" ng-init="startItemList()">
+       
+        <div class="panel panel-{{::options.color}} b" ng-class ="{edGreyedOut: item.status !=''}">  
+          <div ng-if="item.status" ng-class="{'chevron-primary':item.status=='Enrolled' || item.status=='In Progress'}" class="chevron">
+            {{item.status}}
+          </div>
+          <!--<a ng-if="item.status !=''" target="{{::item.target}}" class="panel-body block" sn-focus="{{::item.highlight}}" href="#">-->
+          <a target="{{::item.target}}" ng-href="{{::getItemHREF(item)}}" ng-click="onClick($event, item)" class="panel-body block" sn-focus="{{::item.highlight}}">
+
+            <div class="overflow-100">
+              <i ng-show="item.mandatory" ng-if="item.status!=''" title="this item is mandatory" class="pull-right fa fa-asterisk"></i>
+              <i ng-show="item.mandatory" ng-if="item.status==''" title="this item is mandatory" class="pull-right fa fa-asterisk danger"></i>
+
+              <h2 class="h4 m-t-none m-b-xs text-overflow-ellipsis" title="{{::item.name}}" style="padding-bottom:1px">{{::item.name}}<span ng-if="item.content_type == 'external'" aria-label="${External Link}"> ➚</span></h2>
+
+              <img ng-src="{{::item.picture}}?t=small" ng-if="item.picture" alt="{{::item.name}}" class="m-r-sm m-b-sm item-image pull-left" />
+              <div class="text-muted item-short-desc break-word">{{::item.short_description}}</div>
+            </div>
+          </a>
+
+          <div aria-hidden="true" class="panel-footer">
+            <i ng-if="item.status == 'Already Enrolled'" class="pull-right fa fa-share-square-o active" title="{{item.status}}"></i>
+            <i ng-if="item.status == 'Already Completed'" class="pull-right fa fa-check-square-o" title="{{item.status}}"></i>
+            <a aria-hidden="true" ng-if="item.sys_class_name != 'sc_cat_item_content' || item.content_type == 'kb' || item.content_type == 'literal'" ng-click="onClick($event, item)" ng-href="{{getItemHREF(item)}}" class="pull-left text-muted" tabindex="-1">${View Details}</a>
+            <a aria-hidden="true" ng-if="item.sys_class_name == 'sc_cat_item_content' && item.content_type == 'external'" ng-click="onClick($event, item)" ng-href="{{getItemHREF(item)}}" target="_blank" class="pull-left text-muted" tabindex="-1">${View Details}</a>
+            <span ng-if="data.showPrices && item.hasPrice" class="pull-right item-price font-bold">{{::item.price}}</span> &nbsp;
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-a-c" ng-if="!stopLoader && data.items.length > 0 && !data.error">
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+			<span class="sr-only">${Loading...}</span>
+    </div>
+    <div ng-if="data.show_more && !show_popular_item">
+      	<div class="text-a-c">
+          {{data.more_msg}}
+      	</div>
+        <button class="m-t-xs btn btn-default btn-loadmore" ng-click="loadMore()">
+          ${Show More}
+        </button>
+      </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="user_criteria">
+    <user_criteria action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <company/>
+        <department/>
+        <group>221dee11db8a5c10bbad468b3a9619c8,5e6fb669db0a9c10bbad468b3a961926,ad4d6251db8a5c10bbad468b3a9619c9</group>
+        <location/>
+        <match_all>false</match_all>
+        <name>LP Course Designers</name>
+        <role>30582cee1bf9d010def5da09dc4bcbf6,74586cee1bf9d010def5da09dc4bcb02,bc5868261bf9d010def5da09dc4bcb92</role>
+        <script/>
+        <sys_class_name>user_criteria</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-31 05:48:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7ceb00901b475cd0def5da09dc4bcb34</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>LP Course Designers</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>user_criteria_7ceb00901b475cd0def5da09dc4bcb34</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-31 05:49:30</sys_updated_on>
+        <user/>
+    </user_criteria>
+</record_update>

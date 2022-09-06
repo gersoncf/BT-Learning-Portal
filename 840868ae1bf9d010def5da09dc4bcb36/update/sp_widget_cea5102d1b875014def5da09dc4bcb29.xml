@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($window) {
+  /* widget controller */
+  var c = this;
+	
+	
+	
+	
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.infoBox {
+	text-align: center;
+  font-family: 'Montserrat';
+  
+	.col-xs-4 {
+		border-right: 1px solid rgba($brand-primary,55%);
+	}
+	.col-xs-4:last-child {
+		border-right: none;
+	}
+  .subtitle {
+   	font-weight: 400;
+    color: $brand-primary;
+  }
+}
+
+.key-value {
+	color: $brand-primary;
+	fill: $brand-primary;
+	font-size: 36px;
+	font-weight: 500;
+	height: 40px;
+	white-space: nowrap;
+	line-height: 1;
+}
+
+.key-value-label {
+	font-size: 14px;
+	color: $brand-primary;
+	margin-top: -10px;
+}
+.btHovCont{
+	position: relative;
+  height: 100%;
+}
+
+.btHover {
+   font-family: 'Montserrat', sans-serif;
+  font-size: 150%;
+	display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  transition: opacity 200ms ease-in-out;
+  border-radius: 4px;
+  color: #FFF;
+  margin: 0 0 0 0;
+  button { 
+  margin:5px;
+  } 
+  &amp; a {
+    color: darken($brand-primary,0.8);
+  }
+  &amp;:hover {
+    opacity: 1;
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list>color,glyph</field_list>
+        <has_preview>false</has_preview>
+        <id>lp_hp_link</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Home Page Link</name>
+        <option_schema>[{"hint":"How many days into the future is considered 'soon'.  Eg. all courses due within 14 days.","name":"due_soon_days","section":"Data","default_value":"14","label":"Class all courses due within X days as 'Due Soon'","type":"integer"},{"name":"nonmember_msg","section":"Presentation","default_value":"You aren't a Learning Portal User yet - Please contact the Learning Portal Admin","label":"Message for users who aren't LP users yet","type":"string"},{"name":"clickthrough_msg","section":"Presentation","default_value":"Click here to visit the Learning Portal","label":"Message for users to click through to the LP","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	var dueSoonDays = (options.due_soon_days * 86400000); //No. ms per day.
+	data.nonmember_msg = options.nonmember_msg;
+	data.clickthrough = options.clickthrough_msg;
+	var curUser = gs.getUserID();
+
+	var grLP = new GlideRecord('x_btal_bt_learning_lp_user');
+	grLP.addQuery('user',curUser);
+	grLP.addActiveQuery();
+	grLP.query();
+
+	data.STS = [];
+	data.isLPUser = false;
+	if(grLP.next()){
+		data.isLPUser = true;
+		data.lpUser = grLP.getValue('sys_id');
+
+		var grCrs = new GlideRecord('x_btal_bt_learning_lp_user_course_status');
+		grCrs.addQuery('user', data.lpUser);
+		//grCrs.addQuery('status','IN','enrolled,in_progress');
+		grCrs.addNullQuery('parent');
+		grCrs.addQuery('active','true');
+		grCrs.query();
+
+		var sts = {};
+		var dueSoon = {};
+
+		if(grCrs.hasNext()) {
+			sts.status= 'Enrolled';
+			sts.count= grCrs.getRowCount();
+			data.STS.push(sts);	
+
+			var i = 0;
+			var crss = "";
+			var gdt = new GlideDateTime();
+			var gdd = new GlideDateTime();
+			data.dueSoon = 0;
+			data.dueCrss = "";
+			data.enrolList = "";
+
+			while (grCrs.next()) {
+				//Get course names for hover.
+				if(data.enrolList.length>0){
+					data.enrolList+= ", ";
+				}
+				data.enrolList+= grCrs.getDisplayValue('course');
+
+				//Get courses that will be due soon.
+				if(grCrs.getDisplayValue('date_due')){
+					gdd.setValue(grCrs.getDisplayValue('date_due'));	
+
+					var dueVal = gdd.getNumericValue() - gdt.getNumericValue();
+					if(dueVal <= dueSoonDays){
+						data.dueSoon++;
+						if(data.dueCrss.length>0){
+							data.dueCrss+= ", ";
+						}
+						data.dueCrss+= grCrs.getDisplayValue('course');
+					}
+				}
+			}
+		} else {
+			sts.status='Enrolled';
+			sts.count= '0';
+			data.STS.push(sts);
+
+			data.dueSoon = '0';
+			data.dueCrss = "";
+		}
+
+		//Get Competency data
+		var grComp = new GlideRecord('x_btal_bt_learning_lp_user_skills');
+		grComp.addActiveQuery();
+		grComp.addQuery('user', data.lpUser);
+		grComp.query();
+		data.comp_count = 0;
+		data.comps="";
+		if(grComp.hasNext()){
+			data.comp_count = grComp.getRowCount();
+			var j = 0;
+			while(grComp.next() && j<=5){
+				if(data.comps.length>0){
+					data.comps+= ", ";
+				}
+				data.comps+= grComp.getDisplayValue('skill');
+				j++;
+			}	
+			if(data.comp_count>5){
+				data.comps+=" plus more!";
+			}
+		}
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-09-04 03:43:29</sys_created_on>
+        <sys_id>cea5102d1b875014def5da09dc4bcb29</sys_id>
+        <sys_mod_count>131</sys_mod_count>
+        <sys_name>Home Page Link</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_cea5102d1b875014def5da09dc4bcb29</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-14 02:54:16</sys_updated_on>
+        <template><![CDATA[
+<div class="panel panel-{{::options.color}} btHovCont">
+  <div class="btHover">
+    <a href="/lp" title="Visit the Learning Portal to see more">
+      <h2>
+        BT Learning Portal
+      </h2>
+      <div class="h6">
+        Click here to view more    
+      </div>
+    </a>
+  </div>
+
+  <div class="panel-heading pad-bottom">
+    <h2 class="h6 panel-title bundle-title-content">
+      BT Learning Portal  
+    </h2>
+  </div> 
+  <div ng-show="!data.isLPUser">
+    <div class="panel-body row infoBox bundles-container">
+      <div class="col-xs-12">
+        <div title="{{data.nonmember_msg}}">      
+          <span >{{data.nonmember_msg}}</span>
+          <span class="icon-inline"><i class="fa fa-frown-o"></i>       </span>
+        </div>        
+      </div>    
+    </div>
+  </div>
+  <div ng-show="data.isLPUser">
+    <a class="btHovCont" href="/lp" title="Visit the Learning Portal to see more">
+
+      <div class="panel-body row infoBox bundles-container">
+
+        <div class="col-xs-4" ng-repeat="sts in data.STS">
+          <div class="key-value" title="Enrolled Courses: {{data.enrolList}}">      
+            <span ng-if="sts.count">{{sts.count}}</span>
+            <span ng-if="sts.count" class="icon-inline"><i class="fa fa-university"></i>       </span>
+          </div>        
+          <div class="subtitle" ng-if="sts.count">
+            {{sts.status}}
+          </div>
+        </div>    
+        <div class="col-xs-4">
+          <div class="key-value" title="Due soon: {{data.dueCrss}}">      
+            <span ng-if="data.dueSoon">{{data.dueSoon}}</span>
+            <span ng-if="data.dueSoon" class="icon-inline"><i class="fa fa-clock-o"></i></span>
+          </div>        
+          <div class="subtitle" ng-if="data.dueSoon">
+            Due Soon
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="key-value" title="Competencies awarded: {{data.comps}}">      
+            <span ng-if="data.comp_count">{{data.comp_count}}</span>
+            <span ng-if="data.comp_count" class="icon-inline"><i class="fa fa-graduation-cap"></i></span>
+          </div>        
+          <div class="subtitle" ng-if="data.comp_count">
+            Competencies
+          </div>
+        </div>
+      </div>
+    </a>
+  </div> 
+  <a href="/lp" title="Visit the Learning Portal to see more">
+    <div class="panel-footer">
+      <div>
+        {{data.clickthrough}}
+      </div>
+    </div>
+  </a>
+</div>]]></template>
+    </sp_widget>
+</record_update>

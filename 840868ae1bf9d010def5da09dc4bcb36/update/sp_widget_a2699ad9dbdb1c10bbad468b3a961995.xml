@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, spUtil) {
+  /* widget controller */
+  var c = this;
+		
+	/*, $window*/
+	
+/*	$window.on('resize', function(event){
+		spUtil.addInfoMessage($window.innerWidth)
+		
+		
+	})
+	
+	*/
+	
+	
+}
+
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.vert {
+	position: relative;
+  transform: translateY(10%)
+}
+
+.btn-wide {
+  width: 100%;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_home_menu</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>lp home menu</name>
+        <option_schema>[{"hint":"What text do you want to have at the left hand end of the menu.","name":"menu_title","section":"Presentation","default_value":"Learning Portal Options","label":"Menu Title","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var userID = gs.getUserID();
+	
+	data.tutor = gs.hasRole('x_btal_bt_learning.learning portal tutor')
+	data.crsDes = gs.hasRole('x_btal_bt_learning.learning portal course designer');
+	data.owner = gs.hasRole('x_btal_bt_learning.learning portal owner');
+	data.admin = gs.hasRole('x_btal_bt_learning.learning portal admin');
+	
+	data.menuTitle = options.menu_title;
+
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-09-16 04:56:21</sys_created_on>
+        <sys_id>a2699ad9dbdb1c10bbad468b3a961995</sys_id>
+        <sys_mod_count>40</sys_mod_count>
+        <sys_name>lp home menu</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_a2699ad9dbdb1c10bbad468b3a961995</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-12-17 21:00:47</sys_updated_on>
+        <template><![CDATA[  <div class="row">
+     <div class="col-md-2 text-right vert">
+      <h3><b>
+        {{data.menuTitle}}
+        </b>
+      </h3>
+    </div>
+    <div class="col-md-8">
+      <div class="panel-body ">
+        <div class="hidden-xs hidden-sm btn-group btn-group-justified" role="group" aria-label="Learning Portal Tools">
+          <a href="?id=lp_courses" class="btn btn-primary" >
+            <i class="fa fa-university fa-3x"></i>
+            <div>Browse Training and Courses</div>
+          </a>
+          <a ng-if="data.admin || data.owner || data.tutor" href="?id=lp_overview&viewtype=true" class="btn btn-default btn-lg theme-bkg" >
+            <i class="fa fa-users"></i> User Overview    
+          </a>
+          <a ng-if="data.admin || data.owner || data.crsDes" href="?id=lp_catalog&sys_id=3ea97fa9dbca9c10bbad468b3a9619e8" class="btn btn-default btn-lg" >
+            <i class="fa fa-address-card-o"></i> Add a new course    
+          </a>
+          <a ng-if="data.admin || data.owner || data.crsDes" href="?id=lp_active_training&table=x_btal_bt_learning_lp_skill_library&filter=active%3Dtrue" class="btn btn-default btn-lg" >
+            <i class="fa fa-book"></i> Add new skills
+          </a>
+          <a ng-if="data.admin || data.owner" href="?id=lp_catalog&sys_id=3a97aed9db4a5c10bbad468b3a96190e" class="btn btn-danger btn-lg" >
+            <i class="fa fa-user-plus"></i> Add a new user
+          </a>
+        </div>
+        
+        <!--Mobile View-->
+     		<div class="visible-xs btn-wide btn-group btn-group-vertical" role="group" aria-label="Learning Portal Tools">
+          <a href="?id=lp_courses" class="btn btn-primary" >
+            <i class="fa fa-university fa-3x"></i>
+            <div>Browse Training and Courses</div>
+          </a>
+          <a ng-if="data.admin || data.owner || data.tutor" href="?id=lp_overview&viewtype=true" class="btn btn-default btn-lg theme-bkg" >
+            <i class="fa fa-users"></i> User Overview    
+          </a>
+          <a ng-if="data.admin || data.owner || data.crsDes" href="?id=lp_catalog&sys_id=3ea97fa9dbca9c10bbad468b3a9619e8" class="btn btn-default btn-lg" >
+            <i class="fa fa-address-card-o"></i> Add a new course    
+          </a>
+          <a ng-if="data.admin || data.owner || data.crsDes" href="?id=lp_active_training&table=x_btal_bt_learning_lp_skill_library&filter=active%3Dtrue" class="btn btn-default btn-lg" >
+            <i class="fa fa-book"></i> Add new skills
+          </a>
+          <a ng-if="data.admin || data.owner" href="?id=lp_catalog&sys_id=3a97aed9db4a5c10bbad468b3a96190e" class="btn btn-danger btn-lg" >
+            <i class="fa fa-user-plus"></i> Add a new user
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

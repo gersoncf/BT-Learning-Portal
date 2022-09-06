@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Course/Unit" max_length="40" name="x_btal_bt_learning_lp_course" sizeclass="38" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Approval Required" max_length="40" name="approval_required" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Category" max_length="32" name="category" reference="x_btal_bt_learning_lp_course_category" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true" label="Cost" max_length="20" name="cost" type="currency"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="single_payment" label="Cost Schedule" max_length="40" name="cost_schedule" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Single Payment" sequence="100" value="single_payment"/>
+                <element inactive_on_update="false" label="weekly" sequence="200" value="weekly"/>
+                <element inactive_on_update="false" label="Monthly" sequence="300" value="monthly"/>
+                <element inactive_on_update="false" label="Quarterly" sequence="400" value="Quarterly"/>
+                <element inactive_on_update="false" label="Annually" sequence="500" value="Annually"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Course Units" max_length="4000" name="course_units" reference="x_btal_bt_learning_lp_course" reference_qual="active=true^sys_idNSAMEASsys_id^EQ" reference_qual_condition="active=true^sys_idNSAMEASsys_id^EQ" type="glide_list"/>
+        <element label="Description" max_length="4000" name="description" type="string_full_utf8"/>
+        <element attributes="edge_encryption_enabled=true" label="Expiry Duration" max_length="40" name="expiry_duration" type="glide_duration"/>
+        <element attributes="edge_encryption_enabled=true,pdf_cell_type=image" label="Icon" max_length="40" name="icon" type="user_image"/>
+        <element attributes="edge_encryption_enabled=true,pdf_cell_type=image" label="Image" max_length="40" name="image" type="user_image"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Knowledge Article" max_length="32" name="knowledge_article" reference="kb_knowledge" reference_qual="active=true^ORretired&gt;javascript:gs.endOfToday()^EQ" reference_qual_condition="active=true^ORretired&gt;javascript:gs.endOfToday()^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element display="true" label="Name" max_length="400" name="name" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Order" max_length="40" name="order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Outcome Expires" max_length="40" name="outcome_expires" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Parent" max_length="32" name="parent" reference="x_btal_bt_learning_lp_course" reference_qual="active=true^sys_idNSAMEASsys_id^EQ" reference_qual_condition="active=true^sys_idNSAMEASsys_id^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Passing Score" max_length="40" name="passing_score" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Prerequisite" max_length="4000" name="prerequisite" reference="x_btal_bt_learning_lp_course" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Quiz" max_length="32" name="quiz" reference="asmt_metric_type" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Quiz Result Options" max_length="40" name="quiz_result_options" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Blind - Only  'Pass' or 'Fail' will be returned." sequence="100" value="blind"/>
+                <element inactive_on_update="false" label="Score - Pass/Fail outcome and the final score will be returned" sequence="200" value="score_only"/>
+                <element inactive_on_update="false" label="Detailed - A detailed outcome including score and questions/answers will be written back." sequence="300" value="detailed"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Require Summary" max_length="40" name="require_summary" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" choice="1" label="Skills" max_length="4000" name="skills" reference="x_btal_bt_learning_lp_skill_library" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Subtasks" max_length="4000" name="subtasks" reference="x_btal_bt_learning_lp_course" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" label="Hide from Catalog" max_length="40" name="subtask_only" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Subtask Order" max_length="40" name="subtask_order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Course" sequence="25" value="group_of_units"/>
+                <element inactive_on_update="false" label="ServiceNow Quiz" sequence="100" value="quiz"/>
+                <element inactive_on_update="false" label="Knowledge Article" sequence="200" value="kb"/>
+                <element inactive_on_update="false" label="External Assessment" sequence="300" value="external assessment"/>
+                <element inactive_on_update="false" label="External Training" sequence="400" value="external training"/>
+            </choice>
+        </element>
+        <element label="URL" max_length="1024" name="url" type="url"/>
+        <index name="index">
+            <element name="quiz"/>
+        </index>
+        <index name="index2">
+            <element name="parent"/>
+        </index>
+        <index name="index3">
+            <element name="knowledge_article"/>
+        </index>
+        <index name="index4">
+            <element name="category"/>
+        </index>
+    </element>
+</database>

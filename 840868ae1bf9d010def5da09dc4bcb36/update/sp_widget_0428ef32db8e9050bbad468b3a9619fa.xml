@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,spUtil, $rootScope) {
+  /* widget controller */
+  var c = this;
+
+	
+	
+	
+	
+	if(c.data.page == 'lp_active_training') {
+		nonEmitPages();
+	}
+	
+	if(c.data.page == 'lp_course_status') {
+		nonEmitPages_L2();
+	}
+	if(c.data.page =='lp_enroll') {
+		nonEmitPages_L3();
+	}
+	
+	if(c.data.overview=='true') {
+		ovPages();
+	}
+	
+	
+	function ovPages() {
+		c.data.breadcrumbs = [];
+		//c.data.breadcrumbs.unshift({"label":"Learning Portal Home","url":"?id=my_learning_portal"})
+		c.data.breadcrumbs.push({"label":"Learning Portal Overview","url":"?id=lp_overview&spa=-1&userID="+c.data.userID})
+		c.data.breadcrumbs.push({"label":$scope.page.title,"url":"#"});
+		$scope.$emit('sp.update.breadcrumbs', c.data.breadcrumbs);
+	}
+	
+	
+	
+	function nonEmitPages() {
+		
+		c.data.breadcrumbs = [];
+		//c.data.breadcrumbs.unshift({"label":"Learning Portal Home","url":"?id=my_learning_portal"})
+		c.data.breadcrumbs.push({"label":$scope.page.title,"url":"#"});
+		$scope.$emit('sp.update.breadcrumbs', c.data.breadcrumbs);
+	}
+	
+	function nonEmitPages_L2() {
+		c.data.breadcrumbs = [];
+		//c.data.breadcrumbs.unshift({"label":"Learning Portal Home","url":"?id=my_learning_portal"})
+		c.data.breadcrumbs.push({"label":"List View","url":"?id=lp_active_training&table="+c.data.table+"&filter=active=true"})
+		c.data.breadcrumbs.push({"label":$scope.page.title,"url":"#"});
+		$scope.$emit('sp.update.breadcrumbs', c.data.breadcrumbs);
+	}
+	function nonEmitPages_L3() {
+		c.data.breadcrumbs = [];
+		//c.data.breadcrumbs.unshift({"label":"Learning Portal Home","url":"?id=my_learning_portal"})
+		c.data.breadcrumbs.push({"label":"Courses","url":"?id=lp_courses"})
+		c.data.breadcrumbs.push({"label":$scope.page.title,"url":"#"});
+		$scope.$emit('sp.update.breadcrumbs', c.data.breadcrumbs);
+	}
+	
+	
+	var deregister =$rootScope.$on("sp.update.breadcrumbs", function(e, list) {
+	c.data.breadcrumbs = list;
+	c.data.bcString = JSON.stringify(list);
+	c.data.Home = c.data.bcString.indexOf("?id=my_learning_portal");
+	
+		if(c.data.page == 'lp_enroll'){
+			var cHome= {"label":"Courses","url":"?id=lp_courses"};	
+			c.data.breadcrumbs.unshift(cHome);	
+		}	
+		if(c.data.page=='lp_courses'){
+			var cHome= {"label":"Courses","url":"#"};	
+			c.data.breadcrumbs.unshift(cHome);	
+		}	
+		
+		//var pHome= {"label":"Learning Portal Home","url":"?id=my_learning_portal"};
+	
+		//if(c.data.bcString.indexOf("?id=my_learning_portal") ==-1) {
+		//	c.data.breadcrumbs.unshift(pHome);	
+		//}
+	//$timeout(function() {
+			//$scope.$emit('sp.update.breadcrumbs', c.data.breadcrumbs);
+	//	});	
+	});
+		
+	$scope.$on('$destroy', function(){
+		deregister();
+	});
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>lp_breadcrumb_helper</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>LP Breadcrumb Helper</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.page = $sp.getParameter('id');
+	data.table = $sp.getParameter('table');
+
+	data.overview = $sp.getParameter('ov');
+	data.userID = $sp.getParameter('userID') || $sp.getParameter('sys_id') ;
+
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 23:12:40</sys_created_on>
+        <sys_id>0428ef32db8e9050bbad468b3a9619fa</sys_id>
+        <sys_mod_count>56</sys_mod_count>
+        <sys_name>LP Breadcrumb Helper</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_widget_0428ef32db8e9050bbad468b3a9619fa</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-16 01:58:21</sys_updated_on>
+        <template/>
+    </sp_widget>
+</record_update>

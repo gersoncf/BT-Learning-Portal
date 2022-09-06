@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="user_criteria">
+    <user_criteria action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <company/>
+        <department/>
+        <group name="LP Users">1aea6f6ddb8a9c10bbad468b3a961991</group>
+        <location/>
+        <match_all>false</match_all>
+        <name>Learning Portal Users</name>
+        <role name="x_btal_bt_learning.learning portal user">6c58ecae1bf9d010def5da09dc4bcbdb</role>
+        <script/>
+        <sys_class_name>user_criteria</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-08-21 00:12:34</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>effe1734dbfa14d0bbad468b3a961979</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Learning Portal Users</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>user_criteria_effe1734dbfa14d0bbad468b3a961979</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-08-21 00:12:34</sys_updated_on>
+        <user/>
+    </user_criteria>
+</record_update>

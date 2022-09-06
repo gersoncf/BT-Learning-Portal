@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>/*h2,h4, p {
+  font-family: 'Montserrat', sans-serif;
+}*/
+.top_space  {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.top_margin  {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.color_box {
+  margin-top:10px;
+  margin-bottom:10px !important;
+}
+.color_box:hover {
+  background: #0c312c;
+}
+.iconlink a {
+font-weight: 600;
+} 
+
+/*section.page {
+  background-image: url("lp_background.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}*/
+</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>my_learning_portal</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>ed</sys_created_by>
+        <sys_created_on>2020-07-20 04:00:54</sys_created_on>
+        <sys_id>788067aa1b465050def5da09dc4bcb5b</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>my_learning_portal</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sp_page_788067aa1b465050def5da09dc4bcb5b</sys_update_name>
+        <sys_updated_by>ed</sys_updated_by>
+        <sys_updated_on>2020-09-03 05:38:15</sys_updated_on>
+        <title>My Learning Portal</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=788067aa1b465050def5da09dc4bcb5b"/>
+</record_update>

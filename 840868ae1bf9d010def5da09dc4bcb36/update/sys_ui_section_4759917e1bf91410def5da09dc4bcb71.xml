@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="4759917e1bf91410def5da09dc4bcb71" sys_domain="global" table="x_btal_bt_learning_lp_user_course_status" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>user</element>
+            <position>0</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>20bcd32fdb03d410bbad468b3a96193b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>date_due</element>
+            <position>1</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a4bcd32fdb03d410bbad468b3a96193b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>course</element>
+            <position>2</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>2cbcd32fdb03d410bbad468b3a96193b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>date_enrolled</element>
+            <position>3</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a0bcd32fdb03d410bbad468b3a96193c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>date_completed</element>
+            <position>4</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>28bcd32fdb03d410bbad468b3a96193c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>5</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>acbcd32fdb03d410bbad468b3a96193c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>date_started</element>
+            <position>6</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>24bcd32fdb03d410bbad468b3a96193d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>tutor</element>
+            <position>7</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a8bcd32fdb03d410bbad468b3a96193d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>status</element>
+            <position>8</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>20bcd32fdb03d410bbad468b3a96193e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>expiry_date</element>
+            <position>9</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a4bcd32fdb03d410bbad468b3a96193e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>result</element>
+            <position>10</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>2cbcd32fdb03d410bbad468b3a96193e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>11</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a0bcd32fdb03d410bbad468b3a96193f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>approved</element>
+            <position>12</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>28bcd32fdb03d410bbad468b3a96193f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>13</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>acbcd32fdb03d410bbad468b3a96193f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>14</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>24bcd32fdb03d410bbad468b3a961940</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>enrolled_quiz_id</element>
+            <position>15</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a8bcd32fdb03d410bbad468b3a961940</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>minimum_score_for_competency</element>
+            <position>16</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>20bcd32fdb03d410bbad468b3a961941</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>knowledge_article</element>
+            <position>17</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a4bcd32fdb03d410bbad468b3a961941</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>url</element>
+            <position>18</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>2cbcd32fdb03d410bbad468b3a961941</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parent</element>
+            <position>19</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a0bcd32fdb03d410bbad468b3a961942</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>20</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>28bcd32fdb03d410bbad468b3a961942</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>unit_order</element>
+            <position>21</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>acbcd32fdb03d410bbad468b3a961942</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>attempts</element>
+            <position>22</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>24bcd32fdb03d410bbad468b3a961943</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>require_summary</element>
+            <position>23</position>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-09-10 23:20:56</sys_created_on>
+            <sys_id>a8bcd32fdb03d410bbad468b3a961943</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_btal_bt_learning_lp_user_course_status" sys_domain="global" view="Default view">4759917e1bf91410def5da09dc4bcb71</sys_ui_section>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-09-10 23:20:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_btal_bt_learning_lp_user_course_status</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>ed</sys_created_by>
+            <sys_created_on>2020-07-08 02:33:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4759917e1bf91410def5da09dc4bcb71</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_btal_bt_learning_lp_user_course_status</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+            <sys_update_name>sys_ui_section_4759917e1bf91410def5da09dc4bcb71</sys_update_name>
+            <sys_updated_by>ed</sys_updated_by>
+            <sys_updated_on>2020-07-08 02:33:12</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

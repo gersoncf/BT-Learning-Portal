@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="LP Course Category" max_length="40" name="x_btal_bt_learning_lp_course_category" sizeclass="5" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,pdf_cell_type=image" label="Icon" max_length="40" name="icon" type="user_image"/>
+        <element attributes="edge_encryption_enabled=true,pdf_cell_type=image" label="Image" max_length="40" name="image" type="user_image"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Parent" max_length="32" name="parent" reference="x_btal_bt_learning_lp_course_category" type="reference"/>
+        <element display="true" label="Title" max_length="400" name="title" type="string"/>
+        <index name="index">
+            <element name="parent"/>
+        </index>
+    </element>
+</database>

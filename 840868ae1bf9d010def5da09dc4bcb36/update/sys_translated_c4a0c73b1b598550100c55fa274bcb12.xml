@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_translated">
+    <sys_translated action="INSERT_OR_UPDATE">
+        <element>title</element>
+        <id/>
+        <label>Learning Portal</label>
+        <language>en</language>
+        <name>sys_app_module</name>
+        <sys_class_name>sys_translated</sys_class_name>
+        <sys_created_by>Osbert.Chor@btautomation.com.au</sys_created_by>
+        <sys_created_on>2022-02-03 04:40:22</sys_created_on>
+        <sys_id>c4a0c73b1b598550100c55fa274bcb12</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Learning Portal</sys_name>
+        <sys_package display_value="BT Learning Portal" source="x_btal_bt_learning">840868ae1bf9d010def5da09dc4bcb36</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="BT Learning Portal">840868ae1bf9d010def5da09dc4bcb36</sys_scope>
+        <sys_update_name>sys_translated_c4a0c73b1b598550100c55fa274bcb12</sys_update_name>
+        <sys_updated_by>Osbert.Chor@btautomation.com.au</sys_updated_by>
+        <sys_updated_on>2022-02-03 04:40:22</sys_updated_on>
+        <value>Learning Portal</value>
+    </sys_translated>
+</record_update>
